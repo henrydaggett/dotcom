@@ -1,0 +1,18 @@
+@font-face {
+  font-family: Geist;
+  src: url(geist.woff2) format("woff2");
+  font-display: fallback;
+}
+@font-face {
+  font-family: Instrument;
+  src: url(instrument-serif.ttf) format("truetype");
+  font-display: fallback;
+}
+
+h1 {
+  font-family: "Instrument", serif;
+}
+
+body {
+  font-family: "Geist", "Helvetica Neue", sans-serif;
+}
