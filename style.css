@@ -71,5 +71,5 @@ body {
   width: 100vw;
   background-image: repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%),
     repeating-linear-gradient(90deg, #ccc 0 1px, transparent 1px 100%);
-  background-size: calc(100vw / 3) 75px;
+  background-size: calc(100vw / 3) 24px;
 }
