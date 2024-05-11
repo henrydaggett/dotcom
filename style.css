@@ -19,4 +19,13 @@ h1 {
 
 body {
   font-family: "Geist", "Helvetica Neue", sans-serif;
+  line-height: 24px;
+}
+
+.grid {
+  height: 100%;
+  width: 100vw;
+  background-image: repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%),
+    repeating-linear-gradient(90deg, #ccc 0 1px, transparent 1px 100%);
+  background-size: 20px 75px;
 }
