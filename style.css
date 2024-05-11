@@ -24,6 +24,9 @@ body {
 }
 
 .grid {
+  position: absolute;
+  top: 0;
+  z-index: -1;
   height: 100%;
   width: 100vw;
   background-image: repeating-linear-gradient(#ccc 0 1px, transparent 1px 100%),
