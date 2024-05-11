@@ -9,6 +9,10 @@
   font-display: fallback;
 }
 
+html {
+  font-size: 14px;
+}
+
 h1 {
   font-family: "Instrument", serif;
 }
