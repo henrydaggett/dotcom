@@ -57,7 +57,7 @@ body {
   font-family: "Geist", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 24px;
-  padding: 48px;
+  margin: 48px;
 }
 
 h1 {
