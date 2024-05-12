@@ -52,15 +52,16 @@ html {
   font-size: 15px;
 }
 
-h1 {
-  font-family: "Instrument", serif;
-}
-
 body {
   height: 100%;
   font-family: "Geist", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 24px;
+  padding: 48px;
+}
+
+h1 {
+  font-family: "Instrument", serif;
 }
 
 .grid {
@@ -69,10 +70,7 @@ body {
   z-index: -1;
   height: 100%;
   width: 100vw;
-  background-image: repeating-linear-gradient(
-      #000 0 24px,
-      transparent 24px 100%
-    ),
+  background-image: repeating-linear-gradient(#000 0 1px, transparent 1px 100%),
     repeating-linear-gradient(90deg, #000 0 1px, transparent 1px 100%);
   background-size: calc(100vw / 3) 24px;
 }
