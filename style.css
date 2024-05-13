@@ -6,9 +6,11 @@
 *::after {
   box-sizing: border-box;
 }
+
 * {
   margin: 0;
 }
+
 img,
 picture,
 video,
@@ -17,12 +19,14 @@ svg {
   display: block;
   max-width: 100%;
 }
+
 input,
 button,
 textarea,
 select {
   font: inherit;
 }
+
 p,
 h1,
 h2,
@@ -32,6 +36,7 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
 #root,
 #__next {
   isolation: isolate;
@@ -64,6 +69,8 @@ body {
 
 h1 {
   font-family: "Instrument", serif;
+  font-size: 67px;
+  line-height: 72px;
 }
 
 .grid {
@@ -73,7 +80,21 @@ h1 {
   right: 0;
   z-index: -1;
   height: 100%;
-  background-image: repeating-linear-gradient(#000 0 1px, transparent 1px 100%),
-    repeating-linear-gradient(90deg, #000 0 1px, transparent 1px 100%);
+  background-image: repeating-linear-gradient(
+      rgba(0, 0, 0, 0.1) 0 1px,
+      transparent 1px 100%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.1) 0 1px,
+      transparent 1px 100%
+    );
   background-size: calc(100vw / 3) 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-auto-rows: minmax(100px, auto);
+  gap: 24px;
 }
