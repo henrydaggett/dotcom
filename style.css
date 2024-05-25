@@ -89,26 +89,23 @@ h1 {
     repeating-linear-gradient(
       to right,
       transparent 0,
-      /* Start with transparent */ transparent calc(33.33% - 13px),
-      /* Keep transparent until just before the first red outline */ red
-        calc(33.33% - 13px),
-      /* Start the first red outline */ red calc(33.33% - 12px),
-      /* End the first red outline */ transparent calc(33.33% - 12px),
-      /* Start the transparent line */ transparent calc(33.33% + 12px),
-      /* End the transparent line */ red calc(33.33% + 12px),
-      /* Start the second red outline */ red calc(33.33% + 13px),
-      /* End the second red outline */ transparent calc(33.33% + 13px),
-      /* Continue with transparent */ transparent calc(66.66% - 13px),
-      /* Keep transparent until just before the second red outline */ red
-        calc(66.66% - 13px),
-      /* Start the third red outline */ red calc(66.66% - 12px),
-      /* End the third red outline */ transparent calc(66.66% - 12px),
-      /* Start the second transparent line */ transparent calc(66.66% + 12px),
-      /* End the second transparent line */ red calc(66.66% + 12px),
-      /* Start the fourth red outline */ red calc(66.66% + 13px),
-      /* End the fourth red outline */ transparent calc(66.66% + 13px),
-      /* Continue with transparent */ transparent 100%
-        /* End with transparent */
+      transparent calc(33.33% - 16px),
+      red calc(33.33% - 16px),
+      red calc(33.33% - 15px),
+      transparent calc(33.33% - 16px),
+      transparent calc(33.33% + 8px),
+      red calc(33.33% + 12px),
+      red calc(33.33% + 13px),
+      transparent calc(33.33% + 13px),
+      transparent calc(66.66% - 13px),
+      red calc(66.66% - 13px),
+      red calc(66.66% - 12px),
+      transparent calc(66.66% - 12px),
+      transparent calc(66.66% + 12px),
+      red calc(66.66% + 12px),
+      red calc(66.66% + 13px),
+      transparent calc(66.66% + 13px),
+      transparent 100%
     );
   background-size: 100% 12px;
 }
