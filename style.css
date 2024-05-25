@@ -99,9 +99,10 @@ h1 {
     "a b c" 216px
     "d e e" 216px
     "f g g" 216px
-    "h i i" 432px
+    "h i i" 216px
+    "h i i" 216px
     "j k k" 216px
-    "l m m" 216px;
+    "l m m" 216px / 1fr 1fr 1fr;
   column-gap: 24px;
   row-gap: 12px;
 }
