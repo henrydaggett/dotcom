@@ -87,11 +87,18 @@ h1 {
       transparent 1px 100%
     ),
     repeating-linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.1) 0 1px,
-      transparent 1px 100%
-    );
-  background-size: calc(100% / 3) 12px;
+        to right, /* Direction of the gradient */
+        transparent, /* Starting color (transparent) */
+        transparent calc((100% / 3) - 12px), /* Transparent until just before the first line */
+        black calc((100% / 3) - 12px), /* First line starts (black color) */
+        black calc((100% / 3) + 12px), /* First line ends */
+        transparent calc((100% / 3) + 12px), /* Transparent until just before the second line */
+        transparent calc((200% / 3) - 12px), /* Transparent until just before the second line */
+        black calc((200% / 3) - 12px), /* Second line starts (black color) */
+        black calc((200% / 3) + 12px), /* Second line ends */
+        transparent calc((200% / 3) + 12px) /* Transparent after the second line */
+      );
+  background-size: 100% 12px;
 }
 
 .grid {
