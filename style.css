@@ -96,12 +96,12 @@ h1 {
 .grid {
   display: grid;
   grid-template: 
-    "a b c" 216px
-    "d e e" 216px
-    "f g g" 216px
-    "h i i" 432px
-    "j k k" 216px
-    "l m m" 216px;
+    "a b c" 216px / 1fr 1fr 1fr
+    "d e e" 216px / 1fr 2fr
+    "f g g" 216px / 1fr 2fr
+    "h i i" 432px / 1fr 2fr
+    "j k k" 216px / 1fr 2fr
+    "l m m" 216px / 1fr 2fr;
   column-gap: 24px;
   row-gap: 12px;
 }
