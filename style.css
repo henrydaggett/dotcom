@@ -87,23 +87,35 @@ h1 {
       transparent 1px 100%
     ),
     repeating-linear-gradient(
-        to right, /* Direction of the gradient */
-        transparent, /* Starting color (transparent) */
-        transparent calc((100% / 3) - 12px), /* Transparent until just before the first line */
-        black calc((100% / 3) - 12px), /* First line starts (black color) */
-        black calc((100% / 3) + 12px), /* First line ends */
-        transparent calc((100% / 3) + 12px), /* Transparent until just before the second line */
-        transparent calc((200% / 3) - 12px), /* Transparent until just before the second line */
-        black calc((200% / 3) - 12px), /* Second line starts (black color) */
-        black calc((200% / 3) + 12px), /* Second line ends */
-        transparent calc((200% / 3) + 12px) /* Transparent after the second line */
-      );
+      to right,
+      transparent 0,
+      /* Start with transparent */ transparent calc(33.33% - 13px),
+      /* Keep transparent until just before the first red outline */ red
+        calc(33.33% - 13px),
+      /* Start the first red outline */ red calc(33.33% - 12px),
+      /* End the first red outline */ transparent calc(33.33% - 12px),
+      /* Start the transparent line */ transparent calc(33.33% + 12px),
+      /* End the transparent line */ red calc(33.33% + 12px),
+      /* Start the second red outline */ red calc(33.33% + 13px),
+      /* End the second red outline */ transparent calc(33.33% + 13px),
+      /* Continue with transparent */ transparent calc(66.66% - 13px),
+      /* Keep transparent until just before the second red outline */ red
+        calc(66.66% - 13px),
+      /* Start the third red outline */ red calc(66.66% - 12px),
+      /* End the third red outline */ transparent calc(66.66% - 12px),
+      /* Start the second transparent line */ transparent calc(66.66% + 12px),
+      /* End the second transparent line */ red calc(66.66% + 12px),
+      /* Start the fourth red outline */ red calc(66.66% + 13px),
+      /* End the fourth red outline */ transparent calc(66.66% + 13px),
+      /* Continue with transparent */ transparent 100%
+        /* End with transparent */
+    );
   background-size: 100% 12px;
 }
 
 .grid {
   display: grid;
-  grid-template: 
+  grid-template:
     "a b c" 216px
     "d e e" 216px
     "f g g" 216px
@@ -122,7 +134,7 @@ h1 {
 
 /* Utilities */
 .flex {
-  display: flex
+  display: flex;
 }
 
 .hflex {
