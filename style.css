@@ -108,6 +108,11 @@ h1 {
   row-gap: 12px;
 }
 
+.grid div {
+  padding-top: 8px;
+  border-top: 1px solid #fff;
+}
+
 /* Utilities */
 .flex {
   display: flex
