@@ -95,15 +95,13 @@ h1 {
 
 .grid {
   display: grid;
-  grid-template-areas: 
-    "a b c"
-    "d e e"
-    "f g g"
-    "h i i"
-    "j k k"
-    "l m m";
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 216px 216px 216px 432px 216px 216px;
+  grid-template: 
+    "a b c" 216px
+    "d e e" 216px
+    "f g g" 216px
+    "h i i" 432px
+    "j k k" 216px
+    "l m m" 216px;
   column-gap: 24px;
   row-gap: 12px;
 }
