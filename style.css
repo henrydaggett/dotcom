@@ -90,7 +90,7 @@ h1 {
       rgba(0, 0, 0, 0.1) 0 1px,
       transparent 1px 100%
     );
-  background-size: calc(100vw / 3) 24px;
+  background-size: calc(100% / 3) 12px;
 }
 
 .grid {
