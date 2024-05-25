@@ -75,7 +75,7 @@ h1 {
 }
 
 /* Classes */
-.grid {
+.grid-display {
   position: absolute;
   top: 0;
   left: 0;
@@ -96,9 +96,17 @@ h1 {
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-auto-rows: minmax(100px, auto);
-  gap: 24px;
+  grid-template-areas: 
+    "a b c"
+    "d e e"
+    "f g g"
+    "h i i"
+    "j k k"
+    "l m m";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 216px 216px 216px 432px 216px 216px;
+  column-gap: 24px;
+  row-gap: 12px;
 }
 
 /* Utilities */
