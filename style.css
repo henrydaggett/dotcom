@@ -60,7 +60,7 @@ html {
 body {
   font-family: "Geist", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: 'fwid' on;
+  font-feature-settings: "fwid" on;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -131,6 +131,8 @@ h1 {
 
 .grid div {
   padding-top: 7px;
+}
+.grid div:not(:nth-child(-n + 3)) {
   border-top: 1px solid black;
 }
 
