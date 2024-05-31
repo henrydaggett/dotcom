@@ -93,6 +93,18 @@ a {
   letter-spacing: 0.51px;
 }
 
+.display-link:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: grey;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
 /* Classes */
 .grid-display {
   position: absolute;
