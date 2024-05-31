@@ -77,6 +77,20 @@ h1 {
   font-weight: 400;
   line-height: 60px;
   letter-spacing: 0.67px;
+  margin-top: -11px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.display-link {
+  font-family: "Instrument Serif", serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.51px;
 }
 
 /* Classes */
