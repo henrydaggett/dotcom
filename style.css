@@ -85,6 +85,11 @@ a {
   color: currentColor;
 }
 
+div a.display-link {
+  display: flex;
+  flex-direction: column;
+}
+
 .display-link {
   font-family: "Instrument Serif", serif;
   font-size: 17px;
