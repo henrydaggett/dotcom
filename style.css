@@ -98,7 +98,6 @@ div a.display-link {
   line-height: 24px;
   letter-spacing: 0.51px;
   position: relative;
-  display: block;
 }
 
 .display-link:hover::before {
