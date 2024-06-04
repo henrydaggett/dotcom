@@ -85,7 +85,7 @@ a {
   color: currentColor;
 }
 
-div a.display-link {
+.display-link-container {
   display: flex;
   flex-direction: column;
 }
