@@ -106,7 +106,6 @@ a {
   line-height: 24px;
   letter-spacing: 0.51px;
   position: relative;
-  margin-left: -6px
 }
 
 .display-link::after {
@@ -143,6 +142,7 @@ a {
   background-color: unset;
   border: unset;
   padding: 0 6px;
+  margin-left: -6px
 }
 
 .display-button:hover {
