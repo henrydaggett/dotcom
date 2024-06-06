@@ -131,6 +131,20 @@ a {
   z-index: -1;
 }
 
+.display-link:focus-within::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -6px;
+  right: -6px;
+  bottom: 0px;
+  background-color: rgba(var(--black), 0.4);
+  border-radius: 4px;
+  border: 1px var(--black) solid;
+  transition: background-color 0.3s;
+  z-index: -1;
+}
+
 .display-button {
   font-family: "Instrument Serif", serif;
   font-size: 17px;
@@ -148,6 +162,12 @@ a {
 .display-button:hover {
   background-color: rgba(var(--black), 0.4);
   border-radius: 4px;
+}
+
+.display-button:focus-within {
+  background-color: rgba(var(--black), 0.4);
+  border-radius: 4px;
+  border: 1px var(--black) solid;
 }
 
 /* Classes */
