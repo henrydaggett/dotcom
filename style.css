@@ -54,7 +54,7 @@ h6 {
 
 :root {
   --white: rgb(0,0,0);
-  --black: rgb(225,225,225)
+  --black: rgb(225,225,225);
 }
 
 html {
