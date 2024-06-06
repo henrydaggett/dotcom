@@ -60,6 +60,8 @@ h6 {
 html {
   font-size: 15px;
   height: 100%;
+  color: var(--black);
+  background-color: var(--white);
 }
 
 body {
