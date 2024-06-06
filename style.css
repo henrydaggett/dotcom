@@ -125,7 +125,7 @@ a {
   left: -6px;
   right: -6px;
   bottom: -4px;
-  background-color: rgba(var(--black), 0.1);
+  background-color: rgba(var(--black), 0.25);
   border-radius: 8px;
   transition: background-color 0.3s;
   z-index: -1;
