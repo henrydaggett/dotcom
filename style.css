@@ -120,7 +120,7 @@ a {
   margin-left: 4px;
 }
 
-.display-link:hover::before {
+.display-link::before:hover {
   content: "";
   position: absolute;
   top: 0px;
@@ -133,7 +133,7 @@ a {
   z-index: -1;
 }
 
-.display-link:focus-visible::before {
+.display-link::before:focus-visible {
   content: "";
   position: absolute;
   top: 0px;
@@ -143,6 +143,7 @@ a {
   background-color: rgba(var(--ink), 0.1);
   border-radius: 4px;
   border: 1px var(--ink) solid;
+  outline: unset;
   transition: background-color 0.3s;
   z-index: -1;
 }
@@ -170,6 +171,7 @@ a {
   background-color: rgba(var(--ink), 0.1);
   border-radius: 4px;
   border: 1px var(--ink) solid;
+  outline: unset;
 }
 
 /* Classes */
