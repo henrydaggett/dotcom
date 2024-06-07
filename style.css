@@ -113,7 +113,7 @@ a {
 .display-link::after {
   content: "";
   background-color: currentColor;
-  -webkit-mask: url('data:image/svg+xml,<svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.34597 0.445084H11.5549V10.654H10.7796V1.76871L1.1032 11.4451L0.554932 10.8968L10.2313 1.22045H1.34597V0.445084Z" fill="black"/></svg>');
+  -webkit-mask: url(link-arrow.svg);
   display: inline-block;
   height: 10px;
   width: 10px;
