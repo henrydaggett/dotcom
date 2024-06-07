@@ -54,14 +54,16 @@ h6 {
 
 :root {
   --white: 0, 0, 0;
-  --black: 225, 225, 225;
+  --ink: 50, 57, 60;
+  --backdrop: 38, 38, 38;
+  --paper: 243, 242, 238;
 }
 
 html {
   font-size: 15px;
   height: 100%;
-  color: var(--black);
-  background-color: var(--white);
+  color: var(--ink);
+  background-color: var(--backdrop);
 }
 
 body {
@@ -125,22 +127,22 @@ a {
   left: -6px;
   right: -6px;
   bottom: 0px;
-  background-color: rgba(var(--black), 0.4);
+  background-color: rgba(var(--ink), 0.5);
   border-radius: 4px;
   transition: background-color 0.3s;
   z-index: -1;
 }
 
-.display-link:focus-within::before {
+.display-link:focus-visible::before {
   content: "";
   position: absolute;
   top: 0px;
   left: -6px;
   right: -6px;
   bottom: 0px;
-  background-color: rgba(var(--black), 0.4);
+  background-color: rgba(var(--ink), 0.5);
   border-radius: 4px;
-  border: 1px var(--black) solid;
+  border: 1px var(--ink) solid;
   transition: background-color 0.3s;
   z-index: -1;
 }
@@ -160,14 +162,14 @@ a {
 }
 
 .display-button:hover {
-  background-color: rgba(var(--black), 0.4);
+  background-color: rgba(var(--ink), 0.5);
   border-radius: 4px;
 }
 
-.display-button:focus-within {
-  background-color: rgba(var(--black), 0.4);
+.display-button:focus-visible {
+  background-color: rgba(var(--ink), 0.5);
   border-radius: 4px;
-  border: 1px var(--black) solid;
+  border: 1px var(--ink) solid;
 }
 
 /* Classes */
@@ -179,7 +181,7 @@ a {
   z-index: -1;
   height: 100%;
   background-image: repeating-linear-gradient(
-      rgba(0, 0, 0, 0.1) 0 1px,
+      rgba(var(--ink), 0.1) 0 1px,
       transparent 1px 100%
     ),
     repeating-linear-gradient(
