@@ -120,7 +120,7 @@ a {
   margin-left: 4px;
 }
 
-.display-link::before:hover {
+.display-link:hover::before {
   content: "";
   position: absolute;
   top: 0px;
@@ -130,10 +130,10 @@ a {
   background-color: rgba(var(--ink), 0.1);
   border-radius: 4px;
   transition: background-color 0.3s;
-  z-index: -1;
+  z-index: 0;
 }
 
-.display-link::before:focus-visible {
+.display-link:focus-visible::before {
   content: "";
   position: absolute;
   top: 0px;
@@ -142,10 +142,10 @@ a {
   bottom: 0px;
   background-color: rgba(var(--ink), 0.1);
   border-radius: 4px;
-  border: 1px var(--ink) solid;
+  border: 1px solid var(--ink);
   outline: unset;
   transition: background-color 0.3s;
-  z-index: -1;
+  z-index: 0;
 }
 
 .display-button {
@@ -170,7 +170,7 @@ a {
 .display-button:focus-visible {
   background-color: rgba(var(--ink), 0.1);
   border-radius: 4px;
-  border: 1px var(--ink) solid;
+  border: 1px solid var(--ink);
   outline: unset;
 }
 
