@@ -127,7 +127,7 @@ a {
   left: -6px;
   right: -6px;
   bottom: 0px;
-  background-color: rgba(var(--ink), 0.5);
+  background-color: rgba(var(--ink), 0.25);
   border-radius: 4px;
   transition: background-color 0.3s;
   z-index: -1;
@@ -228,6 +228,10 @@ a {
 }
 .grid div:not(:nth-child(-n + 3)) {
   border-top: 1px solid black;
+}
+
+.content {
+  list-style-type: none;
 }
 
 /* Utilities */
