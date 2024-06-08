@@ -238,6 +238,16 @@ a {
   border-top: 1px solid rgb(var(--ink));
 }
 
+q {
+  quotes: "\201c" "\201d";
+}
+q:before {
+  content: open-quote;
+}
+q:after {
+  content: close-quote;
+}
+
 .content li:not(:first-child) {
   border-top: 1px solid rgb(var(--ink));
 }
@@ -262,7 +272,10 @@ a {
   display: flex;
   gap: 4px;
   min-width: 0;
-  
+}
+
+.content-meta {
+  flex-shrink: 0;
 }
 
 /* Utilities */
