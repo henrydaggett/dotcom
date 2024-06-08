@@ -132,7 +132,7 @@ a {
   right: -6px;
   bottom: 0px;
   background-color: rgba(var(--ink), 0.1);
-  border-radius: 4px;
+  border-radius: 3px;
   transition: background-color 0.3s;
   z-index: 0;
 }
@@ -145,7 +145,7 @@ a {
   right: -6px;
   bottom: 0px;
   background-color: rgba(var(--ink), 0.1);
-  border-radius: 4px;
+  border-radius: 3px;
   outline: 1px solid rgb(var(--ink));
   transition: background-color 0.3s;
   z-index: 0;
@@ -164,16 +164,15 @@ a {
   border: unset;
   padding: 0 6px;
   margin-left: -6px;
+  border-radius: 3px;
 }
 
 .display-button:hover {
   background-color: rgba(var(--ink), 0.1);
-  border-radius: 4px;
 }
 
 .display-button:focus-visible {
   background-color: rgba(var(--ink), 0.1);
-  border-radius: 4px;
   outline: 1px solid rgb(var(--ink));
 }
 
