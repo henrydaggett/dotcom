@@ -35,6 +35,10 @@ h6 {
   overflow-wrap: break-word;
 }
 
+ul {
+  padding: 0;
+}
+
 #root,
 #__next {
   isolation: isolate;
@@ -227,7 +231,7 @@ a {
   row-gap: 12px;
 }
 
-.grid div {
+.grid > div {
   padding-top: 7px;
 }
 .grid div:not(:nth-child(-n + 3)) {
