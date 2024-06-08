@@ -105,6 +105,10 @@ a {
   align-items: flex-start;
 }
 
+.display-container > button:not(:first-child) {
+  margin-top: -3px;
+}
+
 .display-link {
   font-family: "Instrument Serif", serif;
   font-size: 17px;
@@ -182,7 +186,7 @@ a {
   color: currentColor;
   background-color: unset;
   border: unset;
-  padding: 0 8px;
+  padding: 1px 8px 2px 8px;
   margin-left: -8px;
   border-radius: 12px;
 }
