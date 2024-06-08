@@ -59,6 +59,7 @@ ul {
 
 :root {
   --white: 255, 255, 255;
+  --red: 255, 99, 99;
   --ink: 50, 57, 60;
   --backdrop: 38, 38, 38;
   --paper: 243, 242, 238;
@@ -239,20 +240,20 @@ a {
       transparent 0,
       transparent calc(33.33% - 1px),
       transparent calc(33.33% - 1px),
-      red calc(33.33% - 1px),
-      red calc(33.33% - 0px),
+      rgb(var(--red)) calc(33.33% - 1px),
+      rgb(var(--red)) calc(33.33% - 0px),
       transparent calc(33.33% - 23px),
       transparent calc(33.33% + 23px),
-      red calc(33.33% + 23px),
-      red calc(33.33% + 24px),
+      rgb(var(--red)) calc(33.33% + 23px),
+      rgb(var(--red)) calc(33.33% + 24px),
       transparent calc(33.33% + 24px),
       transparent calc(66.66% - 25px),
-      red calc(66.66% - 25px),
-      red calc(66.66% - 24px),
+      rgb(var(--red)) calc(66.66% - 25px),
+      rgb(var(--red)) calc(66.66% - 24px),
       transparent calc(66.66% - 24px),
       transparent calc(66.66% + 0px),
-      red calc(66.66% + 0px),
-      red calc(66.66% + 1px),
+      rgb(var(--red)) calc(66.66% + 0px),
+      rgb(var(--red)) calc(66.66% + 1px),
       transparent calc(66.66% + 0px),
       transparent 100%
     );
