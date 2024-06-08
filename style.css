@@ -249,15 +249,18 @@ a {
   border-top: 1px solid rgb(var(--ink));
 }
 
-p.content-title {
+.content-title {
   quotes: "\201c" "\201d";
 }
 
-p.content-title:before {
+.content-title:before {
   content: open-quote;
 }
 
-p.content-title:after {
+.content-title:after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   content: close-quote;
 }
 
