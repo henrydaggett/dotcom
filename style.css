@@ -145,7 +145,7 @@ a {
   box-shadow:
     inset -1px -1px 1px 0 rgba(var(--white), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
-  border-radius: 3px;
+  border-radius: 12px;
   transition: background-color 0.3s;
   z-index: 0;
 }
@@ -166,7 +166,7 @@ a {
   box-shadow:
     inset -1px -1px 1px 0 rgba(var(--white), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
-  border-radius: 3px;
+  border-radius: 12px;
   outline: 1px solid rgb(var(--ink));
   z-index: 0;
 }
