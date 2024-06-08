@@ -110,6 +110,10 @@ a {
   position: relative;
 }
 
+.display-link:focus-visible {
+  outline: unset;
+}
+
 .display-link::after {
   content: "";
   background-color: currentColor;
