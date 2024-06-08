@@ -242,6 +242,10 @@ a {
   list-style-type: none;
 }
 
+.content-link {
+  display: flex;
+}
+
 /* Utilities */
 .flex {
   display: flex;
