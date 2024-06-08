@@ -238,7 +238,7 @@ a {
   border-top: 1px solid rgb(var(--ink));
 }
 
-.content:not(:first-child) {
+.content li:not(:first-child) {
   border-top: 1px solid rgb(var(--ink));
 }
 
