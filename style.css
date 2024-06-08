@@ -282,6 +282,7 @@ a {
 }
 
 .content-title {
+  position: relative;
   quotes: "\201c" "\201d";
 }
 
