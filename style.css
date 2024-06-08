@@ -159,6 +159,7 @@ a {
   line-height: 24px;
   letter-spacing: 0.51px;
   position: relative;
+  color: currentColor;
   background-color: unset;
   border: unset;
   padding: 0 6px;
