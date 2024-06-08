@@ -244,6 +244,8 @@ a {
 
 .content-link {
   display: flex;
+  gap: 8px;
+  padding-right: 8px;
 }
 
 /* Utilities */
