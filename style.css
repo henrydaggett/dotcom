@@ -252,6 +252,19 @@ a {
   padding-right: 8px;
 }
 
+.content-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-details {
+  display: flex;
+  gap: 4px;
+  min-width: 0;
+  
+}
+
 /* Utilities */
 .flex {
   display: flex;
