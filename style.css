@@ -50,6 +50,7 @@ ul {
   src: url(geist.woff2) format("woff2");
   font-display: fallback;
 }
+
 @font-face {
   font-family: Instrument;
   src: url(instrument-serif.ttf) format("truetype");
@@ -177,6 +178,15 @@ a {
 
 .display-button:focus-visible {
   background-color: rgba(var(--ink), 0.1);
+  -moz-box-shadow:
+    inset -8px -8px 8px 0 rgba(var(--ink), 0.7),
+    inset 8px 8px 8px 0 rgba(var(--paper), 0.2);
+  -webkit-box-shadow:
+    inset -8px -8px 8px 0 rgba(var(--ink), 0.7),
+    inset 8px 8px 8px 0 rgba(var(--paper), 0.2);
+  box-shadow:
+    inset -8px -8px 8px 0 rgba(var(--ink), 0.7),
+    inset 8px 8px 8px 0 rgba(var(--paper), 0.2);
   outline: 1px solid rgb(var(--ink));
 }
 
@@ -234,6 +244,7 @@ a {
 .grid > div {
   padding-top: 7px;
 }
+
 .grid div:not(:nth-child(-n + 3)) {
   border-top: 1px solid rgb(var(--ink));
 }
@@ -241,9 +252,11 @@ a {
 q {
   quotes: "\201c" "\201d";
 }
+
 q:before {
   content: open-quote;
 }
+
 q:after {
   content: close-quote;
 }
