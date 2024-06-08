@@ -235,10 +235,14 @@ a {
   padding-top: 7px;
 }
 .grid div:not(:nth-child(-n + 3)) {
-  border-top: 1px solid black;
+  border-top: 1px solid rgb(var(--ink));
 }
 
-.content {
+.content:not(:first-child) {
+  border-top: 1px solid rgb(var(--ink));
+}
+
+.content li {
   list-style-type: none;
 }
 
