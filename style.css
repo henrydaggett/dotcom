@@ -321,6 +321,7 @@ a {
   display: flex;
   gap: 8px;
   padding: 7px 8px 4px 0;
+  position: relative;
 }
 
 .content-link:hover::before {
