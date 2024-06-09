@@ -27,7 +27,7 @@
   </head>
 
   <body>
-    <div class="grid-display" style="z-index: 2; pointer-events: none"></div>
+    <div class="grid-display hidden"></div>
     <main class="grid">
       <div style="grid-area: a">
         <h1>Henry<br />Daggett</h1>
@@ -41,15 +41,15 @@
       <div class="display-container" style="grid-area: c">
         <button class="display-button">
           Light / Dark
-          <img src="theme-circle.svg" alt="Change theme">
+          <img src="theme-circle.svg" alt="Change theme" />
         </button>
-        <button class="display-button">
+        <button class="display-button" onclick="toggleGrid()">
           Show Grids
-          <img src="grid.svg" alt="Toggle grids">
+          <img src="grid.svg" alt="Toggle grids" />
         </button>
         <button class="display-button">
           Contact
-          <img src="email.svg" alt="Contact">
+          <img src="email.svg" alt="Contact" />
         </button>
       </div>
       <div style="grid-area: d">ABOUT ME</div>
@@ -117,4 +117,10 @@
   </body>
 
   <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    function toggleGrid() {
+      var gridDisplay = document.querySelector(".grid-display");
+      gridDisplay.classList.toggle("hidden");
+    }
+  </script>
 </html>
