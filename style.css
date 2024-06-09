@@ -58,7 +58,7 @@ ul {
 }
 
 :root {
-  --white: 255, 255, 255;
+  --highlight: 255, 255, 255;
   --red: 255, 99, 99;
   --ink: 50, 57, 60;
   --backdrop: 38, 38, 38;
@@ -145,13 +145,13 @@ a {
   right: -8px;
   bottom: -2px;
   -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   border-radius: 12px;
   transition: background-color 0.3s;
@@ -166,13 +166,13 @@ a {
   right: -8px;
   bottom: -2px;
   -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   border-radius: 12px;
   outline: 1px solid rgb(var(--ink));
@@ -200,25 +200,25 @@ a {
 
 .display-button:hover {
   -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
 }
 
 .display-button:focus-visible {
   -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--white), 0.85),
+    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
   outline: 1px solid rgb(var(--ink));
 }
