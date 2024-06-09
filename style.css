@@ -289,6 +289,10 @@ a {
   border-top: 1px solid rgb(var(--ink));
 }
 
+.grid:has(.content) {
+  padding-top: unset;
+}
+
 .content-title {
   position: relative;
   quotes: "\201c" "\201d";
@@ -316,7 +320,7 @@ a {
 .content-link {
   display: flex;
   gap: 8px;
-  padding-right: 8px;
+  padding: 7px 8px 4px 0;
 }
 
 .content-title {
