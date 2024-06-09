@@ -70,6 +70,10 @@ html {
   height: 100%;
   color: rgb(var(--ink));
   background-color: rgb(var(--backdrop));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
 }
 
 body {
@@ -80,10 +84,7 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  margin: 48px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  letter-spacing: -0.14px;
   position: relative;
   max-width: 1056px;
 }
