@@ -72,7 +72,7 @@ html {
   background-color: rgb(var(--backdrop));
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 48px 24px;
 }
 
