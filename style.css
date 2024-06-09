@@ -289,8 +289,8 @@ a {
   border-top: 1px solid rgb(var(--ink));
 }
 
-.grid:has(.content) {
-  padding-top: unset;
+.grid:has(ul) {
+  padding-top: unset !important;
 }
 
 .content-title {
