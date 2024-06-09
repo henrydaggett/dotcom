@@ -327,10 +327,10 @@ a {
 .content-link:hover::before {
   content: "";
   position: absolute;
-  top: 2;
+  top: 0;
   left: -8px;
   right: -8px;
-  bottom: 2;
+  bottom: -1px;
   -moz-box-shadow:
     inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
