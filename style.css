@@ -235,7 +235,6 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  z-index: -1;
   height: 100%;
   background-image: repeating-linear-gradient(
       rgba(var(--ink), 0.1) 0 1px,
