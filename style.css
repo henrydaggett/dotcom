@@ -228,7 +228,7 @@ a {
   outline: 1px solid rgb(var(--ink));
 }
 
-.grid-button-transition {
+#grid-button.grid-button-transition {
   color: var(--red);
   transition: color 0s;
 }
