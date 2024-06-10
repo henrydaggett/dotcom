@@ -200,6 +200,7 @@ a {
   padding: 1px 8px 1px 8px;
   margin-left: -8px;
   border-radius: 24px;
+  transition: color 3s ease;
 }
 
 .display-button:hover {
@@ -229,7 +230,7 @@ a {
 
 .grid-button-transition {
   color: var(--red);
-  transition: color 3s;
+  transition: color 0s;
 }
 
 /* Classes */
