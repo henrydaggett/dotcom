@@ -200,7 +200,7 @@ a {
   padding: 1px 8px 1px 8px;
   margin-left: -8px;
   border-radius: 24px;
-  transition: color 3s ease;
+  transition: color 4s ease;
 }
 
 .display-button:hover {
@@ -228,6 +228,12 @@ a {
   outline: 1px solid rgb(var(--ink));
 }
 
+.grid-icon {
+  background-color: red;
+  -webkit-mask: url(grid.svg) no-repeat center;
+  mask: url(grid.svg) no-repeat center;
+}
+
 .grid-button-transition {
   color: rgb(var(--red));
   transition: color 0s;
@@ -236,7 +242,7 @@ a {
 /* Classes */
 .grid-display {
   position: absolute;
-  z-index: 2; 
+  z-index: 2;
   pointer-events: none;
   top: 0;
   left: 0;
