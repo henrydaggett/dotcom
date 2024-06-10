@@ -230,6 +230,8 @@ a {
 
 .grid-icon {
   background-color: currentColor;
+  height: 11px;
+  width: 11px;
   -webkit-mask: url(grid.svg) no-repeat center;
   mask: url(grid.svg) no-repeat center;
 }
