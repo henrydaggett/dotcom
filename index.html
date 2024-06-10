@@ -43,7 +43,7 @@
           Light / Dark
           <img src="theme-circle.svg" alt="Change theme" />
         </button>
-        <button class="display-button" onclick="toggleGrid()">
+        <button id="grid-button" class="display-button" onclick="toggleGrid()">
           Show Grids
           <img src="grid.svg" alt="Toggle grids" />
         </button>
@@ -118,11 +118,12 @@
 
   <script>
     function toggleGrid() {
-      var gridDisplay = document.querySelector(".grid-display")
+      const gridDisplay = document.querySelector(".grid-display")
+      const gridButton = document.getElementByID("grid-button")
       gridDisplay.classList.toggle("hidden")
-      gridDisplay.classList.add("grid-button-transition")
-      gridDisplay.offsetWidth
-      gridDisplay.classList.remove("grid-button-transition")
+      gridButton.classList.add("grid-button-transition")
+      gridButton.offsetWidth
+      gridButton.classList.remove("grid-button-transition")
       
     }
   </script>
