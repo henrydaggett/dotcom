@@ -229,7 +229,7 @@ a {
 }
 
 .grid-icon {
-  background-color: red;
+  background-color: currentColor;
   -webkit-mask: url(grid.svg) no-repeat center;
   mask: url(grid.svg) no-repeat center;
 }
