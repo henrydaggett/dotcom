@@ -227,6 +227,11 @@ a {
   outline: 1px solid rgb(var(--ink));
 }
 
+.grid-button-transition {
+  color: var(--red);
+  transition: color 3s;
+}
+
 /* Classes */
 .grid-display {
   position: absolute;
@@ -328,10 +333,10 @@ a {
 .content-link:hover::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 1px;
   left: -8px;
   right: -8px;
-  bottom: -1px;
+  bottom: 0;
   -moz-box-shadow:
     inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);

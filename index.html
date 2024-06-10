@@ -118,8 +118,12 @@
 
   <script>
     function toggleGrid() {
-      var gridDisplay = document.querySelector(".grid-display");
-      gridDisplay.classList.toggle("hidden");
+      var gridDisplay = document.querySelector(".grid-display")
+      gridDisplay.classList.toggle("hidden")
+      gridDisplay.classList.add("grid-button-transition")
+      gridDisplay.offsetWidth
+      gridDisplay.classList.remove("grid-button-transition")
+      
     }
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
