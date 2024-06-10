@@ -120,7 +120,9 @@
     function toggleGrid() {
       const gridDisplay = document.querySelector(".grid-display")
       const gridButton = document.getElementById("grid-button")
+      const gridIcon = document.querySelector(".grid-icon")
       gridDisplay.classList.toggle("hidden")
+      gridIcon.classList.toggle("grid-active")
       gridButton.classList.add("grid-button-transition")
       gridButton.offsetWidth
       gridButton.classList.remove("grid-button-transition")

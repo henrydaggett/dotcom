@@ -236,6 +236,10 @@ a {
   mask: url(grid.svg) no-repeat center;
 }
 
+.grid-active {
+  color: rgb(var(--red));
+}
+
 .grid-button-transition {
   color: rgb(var(--red));
   transition: color 0s;
