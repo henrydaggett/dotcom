@@ -393,6 +393,7 @@ a {
 @media @media only screen and (max-width: 800px) {
   .grid {
     display: block;
+  }
 }
 
 /* Utilities */
