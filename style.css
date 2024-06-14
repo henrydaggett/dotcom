@@ -61,6 +61,7 @@ ul {
 [data-theme="light"] {
   --highlight: 255, 255, 255;
   --red: 255, 99, 99;
+  --yellow: 235, 154, 80;
   --ink: 50, 57, 60;
   --backdrop: 38, 38, 38;
   --paper: 243, 242, 238;
@@ -69,6 +70,7 @@ ul {
 [data-theme="dark"] {
   --highlight: 140, 145, 150;
   --red: 255, 99, 99;
+  --yellow: 235, 154, 80;
   --ink: 255, 254, 250;
   --backdrop: 12, 12, 12;
   --paper: 38, 38, 38;
@@ -395,6 +397,14 @@ a {
   align-items: center;
   gap: 8px;
   min-width: 0;
+}
+
+.content-arrow {
+  background-color: currentColor;
+  height: 12px;
+  width: 12px;
+  -webkit-mask: url(content-link-arrow.svg) no-repeat center;
+  mask: url(content-link-arrow.svg) no-repeat center;
 }
 
 .content-meta {
