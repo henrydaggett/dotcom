@@ -76,6 +76,8 @@ ul {
   --ink: 255, 254, 250;
   --backdrop: 12, 12, 12;
   --paper: 38, 38, 38;
+  --hover-highlight: rgba(var(--highlight), 0.55);
+  --hover-shadow: rgba(var(--backdrop), 0.85);
 }
 
 html {
@@ -170,7 +172,11 @@ a {
   margin-left: 6px;
 }
 
-.display-link:hover::before, .display-link:focus-visible::before, .display-button:hover, .display-button:focus-visible, .content-link:hover::before {
+.display-link:hover::before,
+.display-link:focus-visible::before,
+.display-button:hover,
+.display-button:focus-visible,
+.content-link:hover::before {
   -moz-box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
