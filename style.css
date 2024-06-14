@@ -58,12 +58,20 @@ ul {
   font-display: fallback;
 }
 
-:root {
+[data-theme="light"] {
   --highlight: 255, 255, 255;
   --red: 255, 99, 99;
   --ink: 50, 57, 60;
   --backdrop: 38, 38, 38;
   --paper: 243, 242, 238;
+}
+
+[data-theme="dark"] {
+  --highlight: 140, 145, 150;
+  --red: 255, 99, 99;
+  --ink: 255, 254, 250;
+  --backdrop: 0, 0, 0;
+  --paper: 50, 57, 60;
 }
 
 html {
