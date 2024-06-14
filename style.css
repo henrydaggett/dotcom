@@ -381,12 +381,18 @@ a {
 
 .content-title-source {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   min-width: 0;
 }
 
 .content-meta {
   flex-shrink: 0;
+}
+
+/* Media queries */
+@media @media only screen and (max-width: 800px) {
+  .grid {
+    display: block;
 }
 
 /* Utilities */
