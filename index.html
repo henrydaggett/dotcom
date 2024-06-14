@@ -245,7 +245,7 @@
     }
     function changeTheme() {
       const htmlElement = document.documentElement;
-      let theme = htmlElement.getAttribute('data-theme') === light ? "dark" : "light";
+      let theme = htmlElement.getAttribute('data-theme') === "light" ? "dark" : "light";
       htmlElement.setAttribute("data-theme", theme);
     }
   </script>
