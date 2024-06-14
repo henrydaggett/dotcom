@@ -154,6 +154,10 @@ a {
   position: relative;
 }
 
+.disable-transition {
+  transition: unset !important;
+}
+
 .display-link:focus-visible {
   outline: unset;
 }
