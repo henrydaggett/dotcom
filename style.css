@@ -274,15 +274,6 @@ a {
   color: rgb(var(--red));
 }
 
-#grid-button {
-  transition: color 4s ease;
-}
-
-.grid-button-transition {
-  color: rgb(var(--red));
-  transition: color 0s;
-}
-
 /* Classes */
 .grid-display {
   position: absolute;
