@@ -327,22 +327,6 @@ a {
   border-top: 1px solid rgb(var(--ink));
 }
 
-.content-title {
-  position: relative;
-  quotes: "\201c" "\201d";
-}
-
-.content-title:before {
-  content: open-quote;
-}
-
-.content-title:after {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  content: close-quote;
-}
-
 .content li:not(:first-child) {
   border-top: 1px solid rgb(var(--ink));
 }
