@@ -391,7 +391,7 @@ a {
   justify-content: space-between;
   flex-wrap: wrap;
   min-width: 0;
-  gap: 12px;
+  column-gap: 12px;
 }
 
 .content-title-source {
