@@ -110,6 +110,10 @@ h2 {
   letter-spacing: -0.14px;
 }
 
+p {
+  margin-top: 4px;
+}
+
 a {
   text-decoration: none;
   color: currentColor;
@@ -297,13 +301,13 @@ a {
 .grid {
   display: grid;
   grid-template:
-    "a b c" 216px
-    "d e e" 216px
-    "f g g" 216px
-    "h i i" 216px
-    "h i i" 216px
-    "j k k" 216px
-    "l m m" 216px / 1fr 1fr 1fr;
+    "a b c" 228px
+    "d e e" 228px
+    "f g g" 228px
+    "h i i" 228px
+    "h i i" 228px
+    "j k k" 228px
+    "l m m" 228px / 1fr 1fr 1fr;
   column-gap: 24px;
   row-gap: 12px;
   background-color: rgb(var(--paper));
