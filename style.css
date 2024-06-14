@@ -121,10 +121,10 @@ a {
 
 .display-link {
   font-family: "Instrument", serif;
-  font-size: 17px;
+  font-size: 21px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 32px;
   letter-spacing: 0.51px;
   position: relative;
 }
@@ -186,10 +186,10 @@ a {
 
 .display-button {
   font-family: "Instrument", serif;
-  font-size: 17px;
+  font-size: 21px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 32px;
   letter-spacing: 0.51px;
   display: flex;
   align-items: center;
