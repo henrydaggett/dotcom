@@ -89,6 +89,7 @@ body {
   position: relative;
   margin-bottom: 48px;
   max-width: 1200px;
+  width: calc(100vw - 32px);
 }
 
 h1 {
