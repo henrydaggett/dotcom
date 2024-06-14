@@ -39,7 +39,7 @@
         <a href="https://github.com/henrydaggett" target="_blank" class="display-link">gh /henry daggett</a>
       </div>
       <div class="display-container" style="grid-area: c">
-        <button id="theme-button" class="display-button">
+        <button id="theme-button" class="display-button" onclick="changeTheme()">
           Light / Dark
           <span class="theme-icon"></span>
         </button>
@@ -224,10 +224,9 @@
       gridButton.offsetWidth;
       gridButton.classList.remove("grid-button-transition");
     }
-    function toggleTheme() {
-      const themeButton = document.getElementById("theme-button"); 
-        themeButton.toggleAttribute('data-theme="light"');
-        themeButton.toggleAttribute('data-theme="dark"');
+    function changeTheme() {
+        document.documentElement.toggleAttribute('data-theme="light"');
+        document.documentElement.toggleAttribute('data-theme="dark"');
     }
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
