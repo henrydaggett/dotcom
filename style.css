@@ -88,7 +88,7 @@ body {
   letter-spacing: -0.14px;
   position: relative;
   margin-bottom: 48px;
-  max-width: min(80vw, 1600px);
+  max-width: 1200px;
 }
 
 h1 {
