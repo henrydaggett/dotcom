@@ -168,13 +168,7 @@ a {
   margin-left: 6px;
 }
 
-.display-link:hover::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -12px;
-  right: -12px;
-  bottom: -2px;
+.display-link:hover::before, .display-link:focus-visible::before, .display-button:hover, .display-button:focus-visible, .content-link:hover::before {
   -moz-box-shadow:
     inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
@@ -184,6 +178,15 @@ a {
   box-shadow:
     inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
+}
+
+.display-link:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -12px;
+  right: -12px;
+  bottom: -2px;
   border-radius: 32px;
   z-index: 0;
 }
@@ -195,15 +198,6 @@ a {
   left: -12px;
   right: -12px;
   bottom: -2px;
-  -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
-  -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
-  box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
   border-radius: 32px;
   outline: 1px solid rgb(var(--ink));
   z-index: 0;
@@ -230,27 +224,9 @@ a {
 }
 
 .display-button:hover {
-  -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
-  -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
-  box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
 }
 
 .display-button:focus-visible {
-  -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
-  -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
-  box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
   outline: 1px solid rgb(var(--ink));
 }
 
@@ -372,15 +348,6 @@ a {
   left: -12px;
   right: -12px;
   bottom: 4px;
-  -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
-  -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
-  box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
   border-radius: 24px;
   z-index: 0;
 }
