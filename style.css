@@ -93,12 +93,12 @@ body {
 
 h1 {
   font-family: "Instrument", serif;
-  font-size: 67px;
+  font-size: 90px;
   font-style: normal;
   font-weight: 400;
-  line-height: 60px;
+  line-height: 80px;
   letter-spacing: 0.67px;
-  margin-top: -11px;
+  margin-top: -13px;
 }
 
 a {
