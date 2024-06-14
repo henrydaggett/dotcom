@@ -270,6 +270,14 @@ a {
   mask: url(grid.svg) no-repeat center;
 }
 
+.contact-icon {
+  background-color: currentColor;
+  height: 12px;
+  width: 12px;
+  -webkit-mask: url(email.svg) no-repeat center;
+  mask: url(email.svg) no-repeat center;
+}
+
 .grid-active {
   color: rgb(var(--red));
 }
