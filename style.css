@@ -324,7 +324,10 @@ a {
     "h i i" 228px
     "j k k" 228px
     "l m m" 228px
-    "n o p" 96px / 1fr 1fr 1fr;
+    "n o o" 228px
+    "p q q" 228px
+    "r s s" 228px
+    "t u v" 96px / 1fr 1fr 1fr;
   column-gap: 24px;
   row-gap: 12px;
   background-color: rgb(var(--paper));
