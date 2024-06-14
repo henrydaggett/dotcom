@@ -101,6 +101,15 @@ h1 {
   margin-top: -16px;
 }
 
+h2 {
+  font-family: "Geist", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.14px;
+}
+
 a {
   text-decoration: none;
   color: currentColor;
