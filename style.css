@@ -232,8 +232,8 @@ a {
 
 .grid-icon {
   background-color: currentColor;
-  height: 11px;
-  width: 11px;
+  height: 16px;
+  width: 16px;
   -webkit-mask: url(grid.svg) no-repeat center;
   mask: url(grid.svg) no-repeat center;
 }
