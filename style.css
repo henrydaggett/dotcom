@@ -98,7 +98,7 @@ h1 {
   font-weight: 400;
   line-height: 80px;
   letter-spacing: 0.67px;
-  margin-top: -13px;
+  margin-top: -16px;
 }
 
 a {
@@ -303,7 +303,7 @@ a {
 }
 
 .grid > div {
-  padding-top: 7px;
+  padding-top: 10px;
 }
 
 .grid > div:has(ul) {
