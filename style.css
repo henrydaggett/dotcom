@@ -76,8 +76,8 @@ ul {
   --ink: 255, 254, 250;
   --backdrop: 12, 12, 12;
   --paper: 38, 38, 38;
-  --hover-highlight: rgba(var(--highlight), 0.35);
-  --hover-shadow: rgba(var(--backdrop), 0.75);
+  --hover-highlight: rgba(var(--highlight), 0.25);
+  --hover-shadow: rgba(var(--backdrop), 0.55);
 }
 
 html {
