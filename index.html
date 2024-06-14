@@ -245,7 +245,6 @@
     }
     function changeTheme() {
       const htmlElement = document.documentElement;
-      const gridButton = document.getElementById("grid-button");
       let theme = htmlElement.getAttribute('data-theme') === "light" ? "dark" : "light";
       htmlElement.setAttribute("data-theme", theme);
     }
