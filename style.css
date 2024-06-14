@@ -120,7 +120,7 @@ h2 {
   margin-top: 4px;
 }
 
-p {
+.grid-container > p {
   margin-top: 4px;
 }
 
