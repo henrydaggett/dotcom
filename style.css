@@ -398,6 +398,9 @@ a {
 
 /* Media queries */
 @media only screen and (max-width: 800px) {
+  html {
+    padding: 16px 16px;
+  }
   .grid {
     display: block;
   }
