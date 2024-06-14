@@ -282,7 +282,7 @@ a {
       transparent calc(66.66% + 0px),
       transparent 100%
     );
-  background-size: 100% 12px;
+  background-size: 100% 16px;
 }
 
 .grid {
