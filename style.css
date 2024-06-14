@@ -151,17 +151,17 @@ a {
   background-color: currentColor;
   -webkit-mask: url(link-arrow.svg);
   display: inline-block;
-  height: 10px;
-  width: 10px;
+  height: 12px;
+  width: 12px;
   margin-left: 6px;
 }
 
 .display-link:hover::before {
   content: "";
   position: absolute;
-  top: -1px;
-  left: -8px;
-  right: -8px;
+  top: 0;
+  left: -12px;
+  right: -12px;
   bottom: -2px;
   -moz-box-shadow:
     inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
@@ -172,16 +172,16 @@ a {
   box-shadow:
     inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
-  border-radius: 24px;
+  border-radius: 32px;
   z-index: 0;
 }
 
 .display-link:focus-visible::before {
   content: "";
   position: absolute;
-  top: -1px;
-  left: -8px;
-  right: -8px;
+  top: 0;
+  left: -12px;
+  right: -12px;
   bottom: -2px;
   -moz-box-shadow:
     inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
@@ -192,7 +192,7 @@ a {
   box-shadow:
     inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
     inset 1px 1px 4px 0 rgba(var(--ink), 0.15);
-  border-radius: 12px;
+  border-radius: 32px;
   outline: 1px solid rgb(var(--ink));
   z-index: 0;
 }
@@ -211,9 +211,9 @@ a {
   color: currentColor;
   background-color: unset;
   border: unset;
-  padding: 1px 8px 1px 8px;
-  margin-left: -8px;
-  border-radius: 24px;
+  padding: 1px 12px 1px 12px;
+  margin-left: -12px;
+  border-radius: 32px;
   transition: color 4s ease;
   cursor: pointer;
 }
@@ -245,8 +245,8 @@ a {
 
 .grid-icon {
   background-color: currentColor;
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
   -webkit-mask: url(grid.svg) no-repeat center;
   mask: url(grid.svg) no-repeat center;
 }
