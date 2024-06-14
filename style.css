@@ -111,7 +111,7 @@ h2 {
 }
 
 p {
-  margin-top: 4px
+  margin-top: 4px;
 }
 
 a {
@@ -369,6 +369,17 @@ a {
 }
 
 .content-details {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: 12px;
+}
+
+.content-title-source {
   display: flex;
   gap: 4px;
   min-width: 0;
