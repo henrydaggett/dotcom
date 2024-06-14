@@ -231,6 +231,7 @@ a {
   margin-left: -12px;
   border-radius: 32px;
   cursor: pointer;
+  transition: color 4s ease;
 }
 
 .display-button:hover {
