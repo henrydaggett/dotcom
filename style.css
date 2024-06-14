@@ -230,7 +230,6 @@ a {
   padding: 1px 12px 1px 12px;
   margin-left: -12px;
   border-radius: 32px;
-  transition: color 4s ease;
   cursor: pointer;
 }
 
@@ -277,6 +276,10 @@ a {
 
 .grid-active {
   color: rgb(var(--red));
+}
+
+#grid-button {
+  transition: color 4s ease;
 }
 
 .grid-button-transition {
