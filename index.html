@@ -33,13 +33,37 @@
         <h1>Henry<br />Daggett</h1>
       </div>
       <div class="display-container" style="grid-area: b">
-        <a href="https://www.linkedin.com/in/henrydaggett/" target="_blank" class="display-link">in /henrydaggett</a>
-        <a href="https://twitter.com/henry_daggett" target="_blank" class="display-link">tw @henry_daggett</a>
-        <a href="https://medium.com/@henrydaggett" target="_blank" class="display-link">m @henrydaggett</a>
-        <a href="https://github.com/henrydaggett" target="_blank" class="display-link">gh /henry daggett</a>
+        <a
+          href="https://www.linkedin.com/in/henrydaggett/"
+          target="_blank"
+          class="display-link"
+          >in /henrydaggett</a
+        >
+        <a
+          href="https://twitter.com/henry_daggett"
+          target="_blank"
+          class="display-link"
+          >tw @henry_daggett</a
+        >
+        <a
+          href="https://medium.com/@henrydaggett"
+          target="_blank"
+          class="display-link"
+          >m @henrydaggett</a
+        >
+        <a
+          href="https://github.com/henrydaggett"
+          target="_blank"
+          class="display-link"
+          >gh /henry daggett</a
+        >
       </div>
       <div class="display-container" style="grid-area: c">
-        <button id="theme-button" class="display-button" onclick="changeTheme()">
+        <button
+          id="theme-button"
+          class="display-button"
+          onclick="changeTheme()"
+        >
           Light / Dark
           <span class="theme-icon"></span>
         </button>
@@ -119,7 +143,8 @@
               <div class="content-details">
                 <div class="content-title-source">
                   <p class="content-title">
-                    “Beyond Adoption — Using Data in the Design System Lifecycle”
+                    “Beyond Adoption — Using Data in the Design System
+                    Lifecycle”
                   </p>
                   <p class="content-source">Omlet</p>
                 </div>
@@ -132,9 +157,7 @@
             <a href="" class="content-link">
               <div class="content-details">
                 <div class="content-title-source">
-                  <p class="content-title">
-                    “Governance Best Practices”
-                  </p>
+                  <p class="content-title">“Governance Best Practices”</p>
                   <p class="content-source">Zeroheight</p>
                 </div>
                 <p class="content-meta">PANEL - 2023</p>
@@ -146,9 +169,7 @@
             <a href="" class="content-link">
               <div class="content-details">
                 <div class="content-title-source">
-                  <p class="content-title">
-                    “How to Survive Design Systems”
-                  </p>
+                  <p class="content-title">“How to Survive Design Systems”</p>
                   <p class="content-source">Design Systems London #7</p>
                 </div>
                 <p class="content-meta">TALK - 2023</p>
@@ -160,9 +181,7 @@
             <a href="" class="content-link">
               <div class="content-details">
                 <div class="content-title-source">
-                  <p class="content-title">
-                    “Surviving Design Systems”
-                  </p>
+                  <p class="content-title">“Surviving Design Systems”</p>
                   <p class="content-source">Medium</p>
                 </div>
                 <p class="content-meta">ARTICLE - 2023</p>
@@ -225,8 +244,9 @@
       gridButton.classList.remove("grid-button-transition");
     }
     function changeTheme() {
-        document.documentElement.toggleAttribute('data-theme="light"');
-        document.documentElement.toggleAttribute('data-theme="dark"');
+      const htmlElement = document.documentElement;
+      let theme = htmlElement.getAttribute('data-theme') === light ? "dark" : "light";
+      htmlElement.setAttribute("data-theme", theme);
     }
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
