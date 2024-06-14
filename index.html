@@ -247,8 +247,9 @@
       const htmlElement = document.documentElement;
       const gridButton = document.getElementById("grid-button");
       let theme = htmlElement.getAttribute('data-theme') === "light" ? "dark" : "light";
-      gridButton.classList.toggle('disable-transition')
+      gridButton.classList.add('disable-transition')
       htmlElement.setAttribute("data-theme", theme);
+      gridButton.classList.remove('disable-transition')
     }
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
