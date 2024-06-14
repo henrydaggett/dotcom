@@ -65,6 +65,8 @@ ul {
   --ink: 50, 57, 60;
   --backdrop: 38, 38, 38;
   --paper: 243, 242, 238;
+  --hover-highlight: rgba(var(--highlight), 0.85);
+  --hover-shadow: rgba(var(--backdrop), 0.15);
 }
 
 [data-theme="dark"] {
@@ -170,14 +172,14 @@ a {
 
 .display-link:hover::before, .display-link:focus-visible::before, .display-button:hover, .display-button:focus-visible, .content-link:hover::before {
   -moz-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
+    inset -1px -1px 1px 0 var(--hover-highlight),
+    inset 1px 1px 4px 0 var(--hover-shadow);
   -webkit-box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
+    inset -1px -1px 1px 0 var(--hover-highlight),
+    inset 1px 1px 4px 0 var(--hover-shadow);
   box-shadow:
-    inset -1px -1px 1px 0 rgba(var(--highlight), 0.85),
-    inset 1px 1px 4px 0 rgba(var(--backdrop), 0.15);
+    inset -1px -1px 1px 0 var(--hover-highlight),
+    inset 1px 1px 4px 0 var(--hover-shadow);
 }
 
 .display-link:hover::before {
@@ -392,18 +394,6 @@ a {
 @media only screen and (max-width: 800px) {
   .grid {
     display: block;
-  }
-  
-  .display-link:hover::before, .display-link:focus-visible::before, .display-button:hover, .display-button:focus-visible, .content-link:hover::before {
-    -moz-box-shadow:
-      inset -1px -1px 1px 0 rgba(var(--highlight), 0.55),
-      inset 1px 1px 4px 0 rgba(var(--backdrop), 0.85);
-    -webkit-box-shadow:
-      inset -1px -1px 1px 0 rgba(var(--highlight), 0.55),
-      inset 1px 1px 4px 0 rgba(var(--backdrop), 0.85);
-    box-shadow:
-      inset -1px -1px 1px 0 rgba(var(--highlight), 0.55),
-      inset 1px 1px 4px 0 rgba(var(--backdrop), 0.85);
   }
 }
 
