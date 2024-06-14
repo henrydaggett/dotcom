@@ -255,6 +255,14 @@ a {
   outline: 1px solid rgb(var(--ink));
 }
 
+.theme-icon {
+  background-color: currentColor;
+  height: 12px;
+  width: 12px;
+  -webkit-mask: url(theme-circle.svg) no-repeat center;
+  mask: url(theme-circle.svg) no-repeat center;
+}
+
 .grid-icon {
   background-color: currentColor;
   height: 12px;
