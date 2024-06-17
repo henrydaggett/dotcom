@@ -168,7 +168,7 @@ a {
   position: relative;
 }
 
-.display-link:focus-visible {
+.display-link:focus-visible, .content-link:focus-visible {
   outline: unset;
 }
 
