@@ -186,7 +186,8 @@ a {
 .display-link:focus-visible::before,
 .display-button:hover,
 .display-button:focus-visible,
-.content-link:hover::before {
+.content-link:hover::before,
+.content-link:focus-visible::before {
   -moz-box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
@@ -198,17 +199,13 @@ a {
     inset 1px 1px 4px 0 var(--hover-shadow);
 }
 
-.display-link:hover::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -12px;
-  right: -12px;
-  bottom: -2px;
-  border-radius: 32px;
-  z-index: 0;
+.display-link:focus-visible::before,
+.display-button:focus-visible,
+.content-link:focus-visible::before {
+  outline: 1px solid rgb(var(--ink));
 }
 
+.display-link:hover::before,
 .display-link:focus-visible::before {
   content: "";
   position: absolute;
@@ -217,7 +214,6 @@ a {
   right: -12px;
   bottom: -2px;
   border-radius: 32px;
-  outline: 1px solid rgb(var(--ink));
   z-index: 0;
 }
 
@@ -239,13 +235,6 @@ a {
   margin-left: -12px;
   border-radius: 32px;
   cursor: pointer;
-}
-
-.display-button:hover {
-}
-
-.display-button:focus-visible {
-  outline: 1px solid rgb(var(--ink));
 }
 
 .theme-icon {
@@ -364,7 +353,8 @@ a {
   position: relative;
 }
 
-.content-link:hover::before {
+.content-link:hover::before,
+.content-link:focus-visible::before {
   content: "";
   position: absolute;
   top: 4px;
