@@ -317,16 +317,16 @@ a {
 .grid {
   display: grid;
   grid-template:
-    "a b c" 228px
-    "d e e" 228px
-    "f g g" 228px
-    "h i i" 228px
-    "h i i" 228px
-    "j k k" 228px
-    "l m m" 228px
-    "n o o" 228px
-    "p q q" 228px
-    "r s s" 228px
+    "a b c" 244px
+    "d e e" 244px
+    "f g g" 244px
+    "h i i" 244px
+    "h i i" 244px
+    "j k k" 244px
+    "l m m" 244px
+    "n o o" 244px
+    "p q q" 244px
+    "r s s" 244px
     "t u v" 96px / 1fr 1fr 1fr;
   column-gap: 24px;
   row-gap: 12px;
