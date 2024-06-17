@@ -327,7 +327,8 @@ a {
     "n o o" 244px
     "p q q" 244px
     "r s s" 244px
-    "t u v" 96px / 1fr 1fr 1fr;
+    "t u u" 244px
+    "v w x" 96px / 1fr 1fr 1fr;
   column-gap: 24px;
   row-gap: 12px;
   background-color: rgb(var(--paper));
