@@ -56,7 +56,7 @@ ul {
 :root {
   /* Everything vertical is a multiple of the baseline */
   --baseline: 16px;
-  --module: calc(20 * var(--baseline));
+  --module: calc(16 * var(--baseline));
   --margin: calc(3 * var(--baseline));
   --gutter: 24px;
   --columns: repeat(3, minmax(0, 1fr));
@@ -344,11 +344,12 @@ a {
 }
 
 .group-heading h2 {
+  margin-top: -1px;
   margin-bottom: 9px;
 }
 
 .group-heading .content-link {
-  margin-bottom: -15px;
+  margin-block: -13px -15px;
 }
 
 /* Grid overlay */
