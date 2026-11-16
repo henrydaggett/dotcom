@@ -27,12 +27,12 @@
   </head>
 
   <body>
-    <div class="grid-display hidden"></div>
+    <div class="grid-display hidden"><div></div><div></div><div></div></div>
     <main class="grid">
-      <div style="grid-area: a">
+      <div>
         <h1>Henry<br />Daggett</h1>
       </div>
-      <div class="display-container" style="grid-area: b">
+      <div class="display-container">
         <a
           href="https://www.linkedin.com/in/henrydaggett/"
           target="_blank"
@@ -58,7 +58,7 @@
           >gh /henry daggett</a
         >
       </div>
-      <div class="display-container" style="grid-area: c">
+      <div class="display-container">
         <button
           id="theme-button"
           class="display-button"
@@ -76,10 +76,10 @@
           <span class="contact-icon"></span>
         </button>
       </div>
-      <div style="grid-area: d">
+      <div class="label">
         <h2>ABOUT ME</h2>
       </div>
-      <div style="grid-area: e">
+      <div class="body">
         <p>
           Hello, hello! I’m Henry — a lead Product Designer & Design Systems
           Specialist focused on helping designers and developers create
@@ -90,10 +90,10 @@
           menswear.
         </p>
       </div>
-      <div style="grid-area: f">
+      <div class="label">
         <h2>WHAT I DO</h2>
       </div>
-      <div style="grid-area: g">
+      <div class="body">
         <p>
           I love working on complex tools and systems, while getting involved in
           all parts of design and development — I'm happy getting stuck into
@@ -106,180 +106,89 @@
           my free time!
         </p>
       </div>
-      <div style="grid-area: h">
+      <div class="label tall">
         <h2>TALKS & WRITING</h2>
       </div>
-      <div style="grid-area: i; display: flex; flex-direction: column; justify-content: space-between;">
-        <ul class="content">
+      <div class="body tall">
+        <ul class="talks">
           <li>
-            <a href="https://www.interaction-design.org/master-classes/design-tokens-powering-your-design-system" target="_blank" class="content-link">
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">
-                    “Design Tokens: Powering your Design System”
-                  </p>
-                  <p class="content-source">IxDF</p>
-                </div>
-                <p class="content-meta">MASTERCLASS — 2024</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://www.interaction-design.org/master-classes/design-tokens-powering-your-design-system" target="_blank" class="content-link talk">
+              <span class="talk-title">“Design Tokens: Powering your Design System”</span>
+              <span class="talk-source">IxDF</span>
+              <span class="talk-meta">MASTERCLASS — 2024</span>
             </a>
           </li>
           <li>
-            <a
-              href="https://www.interaction-design.org/master-classes/design-systems-how-to-craft-successful-components"
-              class="content-link"
-              target="_blank"
-            >
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">
-                    “Design Systems: How to Craft Successful Components”
-                  </p>
-                  <p class="content-source">IxDF</p>
-                </div>
-                <p class="content-meta">MASTERCLASS — 2024</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://www.interaction-design.org/master-classes/design-systems-how-to-craft-successful-components" target="_blank" class="content-link talk">
+              <span class="talk-title">“Design Systems: How to Craft Successful Components”</span>
+              <span class="talk-source">IxDF</span>
+              <span class="talk-meta">MASTERCLASS — 2024</span>
             </a>
           </li>
           <li>
-            <a
-              href="https://www.youtube.com/watch?v=OjxwQEtCDNc"
-              class="content-link"
-              target="_blank"
-            >
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">
-                    “He made 100s of Figma variables a day after launch”
-                  </p>
-                  <p class="content-source">Paavan/Youtube</p>
-                </div>
-                <p class="content-meta">INTERVIEW — 2024</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://www.youtube.com/watch?v=OjxwQEtCDNc" target="_blank" class="content-link talk">
+              <span class="talk-title">“He made 100s of Figma variables a day after launch”</span>
+              <span class="talk-source">Paavan/Youtube</span>
+              <span class="talk-meta">INTERVIEW — 2024</span>
             </a>
           </li>
           <li>
-            <a
-              href="https://omlet.dev/blog/beyond-adoption-using-data-in-the-design-system-lifecycle/"
-              class="content-link"
-              target="_blank"
-            >
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">
-                    “Beyond Adoption — Using Data in the Design System
-                    Lifecycle”
-                  </p>
-                  <p class="content-source">Omlet</p>
-                </div>
-                <p class="content-meta">QUOTE — 2024</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://omlet.dev/blog/beyond-adoption-using-data-in-the-design-system-lifecycle/" target="_blank" class="content-link talk">
+              <span class="talk-title">“Beyond Adoption — Using Data in the Design System Lifecycle”</span>
+              <span class="talk-source">Omlet</span>
+              <span class="talk-meta">QUOTE — 2024</span>
             </a>
           </li>
           <li>
-            <a
-              href="https://zeroheight.com/webinars/design-system-governance-best-practices/"
-              class="content-link"
-              target="_blank"
-            >
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">“Governance Best Practices”</p>
-                  <p class="content-source">Zeroheight</p>
-                </div>
-                <p class="content-meta">PANEL — 2023</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://zeroheight.com/webinars/design-system-governance-best-practices/" target="_blank" class="content-link talk">
+              <span class="talk-title">“Governance Best Practices”</span>
+              <span class="talk-source">Zeroheight</span>
+              <span class="talk-meta">PANEL — 2023</span>
             </a>
           </li>
           <li>
-            <a
-              href="https://www.youtube.com/watch?v=7KIau0lQZfU"
-              class="content-link"
-              target="_blank"
-            >
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">“How to Survive Design Systems”</p>
-                  <p class="content-source">Design Systems London #7</p>
-                </div>
-                <p class="content-meta">TALK — 2023</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://www.youtube.com/watch?v=7KIau0lQZfU" target="_blank" class="content-link talk">
+              <span class="talk-title">“How to Survive Design Systems”</span>
+              <span class="talk-source">Design Systems London #7</span>
+              <span class="talk-meta">TALK — 2023</span>
             </a>
           </li>
           <li>
-            <a
-              href="https://medium.com/societe-generale-design/surviving-design-systems-c4b8caf4a019"
-              class="content-link"
-              target="_blank"
-            >
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">“Surviving Design Systems”</p>
-                  <p class="content-source">SG Design</p>
-                </div>
-                <p class="content-meta">ARTICLE — 2023</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://medium.com/societe-generale-design/surviving-design-systems-c4b8caf4a019" target="_blank" class="content-link talk">
+              <span class="talk-title">“Surviving Design Systems”</span>
+              <span class="talk-source">SG Design</span>
+              <span class="talk-meta">ARTICLE — 2023</span>
             </a>
           </li>
           <li>
-            <a
-              href="https://zeroheight.com/blog/the-future-of-design-systems-into-2023-2/"
-              class="content-link"
-              target="_blank"
-            >
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">
-                    “Future of Design Systems...into 2023”
-                  </p>
-                  <p class="content-source">Zeroheight</p>
-                </div>
-                <p class="content-meta">QUOTE — 2022</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://zeroheight.com/blog/the-future-of-design-systems-into-2023-2/" target="_blank" class="content-link talk">
+              <span class="talk-title">“Future of Design Systems...into 2023”</span>
+              <span class="talk-source">Zeroheight</span>
+              <span class="talk-meta">QUOTE — 2022</span>
             </a>
           </li>
           <li>
-            <a
-              href="https://medium.com/societe-generale-design/taming-design-system-chaos-66bcadbf43e1"
-              class="content-link"
-              target="_blank"
-            >
-              <div class="content-details">
-                <div class="content-title-source">
-                  <p class="content-title">
-                    “Taming Chaos: Design System Governance at Scale”
-                  </p>
-                  <p class="content-source">SG Design</p>
-                </div>
-                <p class="content-meta">ARTICLE — 2020</p>
-              </div>
-              <span class="content-arrow"></span>
+            <a href="https://medium.com/societe-generale-design/taming-design-system-chaos-66bcadbf43e1" target="_blank" class="content-link talk">
+              <span class="talk-title">“Taming Chaos: Design System Governance at Scale”</span>
+              <span class="talk-source">SG Design</span>
+              <span class="talk-meta">ARTICLE — 2020</span>
             </a>
           </li>
         </ul>
-        <div class="hflex" style="align-items: flex-end;">
+        <div class="group-heading">
           <a
             href="https://design.sgmarkets.com/"
             target="_blank"
             class="content-link"
-            style="margin-bottom: -15px;"
             >SOCIETE GENERALE CIB (SG)</a
           >
-          <h2 style="margin-bottom: -3px">2018 — PRESENT</h2>
+          <h2>2018 — PRESENT</h2>
         </div>
       </div>
-      <div style="grid-area: j">
+      <div class="label">
         <h2>SG DESIGN SYSTEM / <br />DESIGN SYSTEM LEAD<br />2019 — PRESENT</h2>
       </div>
-      <div style="grid-area: k">
+      <div class="body">
         <p>
           Over the past four years I’ve lead the delivery of SG’s Design System.
           This has included Figma libraries, web components and bespoke
@@ -294,12 +203,12 @@
           contribute significantly to the front-end builds of the web libraries.
         </p>
       </div>
-      <div style="grid-area: l">
+      <div class="label">
         <h2>
           SG DESIGN LAB / <br />PRODUCT OWNER & DESIGNER<br />2019 — PRESENT
         </h2>
       </div>
-      <div style="grid-area: m">
+      <div class="body">
         <p>
           I won an internal SG Digital Innovation Award in 2023 for my work on a
           tool called “Design Lab”, which began as a side project to help review
@@ -314,12 +223,12 @@
           libraries to be previewed and inserted into code.
         </p>
       </div>
-      <div style="grid-area: n">
+      <div class="label">
         <h2>
           VARIOUS SG PROJECTS / <br />PRODUCT DESIGNER<br />2018 — PRESENT
         </h2>
       </div>
-      <div style="grid-area: o; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="body">
         <p>
           I’ve also worked on around 20 other SG projects with various business
           lines since I joined in 2018. Project highlights include a global
@@ -329,15 +238,15 @@
           Task aggregator that’s able to collect tasks from any SG service and
           manage them all in a single interface.
         </p>
-        <div class="hflex" style="align-items: flex-end;">
-          <h2 style="margin-bottom: -3px">PREVIOUS WORK</h2>
-          <h2 style="margin-bottom: -3px">PRE 2018</h2>
+        <div class="group-heading">
+          <h2>PREVIOUS WORK</h2>
+          <h2>PRE 2018</h2>
         </div>
       </div>
-      <div style="grid-area: p">
+      <div class="label">
         <h2>FREELANCE / <br />UX DESIGNER & PRIVATE TUTOR<br />2017 — 2018</h2>
       </div>
-      <div style="grid-area: q; display: flex; flex-direction: column; justify-content: space-between;">
+      <div class="body">
         <p>
           With an Asset Management business I reworked the flow to client’s
           accounts and increased site traffic over 300%. I’ve created product
@@ -348,28 +257,28 @@
           teaching students and professionals 16-50+ drawing, painting and
           architectural design.
         </p>
-        <div class="hflex" style="align-items: flex-end;">
-          <h2 style="margin-bottom: -3px">EDUCATION</h2>
-          <h2 style="margin-bottom: -3px">2014 — 2017</h2>
+        <div class="group-heading">
+          <h2>EDUCATION</h2>
+          <h2>2014 — 2017</h2>
         </div>
       </div>
-      <div style="grid-area: r">
+      <div class="label">
         <h2>BA HONS ARCHITECTURE<br />CENTRAL SAINT MARTINS<br />GRAD. 2017</h2>
       </div>
-      <div style="grid-area: s">
+      <div class="body">
         <p>
           I studied Architecture at Central Saint Martins, where I understood
           that what I loved about design was creating "experiences".
-          Architecture has a suprisingly large overlap with Digital Product
+          Architecture has a surprisingly large overlap with Digital Product
           design, from user centricity all the way to Design Systems. My final
           thesis focused on movements in the arts, and whether post-post
           modernism would be possible.
         </p>
       </div>
-      <div style="grid-area: t">
+      <div class="label">
         <h2>ABOUT THIS SITE</h2>
       </div>
-      <div style="grid-area: u">
+      <div class="body">
         <p>
           When it comes to web development I’m bit of a purist, so I built this
           site just with HTML/CSS and minimal JS. It’s then all hosted for free
@@ -379,61 +288,36 @@
           looking forward to leading-trim on web!
         </p>
       </div>
-      <div
-        style="
-          grid-area: v;
-          border-top: unset;
-          display: flex;
-          align-items: flex-end;
-          justify-content: start;
-        "
-      >
+      <div class="footer">
         <p class="display-text">© Henry Daggett 2024</p>
       </div>
-      <div
-        style="
-          grid-area: w;
-          border-top: unset;
-          display: flex;
-          align-items: flex-end;
-          justify-content: start;
-        "
-      >
+      <div class="footer">
         <a
           href="https://github.com/henrydaggett/dotcom"
           target="_blank"
           class="display-link"
-          style="margin-bottom: -10px"
           >Source</a
         >
       </div>
-      <div
-        style="
-          grid-area: x;
-          border-top: unset;
-          display: flex;
-          align-items: flex-end;
-          justify-content: start;
-        "
-      >
+      <div class="footer">
         <p class="display-text">Thank you!</p>
       </div>
     </main>
-  </body>
 
-  <script>
-    function toggleGrid() {
-      const gridDisplay = document.querySelector(".grid-display");
-      const gridIcon = document.querySelector(".grid-icon");
-      gridDisplay.classList.toggle("hidden");
-      gridIcon.classList.toggle("grid-active");
-    }
-    function changeTheme() {
-      const htmlElement = document.documentElement;
-      let theme =
-        htmlElement.getAttribute("data-theme") === "light" ? "dark" : "light";
-      htmlElement.setAttribute("data-theme", theme);
-    }
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
+    <script>
+      function toggleGrid() {
+        const gridDisplay = document.querySelector(".grid-display");
+        const gridIcon = document.querySelector(".grid-icon");
+        gridDisplay.classList.toggle("hidden");
+        gridIcon.classList.toggle("grid-active");
+      }
+      function changeTheme() {
+        const htmlElement = document.documentElement;
+        let theme =
+          htmlElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+        htmlElement.setAttribute("data-theme", theme);
+      }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </body>
 </html>

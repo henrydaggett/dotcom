@@ -40,11 +40,6 @@ ul {
   padding: 0;
 }
 
-#root,
-#__next {
-  isolation: isolate;
-}
-
 /* Document setup */
 @font-face {
   font-family: Geist;
@@ -56,6 +51,15 @@ ul {
   font-family: Instrument;
   src: url(instrument-serif.ttf) format("truetype");
   font-display: fallback;
+}
+
+:root {
+  /* Everything vertical is a multiple of the baseline */
+  --baseline: 16px;
+  --module: calc(16 * var(--baseline));
+  --margin: calc(3 * var(--baseline));
+  --gutter: 24px;
+  --columns: repeat(3, minmax(0, 1fr));
 }
 
 [data-theme="light"] {
@@ -81,14 +85,9 @@ ul {
 }
 
 html {
-  font-size: 15px;
-  height: auto;
   color: rgb(var(--ink));
   background-color: rgb(var(--backdrop));
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 48px 24px;
+  padding: var(--margin) var(--gutter);
 }
 
 body {
@@ -102,7 +101,7 @@ body {
   letter-spacing: -0.14px;
   position: relative;
   max-width: 1200px;
-  width: calc(100vw - 32px);
+  margin-inline: auto;
   box-shadow: 0px 0px 48px rgba(0, 0, 0, 0.8);
 }
 
@@ -176,6 +175,7 @@ a {
   content: "";
   background-color: currentColor;
   -webkit-mask: url(link-arrow.svg);
+  mask: url(link-arrow.svg);
   display: inline-block;
   height: 12px;
   width: 12px;
@@ -265,86 +265,109 @@ a {
   color: rgb(var(--red));
 }
 
-/* Classes */
+/* Layout */
+
+/* The page and the "Display Grids" overlay share the same columns */
+.grid,
 .grid-display {
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background-image: repeating-linear-gradient(
-      rgba(var(--ink), 0.1) 0 1px,
-      transparent 1px 100%
-    ),
-    repeating-linear-gradient(
-      to right,
-      transparent 0,
-      transparent calc(33.33% - 1px),
-      transparent calc(33.33% - 1px),
-      rgb(var(--red)) calc(33.33% - 1px),
-      rgb(var(--red)) calc(33.33% - 0px),
-      transparent calc(33.33% - 23px),
-      transparent calc(33.33% + 23px),
-      rgb(var(--red)) calc(33.33% + 23px),
-      rgb(var(--red)) calc(33.33% + 24px),
-      transparent calc(33.33% + 24px),
-      transparent calc(66.66% - 25px),
-      rgb(var(--red)) calc(66.66% - 25px),
-      rgb(var(--red)) calc(66.66% - 24px),
-      transparent calc(66.66% - 24px),
-      transparent calc(66.66% + 0px),
-      rgb(var(--red)) calc(66.66% + 0px),
-      rgb(var(--red)) calc(66.66% + 1px),
-      transparent calc(66.66% + 0px),
-      transparent 100%
-    );
-  background-size: 100% 16px;
+  display: grid;
+  grid-template-columns: var(--columns);
+  column-gap: var(--gutter);
+  padding-inline: var(--margin);
 }
 
 .grid {
-  display: grid;
-  grid-template:
-    "a b c" 244px
-    "d e e" 244px
-    "f g g" 244px
-    "h i i" 244px
-    "h i i" 244px
-    "j k k" 244px
-    "l m m" 244px
-    "n o o" 244px
-    "p q q" 244px
-    "r s s" 244px
-    "t u u" 244px
-    "v w x" 96px / 1fr 1fr 1fr;
-  column-gap: 24px;
-  row-gap: 12px;
+  --min-height: var(--module);
+  padding-block: var(--margin);
   background-color: rgb(var(--paper));
-  padding: 48px;
   border-radius: 4px;
 }
 
+/* Blocks are at least one module tall and grow with their content */
 .grid > div {
+  min-height: var(--min-height);
   padding-top: 10px;
 }
 
-.grid > div:has(ul) {
-  padding-top: unset !important;
+/* Where supported, grown blocks snap up to the next baseline */
+@supports (min-height: calc-size(fit-content, size)) {
+  .grid > div {
+    min-height: calc-size(
+      fit-content,
+      round(up, max(size, var(--min-height)), var(--baseline))
+    );
+  }
 }
 
-.grid div:not(:nth-child(-n + 3)) {
+.label,
+.body {
   border-top: 1px solid rgb(var(--ink));
 }
 
-.content li:not(:first-child) {
-  border-top: 1px solid rgb(var(--ink));
+.body {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.content li {
-  list-style-type: none;
+.body > p {
+  padding-bottom: var(--baseline);
 }
 
+.body:has(.talks) {
+  padding-top: 0;
+}
+
+.tall {
+  --min-height: calc(2 * var(--module));
+}
+
+.footer {
+  --min-height: calc(6 * var(--baseline));
+  display: flex;
+  align-items: flex-end;
+}
+
+.footer .display-link {
+  margin-bottom: -10px;
+}
+
+/* A heading that sits on the bottom rule of a block, introducing the next group */
+.group-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  column-gap: var(--gutter);
+}
+
+.group-heading h2 {
+  margin-bottom: -3px;
+}
+
+.group-heading .content-link {
+  margin-bottom: -15px;
+}
+
+/* Grid overlay */
+.grid-display {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    rgba(var(--ink), 0.1) 0 1px,
+    transparent 1px 100%
+  );
+  background-size: 100% var(--baseline);
+}
+
+.grid-display > div {
+  border-inline: 1px solid rgb(var(--red));
+}
+
+/* Links */
 .content-link {
   display: flex;
   align-items: center;
@@ -365,31 +388,41 @@ a {
   z-index: 0;
 }
 
-.content-title {
+/* Talks & writing */
+.talks {
+  container-type: inline-size;
+  list-style: none;
+}
+
+.talks li:not(:first-child) {
+  border-top: 1px solid rgb(var(--ink));
+}
+
+.talk {
+  display: grid;
+  grid-template-areas: "title source meta arrow";
+  grid-template-columns: minmax(0, auto) minmax(max-content, 1fr) auto auto;
+  gap: 0 8px;
+}
+
+.talk-title {
+  grid-area: title;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.content-details {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  min-width: 0;
-  column-gap: 12px;
+.talk-source {
+  grid-area: source;
 }
 
-.content-title-source {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
+.talk-meta {
+  grid-area: meta;
 }
 
-.content-arrow {
+.talk::after {
+  content: "";
+  grid-area: arrow;
   background-color: currentColor;
   height: 12px;
   width: 12px;
@@ -397,49 +430,55 @@ a {
   mask: url(content-link-arrow.svg) no-repeat center;
 }
 
-.content-meta {
-  flex-shrink: 0;
+/* When the list is narrow, the title wraps and the details move below it */
+@container (width < 640px) {
+  .talk {
+    grid-template-areas:
+      "title  title arrow"
+      "source meta  arrow";
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .talk-title {
+    white-space: normal;
+  }
 }
 
-/* Media queries */
-@media only screen and (max-width: 800px) {
-  html {
-    padding: 16px 16px;
+/* Small screens: one column, blocks as tall as their content */
+@media (width < 800px) {
+  :root {
+    --margin: calc(2 * var(--baseline));
+    --columns: minmax(0, 1fr);
   }
-  .grid {
-    display: block;
+
+  html {
+    padding: var(--baseline);
+  }
+
+  .grid,
+  .grid-display {
+    padding-inline: var(--gutter);
+  }
+
+  .grid > div {
+    --min-height: 0px;
+    grid-column: auto;
+  }
+
+  .body > p {
+    padding-bottom: calc(2 * var(--baseline));
+  }
+
+  .display-container {
+    padding-bottom: var(--baseline);
+  }
+
+  .grid-display > div:not(:first-child) {
+    display: none;
   }
 }
 
 /* Utilities */
-.flex {
-  display: flex;
-}
-
-.hflex {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.vflex {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cflex {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
 .hidden {
   display: none;
 }
