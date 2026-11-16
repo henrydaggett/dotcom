@@ -56,7 +56,7 @@ ul {
 :root {
   /* Everything vertical is a multiple of the baseline */
   --baseline: 16px;
-  --module: calc(16 * var(--baseline));
+  --module: calc(20 * var(--baseline));
   --margin: calc(3 * var(--baseline));
   --gutter: 24px;
   --columns: repeat(3, minmax(0, 1fr));
@@ -333,17 +333,18 @@ a {
   margin-bottom: -10px;
 }
 
-/* A heading that sits on the bottom rule of a block, introducing the next group */
+/* A heading at the bottom of a block, introducing the next group.
+   Its text sits on the last baseline before the next rule. */
 .group-heading {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: baseline;
   justify-content: space-between;
   column-gap: var(--gutter);
 }
 
 .group-heading h2 {
-  margin-bottom: -3px;
+  margin-bottom: 9px;
 }
 
 .group-heading .content-link {
