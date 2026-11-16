@@ -480,13 +480,13 @@ a {
   }
 
   /* The name and the two link lists: padded up to a whole 8px step.
-     The lists end up one and a half display lines (48px) apart */
+     The lists end up 40px apart, one baseline more than a display line */
   .grid > div:first-child {
-    padding-bottom: 6px;
+    padding-bottom: 14px;
   }
 
   .display-container {
-    padding-bottom: 14px;
+    padding-bottom: 6px;
   }
 
   .display-container:has(.display-button) {
