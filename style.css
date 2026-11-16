@@ -348,8 +348,9 @@ a {
   margin-bottom: 9px;
 }
 
+/* Cancel the link's own padding so it lines up with the heading beside it */
 .group-heading .content-link {
-  margin-block: -13px -15px;
+  margin-block: -12px -11px;
 }
 
 /* Grid overlay */
@@ -402,8 +403,8 @@ a {
 
 .talk {
   display: grid;
-  grid-template-areas: "title source meta arrow";
-  grid-template-columns: minmax(0, auto) minmax(max-content, 1fr) auto auto;
+  grid-template-areas: "title source meta";
+  grid-template-columns: minmax(0, auto) minmax(max-content, 1fr) auto;
   gap: 0 8px;
 }
 
@@ -422,23 +423,28 @@ a {
   grid-area: meta;
 }
 
-.talk::after {
+.talk-meta::after {
   content: "";
-  grid-area: arrow;
-  background-color: currentColor;
+  display: inline-block;
   height: 12px;
   width: 12px;
+  margin-left: 8px;
+  background-color: currentColor;
   -webkit-mask: url(content-link-arrow.svg) no-repeat center;
   mask: url(content-link-arrow.svg) no-repeat center;
 }
 
-/* When the list is narrow, the title wraps and the details move below it */
+/* When the list is narrow, each talk becomes a small copy of a section:
+   the type and year as a label, then the title and source as running text */
 @container (width < 640px) {
+  .talk,
+  .talk-meta {
+    display: block;
+  }
+
+  /* Two or more lines: sit them on the baseline rather than centring */
   .talk {
-    grid-template-areas:
-      "title  title arrow"
-      "source meta  arrow";
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    padding-block: 14px 17px;
   }
 
   .talk-title {
@@ -449,12 +455,15 @@ a {
 /* Small screens: one column, blocks as tall as their content */
 @media (width < 800px) {
   :root {
-    --margin: calc(2 * var(--baseline));
+    /* 24px text lines, 32px display lines and the 80px name only share
+       an 8px rhythm, so that is the baseline here */
+    --baseline: 8px;
+    --margin: calc(4 * var(--baseline));
     --columns: minmax(0, 1fr);
   }
 
   html {
-    padding: var(--baseline);
+    padding: calc(2 * var(--baseline));
   }
 
   .grid,
@@ -463,16 +472,52 @@ a {
   }
 
   .grid > div {
-    --min-height: 0px;
     grid-column: auto;
   }
 
-  .body > p {
-    padding-bottom: calc(2 * var(--baseline));
+  .grid > div:not(.footer) {
+    --min-height: 0px;
+  }
+
+  /* The name and the two link lists: padded up to a whole 160px / 8px step */
+  .grid > div:first-child {
+    padding-bottom: 6px;
   }
 
   .display-container {
-    padding-bottom: var(--baseline);
+    padding-bottom: 22px;
+  }
+
+  .display-container:has(.display-button) {
+    padding-bottom: 21px;
+  }
+
+  /* A section is one rule, its label, then its text. The offsets make
+     every block a multiple of the 24px line height, so each line of text
+     sits on a baseline with or without calc-size() */
+  .label {
+    padding-bottom: 9px;
+  }
+
+  .grid > .body {
+    border-top: 0;
+    padding-top: 11px;
+  }
+
+  .grid > .body:has(.talks) {
+    padding-top: 0;
+  }
+
+  .body > p {
+    padding-bottom: calc(4 * var(--baseline) + 1px);
+  }
+
+  .talks li:first-child {
+    border-top: 1px solid rgb(var(--ink));
+  }
+
+  .group-heading {
+    margin-top: calc(3 * var(--baseline));
   }
 
   .grid-display > div:not(:first-child) {
