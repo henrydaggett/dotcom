@@ -479,13 +479,14 @@ a {
     --min-height: 0px;
   }
 
-  /* The name and the two link lists: padded up to a whole 160px / 8px step */
+  /* The name and the two link lists: padded up to a whole 8px step.
+     The lists end up one and a half display lines (48px) apart */
   .grid > div:first-child {
     padding-bottom: 6px;
   }
 
   .display-container {
-    padding-bottom: 22px;
+    padding-bottom: 14px;
   }
 
   .display-container:has(.display-button) {
