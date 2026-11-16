@@ -447,6 +447,12 @@ a {
     padding-block: 14px 17px;
   }
 
+  /* A tighter corner suits the taller hover shape */
+  .talk:hover::before,
+  .talk:focus-visible::before {
+    border-radius: 12px;
+  }
+
   .talk-title {
     white-space: normal;
   }
