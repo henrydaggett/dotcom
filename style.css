@@ -333,6 +333,22 @@ a {
   margin-bottom: -10px;
 }
 
+/* On wider screens the social links come first and the name sits in the
+   middle column. The markup keeps the name first for small screens */
+@media (width >= 800px) {
+  .name {
+    order: 1;
+  }
+
+  .name ~ * {
+    order: 2;
+  }
+
+  .name + .display-container {
+    order: 0;
+  }
+}
+
 /* A heading at the bottom of a block, introducing the next group.
    Its text sits on the last baseline before the next rule. */
 .group-heading {
@@ -487,7 +503,7 @@ a {
 
   /* The name and the two link lists: padded up to a whole 8px step.
      The lists end up 40px apart, one baseline more than a display line */
-  .grid > div:first-child {
+  .name {
     padding-bottom: 14px;
   }
 
