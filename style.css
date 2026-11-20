@@ -146,7 +146,7 @@ a {
 
 .display-text {
   font-family: "Editorial New", serif;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: 32px;
@@ -172,7 +172,7 @@ a {
 
 .display-link {
   font-family: "Editorial New", serif;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: 32px;
@@ -203,6 +203,12 @@ a {
   content: "";
   display: inline-block;
   margin-left: 6px;
+}
+
+/* The page controls get larger icons, about the height of the capitals */
+.display-button > span {
+  width: 14px;
+  height: 14px;
 }
 
 .theme-icon {
@@ -254,7 +260,7 @@ a {
 
 .display-button {
   font-family: "Editorial New", serif;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: 32px;

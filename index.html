@@ -324,6 +324,12 @@
           htmlElement.getAttribute("data-theme") === "light" ? "dark" : "light";
         htmlElement.setAttribute("data-theme", theme);
       }
+      // Keyboard shortcuts: G toggles the grid, T toggles the theme
+      document.addEventListener("keydown", (event) => {
+        if (event.ctrlKey || event.metaKey || event.altKey) return;
+        if (event.key === "g" || event.key === "G") toggleGrid();
+        if (event.key === "t" || event.key === "T") changeTheme();
+      });
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
   </body>
