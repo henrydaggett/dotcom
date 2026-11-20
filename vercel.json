@@ -2,11 +2,15 @@
   "rewrites": [
     {
       "source": "/barclaycard",
-      "destination": "https://portfolio.henrydaggett.com/barclaycard/"
+      "destination": "https://portfolio.henrydaggett.com/barclaycard/index.html"
     },
     {
-      "source": "/barclaycard/:path*",
-      "destination": "https://portfolio.henrydaggett.com/barclaycard/:path*"
+      "source": "/barclaycard/",
+      "destination": "https://portfolio.henrydaggett.com/barclaycard/index.html"
+    },
+    {
+      "source": "/barclaycard/:path+",
+      "destination": "https://portfolio.henrydaggett.com/barclaycard/:path+"
     }
   ]
 }
