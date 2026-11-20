@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/barclaycard",
+      "destination": "https://portfolio.henrydaggett.com/barclaycard/"
+    },
+    {
+      "source": "/barclaycard/:path*",
+      "destination": "https://portfolio.henrydaggett.com/barclaycard/:path*"
+    }
+  ]
+}
