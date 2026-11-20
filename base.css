@@ -1,0 +1,171 @@
+/* Shared by every page: reset, fonts, colours, the baseline grid and the
+   grid overlay. Page stylesheets load after this and can override the
+   tokens, e.g. --columns */
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul {
+  padding: 0;
+}
+
+/* Document setup */
+@font-face {
+  font-family: "Neue Haas Grotesk Text";
+  src: url(neue-haas-grotesk-text-roman.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Neue Haas Grotesk Display";
+  src: url(neue-haas-grotesk-display-roman.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Editorial New";
+  src: url(editorial-new-light.woff2) format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Editorial New";
+  src: url(editorial-new-light-italic.woff2) format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: fallback;
+}
+
+:root {
+  /* Everything vertical is a multiple of the baseline */
+  --baseline: 16px;
+  --module: calc(16 * var(--baseline));
+  --margin: calc(3 * var(--baseline));
+  --gutter: 24px;
+  --columns: repeat(3, minmax(0, 1fr));
+}
+
+[data-theme="light"] {
+  --highlight: 255, 255, 255;
+  --red: 255, 99, 99;
+  --yellow: 235, 154, 80;
+  --ink: 50, 57, 60;
+  --backdrop: 38, 38, 38;
+  --paper: 243, 242, 238;
+  --hover-highlight: rgba(var(--highlight), 0.85);
+  --hover-shadow: rgba(var(--backdrop), 0.15);
+}
+
+[data-theme="dark"] {
+  --highlight: 140, 145, 150;
+  --red: 255, 99, 99;
+  --yellow: 235, 154, 80;
+  --ink: 255, 254, 250;
+  --backdrop: 12, 12, 12;
+  --paper: 38, 38, 38;
+  --hover-highlight: rgba(var(--highlight), 0.25);
+  --hover-shadow: rgba(var(--backdrop), 0.55);
+}
+
+html {
+  color: rgb(var(--ink));
+  background-color: rgb(var(--backdrop));
+}
+
+body {
+  font-family: "Neue Haas Grotesk Text", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.14px;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+/* Grid overlay: baseline lines plus one child per column. It covers the
+   nearest positioned ancestor, normally the page's body */
+.grid-display {
+  display: grid;
+  grid-template-columns: var(--columns);
+  column-gap: var(--gutter);
+  padding-inline: var(--margin);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    rgba(var(--ink), 0.1) 0 1px,
+    transparent 1px 100%
+  );
+  background-size: 100% var(--baseline);
+}
+
+.grid-display > div {
+  border-inline: 1px solid rgb(var(--red));
+}
+
+/* Small screens: one column on an 8px baseline */
+@media (width < 800px) {
+  :root {
+    /* 24px text lines, 32px display lines and the 80px name only share
+       an 8px rhythm, so that is the baseline here */
+    --baseline: 8px;
+    --margin: calc(4 * var(--baseline));
+    --columns: minmax(0, 1fr);
+  }
+
+  .grid-display {
+    padding-inline: var(--gutter);
+  }
+}
+
+/* Utilities */
+.hidden {
+  display: none;
+}
