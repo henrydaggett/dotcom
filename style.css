@@ -90,7 +90,7 @@ h2 {
 }
 
 .display-link::after {
-  --icon: url(link-arrow.svg);
+  --icon: url(icons/link-arrow.svg);
   content: "";
   display: inline-block;
   margin-left: 6px;
@@ -103,15 +103,15 @@ h2 {
 }
 
 .theme-icon {
-  --icon: url(theme-circle.svg);
+  --icon: url(icons/theme-circle.svg);
 }
 
 .grid-icon {
-  --icon: url(grid.svg);
+  --icon: url(icons/grid.svg);
 }
 
 .contact-icon {
-  --icon: url(email.svg);
+  --icon: url(icons/email.svg);
 }
 
 .display-link:hover::before,
@@ -318,8 +318,8 @@ h2 {
   width: 12px;
   margin-left: 8px;
   background-color: currentColor;
-  -webkit-mask: url(content-link-arrow.svg) no-repeat center;
-  mask: url(content-link-arrow.svg) no-repeat center;
+  -webkit-mask: url(icons/content-link-arrow.svg) no-repeat center;
+  mask: url(icons/content-link-arrow.svg) no-repeat center;
 }
 
 /* When the list is narrow, each talk becomes a small copy of a section:
