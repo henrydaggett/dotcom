@@ -47,7 +47,7 @@ ul {
 /* Document setup */
 @font-face {
   font-family: "Neue Haas Grotesk Text";
-  src: url(neue-haas-grotesk-text-roman.woff2) format("woff2");
+  src: url(fonts/neue-haas-grotesk-text-roman.woff2) format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: fallback;
@@ -55,7 +55,7 @@ ul {
 
 @font-face {
   font-family: "Neue Haas Grotesk Display";
-  src: url(neue-haas-grotesk-display-roman.woff2) format("woff2");
+  src: url(fonts/neue-haas-grotesk-display-roman.woff2) format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: fallback;
@@ -63,7 +63,7 @@ ul {
 
 @font-face {
   font-family: "Editorial New";
-  src: url(editorial-new-light.woff2) format("woff2");
+  src: url(fonts/editorial-new-light.woff2) format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: fallback;
@@ -71,9 +71,17 @@ ul {
 
 @font-face {
   font-family: "Editorial New";
-  src: url(editorial-new-light-italic.woff2) format("woff2");
+  src: url(fonts/editorial-new-light-italic.woff2) format("woff2");
   font-weight: 300;
   font-style: italic;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Alte Haas Grotesk";
+  src: url(fonts/alte-haas-grotesk-regular.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
   font-display: fallback;
 }
 
