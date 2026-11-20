@@ -48,8 +48,18 @@ ul {
 }
 
 @font-face {
-  font-family: Instrument;
-  src: url(instrument-serif.ttf) format("truetype");
+  font-family: "Editorial New";
+  src: url(editorial-new-light.woff2) format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Editorial New";
+  src: url(editorial-new-light-italic.woff2) format("woff2");
+  font-weight: 300;
+  font-style: italic;
   font-display: fallback;
 }
 
@@ -106,13 +116,13 @@ body {
 }
 
 h1 {
-  font-family: "Instrument", serif;
-  font-size: 90px;
+  font-family: "Editorial New", serif;
+  font-size: 80px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 80px;
-  letter-spacing: 0.67px;
-  margin-top: -16px;
+  letter-spacing: 0;
+  margin-top: -25px;
 }
 
 h2 {
@@ -135,13 +145,17 @@ a {
 }
 
 .display-text {
-  font-family: "Instrument", serif;
-  font-size: 20px;
+  font-family: "Editorial New", serif;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 32px;
-  letter-spacing: 0.51px;
-  margin-bottom: -10px;
+  letter-spacing: 0;
+  margin-bottom: -12px;
+}
+
+.grid > .display-container {
+  padding-top: 12px;
 }
 
 .display-container {
@@ -150,20 +164,19 @@ a {
   align-items: flex-start;
 }
 
-.display-container button:first-child {
-  margin-top: -1px;
-}
-.display-container button:not(:first-child) {
-  margin-top: -2px;
+/* Buttons carry 3px of padding above the line so their hover shape is
+   centred on the capitals; the margin keeps the text on the baseline */
+.display-container button {
+  margin-top: -3px;
 }
 
 .display-link {
-  font-family: "Instrument", serif;
-  font-size: 20px;
+  font-family: "Editorial New", serif;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 32px;
-  letter-spacing: 0.51px;
+  letter-spacing: 0;
   position: relative;
 }
 
@@ -171,15 +184,37 @@ a {
   outline: unset;
 }
 
-.display-link::after {
-  content: "";
+/* Icons beside display text. Being empty boxes, their bottom edge
+   sits on the text baseline */
+.display-link::after,
+.theme-icon,
+.grid-icon,
+.contact-icon {
+  --icon: none;
+  width: 10px;
+  height: 10px;
   background-color: currentColor;
-  -webkit-mask: url(link-arrow.svg);
-  mask: url(link-arrow.svg);
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.display-link::after {
+  --icon: url(link-arrow.svg);
+  content: "";
   display: inline-block;
-  height: 12px;
-  width: 12px;
   margin-left: 6px;
+}
+
+.theme-icon {
+  --icon: url(theme-circle.svg);
+}
+
+.grid-icon {
+  --icon: url(grid.svg);
+}
+
+.contact-icon {
+  --icon: url(email.svg);
 }
 
 .display-link:hover::before,
@@ -209,56 +244,32 @@ a {
 .display-link:focus-visible::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: -3px;
   left: -12px;
   right: -12px;
-  bottom: -2px;
+  bottom: 0;
   border-radius: 32px;
   z-index: 0;
 }
 
 .display-button {
-  font-family: "Instrument", serif;
-  font-size: 20px;
+  font-family: "Editorial New", serif;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 32px;
-  letter-spacing: 0.51px;
+  letter-spacing: 0;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 6px;
   position: relative;
   color: currentColor;
   background-color: unset;
   border: unset;
-  padding: 1px 12px 1px 12px;
+  padding: 3px 12px 0;
   margin-left: -12px;
   border-radius: 32px;
   cursor: pointer;
-}
-
-.theme-icon {
-  background-color: currentColor;
-  height: 12px;
-  width: 12px;
-  -webkit-mask: url(theme-circle.svg) no-repeat center;
-  mask: url(theme-circle.svg) no-repeat center;
-}
-
-.grid-icon {
-  background-color: currentColor;
-  height: 12px;
-  width: 12px;
-  -webkit-mask: url(grid.svg) no-repeat center;
-  mask: url(grid.svg) no-repeat center;
-}
-
-.contact-icon {
-  background-color: currentColor;
-  height: 12px;
-  width: 12px;
-  -webkit-mask: url(email.svg) no-repeat center;
-  mask: url(email.svg) no-repeat center;
 }
 
 .grid-active {
@@ -330,7 +341,7 @@ a {
 }
 
 .footer .display-link {
-  margin-bottom: -10px;
+  margin-bottom: -12px;
 }
 
 /* A heading at the bottom of a block, introducing the next group.
@@ -488,15 +499,15 @@ a {
   /* The name and the two link lists: padded up to a whole 8px step.
      The lists end up 40px apart, one baseline more than a display line */
   .grid > div:first-child {
-    padding-bottom: 14px;
+    padding-bottom: 23px;
   }
 
   .display-container {
-    padding-bottom: 6px;
+    padding-bottom: 4px;
   }
 
   .display-container:has(.display-button) {
-    padding-bottom: 21px;
+    padding-bottom: 20px;
   }
 
   /* A section is one rule, its label, then its text. The offsets make
@@ -529,6 +540,20 @@ a {
 
   .grid-display > div:not(:first-child) {
     display: none;
+  }
+}
+
+/* The narrowest phones: "Daggett" at 80px is wider than the column.
+   At 70px the capitals are 56px tall, seven baselines */
+@media (width < 340px) {
+  h1 {
+    font-size: 70px;
+    line-height: 72px;
+    margin-top: -18px;
+  }
+
+  .grid > div:first-child {
+    padding-bottom: 16px;
   }
 }
 
