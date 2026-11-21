@@ -242,6 +242,24 @@ h2 {
   margin-bottom: -13px;
 }
 
+/* On desktops the page controls and the closing "Thank you!" sit at the
+   far right of their columns. The controls' hover shape reaches past the
+   right edge instead of the left */
+@media (width >= 800px) {
+  .display-container:has(.display-button) {
+    align-items: flex-end;
+  }
+
+  .display-container:has(.display-button) .display-button {
+    margin-left: 0;
+    margin-right: -12px;
+  }
+
+  .footer:last-child {
+    justify-content: flex-end;
+  }
+}
+
 /* A heading at the bottom of a block, introducing the next group.
    Its text sits on the last baseline before the next rule. */
 .group-heading {
