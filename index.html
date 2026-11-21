@@ -292,7 +292,7 @@
           site just with HTML/CSS and minimal JS. It’s then all hosted for free
           on Github/Vercel. If you want to learn how then feel free to reach
           out! Design wise I’ve been obsessing over baseline grids recently, so
-          if you display the grid you’ll see my lovely 16px baseline. I’m quite
+          if you display the grid you’ll see my lovely 12px baseline. I’m quite
           looking forward to leading-trim on web!
         </p>
       </div>
@@ -325,7 +325,7 @@
           htmlElement.getAttribute("data-theme") === "light" ? "dark" : "light";
         htmlElement.setAttribute("data-theme", theme);
       }
-      // Keyboard shortcuts: G toggles the grid, T toggles the theme
+      // Keyboard shortcuts
       document.addEventListener("keydown", (event) => {
         if (event.ctrlKey || event.metaKey || event.altKey) return;
         if (event.key === "g" || event.key === "G") toggleGrid();
