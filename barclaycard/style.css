@@ -19,20 +19,6 @@
   }
 }
 
-/* Grid overlay: red guide lines on the 3rd baseline and every 16
-   baselines after it, drawn over base.css's baseline lines */
-.grid-display {
-  background-image:
-    repeating-linear-gradient(rgb(var(--red)) 0 1px, transparent 1px 100%),
-    repeating-linear-gradient(rgba(var(--ink), 0.1) 0 1px, transparent 1px 100%);
-  background-size:
-    100% calc(16 * var(--baseline)),
-    100% var(--baseline);
-  background-position:
-    0 calc(3 * var(--baseline)),
-    0 0;
-}
-
 /* The page sits 24px from the window on every side */
 html {
   padding: 24px;
@@ -52,6 +38,29 @@ body {
   padding: var(--margin);
   background-color: rgb(var(--paper));
   border-radius: 4px;
+}
+
+/* Fit the page to the window: as tall as fits in whole baselines, with the
+   spare fraction of a baseline split above and below so it stays centred.
+   Taller content grows the page and it scrolls */
+@supports (height: round(down, 1px, 1px)) {
+  :root {
+    --page-height: round(down, 100dvh - 48px, var(--baseline));
+  }
+
+  html {
+    padding-block: calc(24px + (100dvh - 48px - var(--page-height)) / 2);
+  }
+
+  .page {
+    min-height: var(--page-height);
+  }
+}
+
+/* With case studies, the spare height goes between the intro and them, so
+   they and the footer sit at the foot of the page */
+.page:has(> .cases) {
+  grid-template-rows: auto 1fr;
 }
 
 /* Each section spans the page; its contents can sit on the page columns */
@@ -170,19 +179,25 @@ section,
   color: rgb(var(--red));
 }
 
-/* The intro fills two red-line modules, so the case studies start on a
-   red line */
+/* On desktops the intro is at least 16 baselines tall, with at least 16
+   more between it and the case studies */
 @media (width >= 800px) {
   .intro {
-    min-height: calc(32 * var(--baseline));
+    min-height: calc(16 * var(--baseline));
+  }
+
+  .cases {
+    margin-top: calc(16 * var(--baseline));
   }
 }
 
 /* Case studies: a card per column from the 2nd, the footer in the 1st.
-   The section is two red-line modules tall. The cards share a row as tall
-   as the longest card; the footer spans the section to sit at its foot */
+   The cards share a row as tall as the longest card; the footer spans the
+   section, its last baseline on the section's foot, three baselines above
+   the bottom of the page */
 .cases {
-  min-height: calc(32 * var(--baseline));
+  align-self: end;
+  min-height: calc(29 * var(--baseline));
   grid-template-rows: auto 1fr;
 }
 
@@ -203,7 +218,7 @@ section,
   grid-column: 4;
 }
 
-/* The letters fill the card's first red-line module, their capitals nine
+/* The letters fill the card's first 16 baselines, their capitals nine
    baselines tall from the 3rd line down. Alte Haas's capitals are 0.714 of
    the type size */
 .case h2 {
@@ -242,7 +257,8 @@ section,
   outline: 1px solid rgb(var(--ink));
 }
 
-/* The rule sits on the next red line, the text two baselines below it.
+/* The rule sits 16 baselines below the card's top, the text two baselines
+   below it.
    The padding makes the block a whole number of baselines */
 .case p {
   border-top: 1px solid rgb(var(--ink));
@@ -257,9 +273,10 @@ section,
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* The last baseline sits three baselines above the section's foot, and
-     the padding makes the footer a whole number of baselines */
-  padding-block: 7px 29px;
+  /* The negative margin puts the last baseline on the section's foot, and
+     with the padding the footer is a whole number of baselines */
+  padding-top: 7px;
+  margin-bottom: -7px;
 }
 
 .display-text,
@@ -356,8 +373,8 @@ section,
     grid-row: auto;
   }
 
-  /* 50px type has 40px capitals, five baselines, here from the first red
-     guide line (the 3rd grid line) to the 8th */
+  /* 50px type has 40px capitals, five baselines, here from the 3rd grid
+     line to the 8th */
   .intro h1 {
     font-size: 50px;
     line-height: 48px;
@@ -404,9 +421,11 @@ section,
     padding-block: 5.5px 1.5px;
   }
 
+  /* The last baseline sits three baselines above the bottom of the page,
+     as the greeting's capitals do below its top */
   .page-footer {
     margin-top: calc(4 * var(--baseline));
-    padding-block: 7px 1px;
+    margin-bottom: -15px;
   }
 }
 
