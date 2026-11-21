@@ -90,7 +90,7 @@ ul {
      text lines and 36px display lines */
   --baseline: 12px;
   --module: calc(21 * var(--baseline));
-  --margin: calc(4 * var(--baseline));
+  --margin: calc(3 * var(--baseline));
   --gutter: 24px;
   --columns: repeat(3, minmax(0, 1fr));
 }

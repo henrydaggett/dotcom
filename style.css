@@ -19,7 +19,7 @@ h1 {
   font-weight: 300;
   line-height: 72px;
   letter-spacing: 0;
-  margin-top: 4.5px;
+  margin-top: -7.5px;
 }
 
 h2 {
@@ -47,7 +47,7 @@ h2 {
 }
 
 .grid > .display-container {
-  padding-top: 13px;
+  padding-top: 1px;
 }
 
 .display-container {
