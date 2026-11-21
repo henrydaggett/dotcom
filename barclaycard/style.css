@@ -232,6 +232,21 @@ section,
   white-space: nowrap;
 }
 
+/* Optical alignment: each first letter's left side bearing is pulled back
+   so its ink meets the column line. H's flat stem sits exactly on it; the
+   round S and 0 overshoot it slightly, as round forms need to */
+.case:nth-of-type(1) h2 {
+  text-indent: -0.078em; /* H */
+}
+
+.case:nth-of-type(2) h2 {
+  text-indent: -0.048em; /* S */
+}
+
+.case:nth-of-type(3) h2 {
+  text-indent: -0.049em; /* 0 */
+}
+
 /* The link covers the whole card: its pseudo element takes the clicks and
    draws the hover shape two baselines above the capitals and one below the
    last line of text */
