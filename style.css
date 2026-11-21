@@ -11,14 +11,15 @@ body {
   box-shadow: 0px 0px 48px rgba(0, 0, 0, 0.8);
 }
 
+/* 75px type has 60px capitals, five baselines */
 h1 {
   font-family: "Editorial New", serif;
-  font-size: 80px;
+  font-size: 75px;
   font-style: normal;
   font-weight: 300;
-  line-height: 80px;
+  line-height: 72px;
   letter-spacing: 0;
-  margin-top: -9px;
+  margin-top: 4.5px;
 }
 
 h2 {
@@ -28,11 +29,11 @@ h2 {
   font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.14px;
-  margin-top: 4px;
+  margin-top: 7.5px;
 }
 
 .grid > div > p {
-  margin-top: 4px;
+  margin-top: 7.5px;
 }
 
 .display-text {
@@ -40,13 +41,13 @@ h2 {
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
-  line-height: 32px;
+  line-height: 36px;
   letter-spacing: 0;
-  margin-bottom: -12px;
+  margin-bottom: -13px;
 }
 
 .grid > .display-container {
-  padding-top: 12px;
+  padding-top: 13px;
 }
 
 .display-container {
@@ -66,7 +67,7 @@ h2 {
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
-  line-height: 32px;
+  line-height: 36px;
   letter-spacing: 0;
   position: relative;
 }
@@ -154,7 +155,7 @@ h2 {
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
-  line-height: 32px;
+  line-height: 36px;
   letter-spacing: 0;
   display: flex;
   align-items: baseline;
@@ -229,13 +230,13 @@ h2 {
 }
 
 .footer {
-  --min-height: calc(6 * var(--baseline));
+  --min-height: calc(8 * var(--baseline));
   display: flex;
   align-items: flex-end;
 }
 
 .footer .display-link {
-  margin-bottom: -12px;
+  margin-bottom: -13px;
 }
 
 /* A heading at the bottom of a block, introducing the next group.
@@ -250,7 +251,7 @@ h2 {
 
 .group-heading h2 {
   margin-top: -1px;
-  margin-bottom: 9px;
+  margin-bottom: 5.5px;
 }
 
 /* Cancel the link's own padding so it lines up with the heading beside it */
@@ -263,7 +264,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 4px 11px 0;
+  padding: 17.5px 4px 5.5px 0;
   position: relative;
 }
 
@@ -271,10 +272,10 @@ h2 {
 .content-link:focus-visible::before {
   content: "";
   position: absolute;
-  top: 4px;
+  top: 14px;
   left: -12px;
   right: -12px;
-  bottom: 4px;
+  bottom: 2px;
   border-radius: 24px;
   z-index: 0;
 }
@@ -332,7 +333,7 @@ h2 {
 
   /* Two or more lines: sit them on the baseline rather than centring */
   .talk {
-    padding-block: 14px 17px;
+    padding-block: 17.5px;
   }
 
   /* A tighter corner suits the taller hover shape */
@@ -350,6 +351,58 @@ h2 {
 @media (width < 800px) {
   html {
     padding: calc(2 * var(--baseline));
+  }
+
+  /* Phones keep the measurements made for their 8px grid: the 80px name,
+     32px display lines and the offsets that sit text on those lines */
+  h1 {
+    font-size: 80px;
+    line-height: 80px;
+    margin-top: -9px;
+  }
+
+  h2,
+  .grid > div > p {
+    margin-top: 4px;
+  }
+
+  .display-text,
+  .display-link,
+  .display-button {
+    line-height: 32px;
+  }
+
+  .display-text,
+  .footer .display-link {
+    margin-bottom: -12px;
+  }
+
+  .grid > .display-container {
+    padding-top: 12px;
+  }
+
+  .footer {
+    --min-height: calc(6 * var(--baseline));
+  }
+
+  .group-heading h2 {
+    margin-bottom: 9px;
+  }
+
+  .content-link {
+    padding: 12px 4px 11px 0;
+  }
+
+  .content-link:hover::before,
+  .content-link:focus-visible::before {
+    top: 4px;
+    bottom: 4px;
+  }
+
+  @container (width < 640px) {
+    .talk {
+      padding-block: 14px 17px;
+    }
   }
 
   .grid {

@@ -86,10 +86,11 @@ ul {
 }
 
 :root {
-  /* Everything vertical is a multiple of the baseline */
-  --baseline: 16px;
-  --module: calc(16 * var(--baseline));
-  --margin: calc(3 * var(--baseline));
+  /* Everything vertical is a multiple of the baseline. 12px fits the 24px
+     text lines and 36px display lines */
+  --baseline: 12px;
+  --module: calc(21 * var(--baseline));
+  --margin: calc(4 * var(--baseline));
   --gutter: 24px;
   --columns: repeat(3, minmax(0, 1fr));
 }
@@ -164,6 +165,7 @@ a {
     /* 24px text lines, 32px display lines and the 80px name only share
        an 8px rhythm, so that is the baseline here */
     --baseline: 8px;
+    --module: calc(16 * var(--baseline));
     --margin: calc(4 * var(--baseline));
     --columns: minmax(0, 1fr);
   }
