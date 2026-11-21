@@ -19,6 +19,20 @@
   }
 }
 
+/* Grid overlay: red guide lines on the 3rd baseline and every 16
+   baselines after it, drawn over base.css's baseline lines */
+.grid-display {
+  background-image:
+    repeating-linear-gradient(rgb(var(--red)) 0 1px, transparent 1px 100%),
+    repeating-linear-gradient(rgba(var(--ink), 0.1) 0 1px, transparent 1px 100%);
+  background-size:
+    100% calc(16 * var(--baseline)),
+    100% var(--baseline);
+  background-position:
+    0 calc(3 * var(--baseline)),
+    0 0;
+}
+
 /* The page sits 24px from the window on every side */
 html {
   padding: 24px;
