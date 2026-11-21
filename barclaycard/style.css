@@ -263,14 +263,14 @@ section,
   text-indent: -0.049em; /* 0 */
 }
 
-/* The link covers the whole card, two baselines above the capitals to one
+/* The link covers the whole card, one baseline above the capitals to one
    below the last line of text. Its ::after sits over the card's content to
    take the clicks; its ::before draws the hover shape behind the content */
 .case-link::before,
 .case-link::after {
   content: "";
   position: absolute;
-  inset: var(--baseline) -12px calc(-1 * var(--baseline));
+  inset: calc(2 * var(--baseline)) -12px calc(-1 * var(--baseline));
   border-radius: 16px;
 }
 
@@ -516,7 +516,8 @@ section,
     margin-bottom: 0;
   }
 
-  .case-link::before {
+  .case-link::before,
+  .case-link::after {
     inset: calc(2 * var(--baseline)) -12px 0;
   }
 
