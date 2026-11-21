@@ -60,27 +60,31 @@ section,
   grid-column: 2 / span 2;
   grid-row: 1;
   font-family: "Editorial New", serif;
-  font-size: 80px;
+  /* 100px type has 80px capitals, five baselines, here from the 3rd grid
+     line (the top of the page's content) to the 8th */
+  font-size: 100px;
   font-style: italic;
   font-weight: 300;
-  line-height: 80px;
+  line-height: 96px;
   letter-spacing: 0;
-  /* Capitals from the 5th to the 9th grid line */
-  margin-top: 33px;
+  /* The margins add up to one baseline, so the section stays a whole
+     number of baselines however many lines the greeting takes */
+  margin-block: 3px 13px;
 }
 
-/* First baselines on the 5th grid line, then every second line */
+/* Baselines on the 4th, 6th and 8th grid lines, the last one shared with
+   the greeting */
 .intro-meta {
   grid-column: 1;
   grid-row: 1;
   line-height: 32px;
-  padding-top: 10.5px;
+  margin-top: -5.5px;
 }
 
 .intro .display-container {
   grid-column: -2;
   grid-row: 1;
-  padding-top: 11px;
+  margin-top: -5px;
 }
 
 /* Page controls, as on the home page */
@@ -153,17 +157,14 @@ section,
   color: rgb(var(--red));
 }
 
-/* 3 columns: the controls take the last column, so the greeting moves
-   below the details (which may wrap to three lines), its capitals from the
-   14th to the 18th grid line. The section grows to 18 baselines */
-@media (800px <= width < 1100px) {
-  .intro {
-    min-height: calc(18 * var(--baseline));
-  }
-
+/* Below 1160px "Barclaycard" is wider than two columns, and with 3 columns
+   the controls take the last one, so the greeting moves below the details
+   (which may wrap to four lines). Its capitals start on the 13th grid line,
+   48px below the details' last possible baseline */
+@media (800px <= width < 1160px) {
   .intro h1 {
     grid-column: 1 / -1;
-    margin-top: 177px;
+    margin-block: 163px 13px;
   }
 }
 
@@ -189,17 +190,19 @@ section,
   .intro h1 {
     font-size: 50px;
     line-height: 48px;
-    margin-top: 9.5px;
+    margin-block: 9.5px 0;
   }
 
   /* The details start 48px below the greeting's last baseline and the
      controls 40px below the details', as the lists do on the home page */
   .intro-meta {
+    margin-top: 0;
     padding-top: 17px;
   }
 
   /* The bottom padding makes the section a whole number of baselines */
   .intro .display-container {
+    margin-top: 0;
     padding-block: 8.5px 21px;
   }
 
