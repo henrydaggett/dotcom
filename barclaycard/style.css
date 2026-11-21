@@ -50,7 +50,8 @@ section,
 }
 
 /* Intro: the details, the greeting across the middle two columns and the
-   page controls on the right, all on 24px lines */
+   page controls on the right. The details run on 24px text lines and the
+   controls on 36px display lines, as on the home page */
 .intro {
   align-items: start;
 }
@@ -80,16 +81,12 @@ section,
   margin-top: -5.5px;
 }
 
-/* Baselines on the 6th and 8th grid lines, sharing the details' last two
-   lines and the greeting's baseline */
+/* Baselines on the 4th and 7th grid lines, the first shared with the
+   details */
 .intro .display-container {
   grid-column: -2;
   grid-row: 1;
-  margin-top: 19px;
-}
-
-.intro .display-button {
-  line-height: 24px;
+  margin-top: -11px;
 }
 
 /* Page controls, as on the home page */
@@ -180,7 +177,7 @@ section,
 
   /* Phones keep 32px display lines, which fit their 8px grid */
   .intro-meta,
-  .intro .display-button {
+  .display-button {
     line-height: 32px;
   }
 
