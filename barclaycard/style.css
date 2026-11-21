@@ -50,8 +50,8 @@ section,
 }
 
 /* Intro: the details, the greeting across the middle two columns and the
-   page controls on the right. The details and controls run on 36px lines,
-   so their baselines share grid lines with the greeting's */
+   page controls on the right. The details run on 24px text lines and the
+   controls on 36px display lines */
 .intro {
   align-items: start;
 }
@@ -72,12 +72,13 @@ section,
   margin-block: 2.5px 9.5px;
 }
 
-/* Baselines on the 4th, 7th and 10th grid lines */
+/* Baselines on the 4th, 6th and 8th grid lines, the last one shared with
+   the greeting */
 .intro-meta {
   grid-column: 1;
   grid-row: 1;
-  line-height: 36px;
-  margin-top: -11.5px;
+  line-height: 24px;
+  margin-top: -5.5px;
 }
 
 .intro .display-container {
@@ -158,11 +159,11 @@ section,
 
 /* With 3 columns the controls take the last one, so the greeting moves
    below the details (which may wrap to four lines). Its capitals start on
-   the 17th grid line, 48px below the details' last possible baseline */
+   the 14th grid line, 48px below the details' last possible baseline */
 @media (800px <= width < 1100px) {
   .intro h1 {
     grid-column: 1 / -1;
-    margin-block: 170.5px 9.5px;
+    margin-block: 134.5px 9.5px;
   }
 }
 
