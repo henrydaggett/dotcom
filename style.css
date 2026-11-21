@@ -58,11 +58,11 @@ h2 {
   align-items: flex-start;
 }
 
-/* Buttons carry 1.5px of padding above and below the line, so their
+/* Buttons carry 1.5px of padding above the line and 0.5px below, so their
    hover shape is centred on the lettering, descenders included; the
    margins keep the text on the baseline */
 .display-container button {
-  margin-block: -1.5px;
+  margin-block: -1.5px -0.5px;
 }
 
 .display-link {
@@ -151,7 +151,7 @@ h2 {
   top: -1.5px;
   left: -12px;
   right: -12px;
-  bottom: -1.5px;
+  bottom: -0.5px;
   border-radius: 32px;
   z-index: -1;
 }
@@ -170,7 +170,7 @@ h2 {
   color: currentColor;
   background-color: unset;
   border: unset;
-  padding: 1.5px 12px;
+  padding: 1.5px 12px 0.5px;
   margin-left: -12px;
   border-radius: 32px;
   cursor: pointer;
