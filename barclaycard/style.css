@@ -193,17 +193,16 @@ section,
 }
 
 /* Case studies: a card per column from the 2nd, the footer in the 1st.
-   The cards share a row as tall as the longest card; the footer spans the
-   section, its last baseline on the section's foot, three baselines above
-   the bottom of the page */
+   The cards share a row at the foot of the section, as tall as the longest
+   card, so its last line and the footer's sit on the section's foot, three
+   baselines above the bottom of the page */
 .cases {
   align-self: end;
-  min-height: calc(29 * var(--baseline));
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr auto;
 }
 
 .case {
-  grid-row: 1;
+  grid-row: 2;
   position: relative;
 }
 
@@ -234,12 +233,12 @@ section,
 }
 
 /* The link covers the whole card: its pseudo element takes the clicks and
-   draws the hover shape one baseline above the capitals and below the last
-   line of text */
+   draws the hover shape two baselines above the capitals and one below the
+   last line of text */
 .case-link::before {
   content: "";
   position: absolute;
-  inset: calc(2 * var(--baseline)) -12px 0;
+  inset: var(--baseline) -12px calc(-1 * var(--baseline));
   border-radius: 16px;
 }
 
@@ -259,11 +258,11 @@ section,
 }
 
 /* The rule sits 16 baselines below the card's top, the text two baselines
-   below it.
-   The padding makes the block a whole number of baselines */
+   below it. The negative margin ends the card on its last baseline */
 .case p {
   border-top: 1px solid rgb(var(--ink));
-  padding-block: 5.5px;
+  padding-top: 5.5px;
+  margin-bottom: -6.5px;
 }
 
 /* Footer: the small serif text on 24px lines at the foot of the 1st column */
@@ -328,6 +327,10 @@ section,
 
   .case:nth-of-type(3) {
     grid-column: 3;
+  }
+
+  .case {
+    grid-row: 1;
   }
 
   .page-footer {
@@ -420,6 +423,11 @@ section,
 
   .case p {
     padding-block: 5.5px 1.5px;
+    margin-bottom: 0;
+  }
+
+  .case-link::before {
+    inset: calc(2 * var(--baseline)) -12px 0;
   }
 
   /* The last baseline sits three baselines above the bottom of the page,
