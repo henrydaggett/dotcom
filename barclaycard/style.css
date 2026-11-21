@@ -81,12 +81,12 @@ section,
   margin-top: -5.5px;
 }
 
-/* Baselines on the 4th and 7th grid lines, the first shared with the
-   details */
+/* Baselines on the 5th and 8th grid lines, the second shared with the
+   greeting */
 .intro .display-container {
   grid-column: -2;
   grid-row: 1;
-  margin-top: -11px;
+  margin-top: 1px;
 }
 
 /* Page controls, as on the home page */
