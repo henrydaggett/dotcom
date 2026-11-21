@@ -60,20 +60,19 @@ section,
   grid-column: 2 / span 2;
   grid-row: 1;
   font-family: "Editorial New", serif;
-  /* 105px type has 84px capitals, seven baselines, here from the 3rd grid
-     line (the top of the page's content) to the 10th */
-  font-size: 105px;
+  /* 75px type has 60px capitals, five baselines, here from the 3rd grid
+     line (the top of the page's content) to the 8th */
+  font-size: 75px;
   font-style: italic;
   font-weight: 300;
-  line-height: 96px;
+  line-height: 72px;
   letter-spacing: 0;
   /* The margins add up to whole baselines, so the section stays a whole
      number of baselines however many lines the greeting takes */
-  margin-block: 5.5px 6.5px;
+  margin-block: 2.5px 9.5px;
 }
 
-/* Baselines on the 4th, 7th and 10th grid lines, the last one shared with
-   the greeting */
+/* Baselines on the 4th, 7th and 10th grid lines */
 .intro-meta {
   grid-column: 1;
   grid-row: 1;
@@ -157,14 +156,13 @@ section,
   color: rgb(var(--red));
 }
 
-/* Below 1200px "Barclaycard" is wider than two columns, and with 3 columns
-   the controls take the last one, so the greeting moves below the details
-   (which may wrap to four lines). Its capitals start on the 17th grid line,
-   48px below the details' last possible baseline */
-@media (800px <= width < 1200px) {
+/* With 3 columns the controls take the last one, so the greeting moves
+   below the details (which may wrap to four lines). Its capitals start on
+   the 17th grid line, 48px below the details' last possible baseline */
+@media (800px <= width < 1100px) {
   .intro h1 {
     grid-column: 1 / -1;
-    margin-block: 173.5px 6.5px;
+    margin-block: 170.5px 9.5px;
   }
 }
 
