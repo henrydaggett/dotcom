@@ -306,7 +306,8 @@ section,
   margin-bottom: -6.5px;
 }
 
-/* Footer: the small serif text on 24px lines at the foot of the 1st column */
+/* Footer: the small serif text on display lines, as the page controls are,
+   at the foot of the 1st column */
 .page-footer {
   grid-column: 1;
   grid-row: 1 / -1;
@@ -316,8 +317,8 @@ section,
   align-items: flex-start;
   /* The negative margin puts the last baseline on the section's foot, and
      with the padding the footer is a whole number of baselines */
-  padding-top: 7px;
-  margin-bottom: -7px;
+  padding-top: 1px;
+  margin-bottom: -13px;
 }
 
 .display-text,
@@ -326,7 +327,7 @@ section,
   font-size: 17px;
   font-style: normal;
   font-weight: 300;
-  line-height: 24px;
+  line-height: 36px;
   letter-spacing: 0;
 }
 
@@ -451,7 +452,9 @@ section,
 
   /* Phones keep 32px display lines, which fit their 8px grid */
   .intro-meta,
-  .display-button {
+  .display-button,
+  .display-text,
+  .display-link {
     line-height: 32px;
   }
 
@@ -525,7 +528,8 @@ section,
      as the greeting's capitals do below its top */
   .page-footer {
     margin-top: calc(4 * var(--baseline));
-    margin-bottom: -15px;
+    padding-top: 3px;
+    margin-bottom: -19px;
   }
 }
 
