@@ -29,11 +29,13 @@ h2 {
   font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.14px;
-  margin-top: 7.5px;
+  margin-top: -4.5px;
 }
 
+/* Under a rule, the first baseline is two baselines down, leaving one
+   baseline between the rule and the capitals */
 .grid > div > p {
-  margin-top: 7.5px;
+  margin-top: -4.5px;
 }
 
 .display-text {
@@ -264,7 +266,8 @@ h2 {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 17.5px 4px 5.5px 0;
+  padding: 5.5px 4px;
+  padding-left: 0;
   position: relative;
 }
 
@@ -272,10 +275,10 @@ h2 {
 .content-link:focus-visible::before {
   content: "";
   position: absolute;
-  top: 14px;
+  top: 4px;
   left: -12px;
   right: -12px;
-  bottom: 2px;
+  bottom: 4px;
   border-radius: 24px;
   z-index: 0;
 }
@@ -333,7 +336,7 @@ h2 {
 
   /* Two or more lines: sit them on the baseline rather than centring */
   .talk {
-    padding-block: 17.5px;
+    padding-block: 5.5px;
   }
 
   /* A tighter corner suits the taller hover shape */
