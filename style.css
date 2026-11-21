@@ -73,6 +73,8 @@ h2 {
   line-height: 36px;
   letter-spacing: 0;
   position: relative;
+  /* Keeps the hover shape, drawn behind the text, inside the link */
+  isolation: isolate;
 }
 
 .display-link:focus-visible, .content-link:focus-visible {
@@ -124,6 +126,7 @@ h2 {
 .display-button:focus-visible,
 .content-link:hover::before,
 .content-link:focus-visible::before {
+  background-color: var(--hover-fill);
   -moz-box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
@@ -150,7 +153,7 @@ h2 {
   right: -12px;
   bottom: -1.5px;
   border-radius: 32px;
-  z-index: 0;
+  z-index: -1;
 }
 
 .display-button {
@@ -288,6 +291,7 @@ h2 {
   padding: 11.5px 4px;
   padding-left: 0;
   position: relative;
+  isolation: isolate;
 }
 
 .content-link:hover::before,
@@ -299,7 +303,7 @@ h2 {
   right: -12px;
   bottom: 4px;
   border-radius: 24px;
-  z-index: 0;
+  z-index: -1;
 }
 
 /* Talks & writing */

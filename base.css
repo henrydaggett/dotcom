@@ -92,6 +92,9 @@ ul {
   --module: calc(21 * var(--baseline));
   --margin: calc(3 * var(--baseline));
   --gutter: 24px;
+  /* Hover and focus shapes: the page's paper, 10% darker. Worked out here,
+     on the element that carries the theme */
+  --hover-fill: color-mix(in srgb, rgb(var(--paper)) 90%, black);
   --columns: repeat(3, minmax(0, 1fr));
 }
 
