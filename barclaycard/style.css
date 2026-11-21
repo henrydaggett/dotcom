@@ -321,6 +321,19 @@ section,
   position: relative;
 }
 
+/* The arrow beside a link, as on the home page. Being an empty box, its
+   bottom edge sits on the text baseline */
+.display-link::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 6px;
+  background-color: currentColor;
+  -webkit-mask: url(/icons/link-arrow.svg) no-repeat center / contain;
+  mask: url(/icons/link-arrow.svg) no-repeat center / contain;
+}
+
 .display-link:focus-visible {
   outline: unset;
 }
@@ -343,7 +356,9 @@ section,
   outline: 1px solid rgb(var(--ink));
 }
 
-/* With 3 columns the cards take all three and the footer goes below them */
+/* With 3 columns the cards take all three and the footer goes below them,
+   spread across the columns as on the home page: the copyright, the source
+   link, then "Thank you!" at the far right */
 @media (800px <= width < 1100px) {
   .case:nth-of-type(1) {
     grid-column: 1;
@@ -363,17 +378,43 @@ section,
 
   .page-footer {
     grid-row: 2;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: end;
     margin-top: calc(2 * var(--baseline));
+  }
+
+  .page-footer > * {
+    grid-row: 1;
+  }
+
+  .page-footer > :nth-child(3) {
+    grid-column: 1;
+  }
+
+  .page-footer > :nth-child(2) {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .page-footer > :nth-child(1) {
+    grid-column: 3;
+    justify-self: end;
   }
 }
 
-/* With 3 columns the controls take the last one, so the greeting moves
-   below the details (which may wrap to four lines). Its capitals start on
-   the 14th grid line, 48px below the details' last possible baseline */
+/* With 3 columns the details span the first two columns, so their lines
+   don't wrap, and the controls take the last one. The greeting moves below
+   them, its capitals 48px below the details' last baseline */
 @media (800px <= width < 1100px) {
+  .intro-meta {
+    grid-column: 1 / span 2;
+  }
+
   .intro h1 {
     grid-column: 1 / -1;
-    margin-block: 134.5px 9.5px;
+    margin-block: 110.5px 9.5px;
   }
 }
 
