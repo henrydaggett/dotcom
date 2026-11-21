@@ -263,15 +263,23 @@ section,
   text-indent: -0.049em; /* 0 */
 }
 
-/* The link covers the whole card: its pseudo element takes the clicks and
-   draws the hover shape two baselines above the capitals and one below the
-   last line of text */
-.case-link::before {
+/* The link covers the whole card, two baselines above the capitals to one
+   below the last line of text. Its ::after sits over the card's content to
+   take the clicks; its ::before draws the hover shape behind the content */
+.case-link::before,
+.case-link::after {
   content: "";
   position: absolute;
   inset: var(--baseline) -12px calc(-1 * var(--baseline));
   border-radius: 16px;
+}
+
+.case-link::before {
   z-index: -1;
+}
+
+.case-link::after {
+  z-index: 1;
 }
 
 .case-link:focus-visible {
