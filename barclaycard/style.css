@@ -161,6 +161,7 @@ section,
 
 .display-button:hover,
 .display-button:focus-visible {
+  background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
@@ -217,6 +218,8 @@ section,
 .case {
   grid-row: 2;
   position: relative;
+  /* Keeps the hover shape, drawn behind the card's content, inside it */
+  isolation: isolate;
 }
 
 .case:nth-of-type(1) {
@@ -268,6 +271,7 @@ section,
   position: absolute;
   inset: var(--baseline) -12px calc(-1 * var(--baseline));
   border-radius: 16px;
+  z-index: -1;
 }
 
 .case-link:focus-visible {
@@ -276,6 +280,7 @@ section,
 
 .case-link:hover::before,
 .case-link:focus-visible::before {
+  background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
@@ -321,6 +326,12 @@ section,
   position: relative;
 }
 
+/* Keeps the link's hover shape, drawn behind the footer's text, inside the
+   footer */
+.page-footer {
+  isolation: isolate;
+}
+
 /* The arrow beside a link, as on the home page. Being an empty box, its
    bottom edge sits on the text baseline */
 .display-link::after {
@@ -342,11 +353,13 @@ section,
 .display-link:focus-visible::before {
   content: "";
   position: absolute;
-  top: -7.5px;
+  top: -1.5px;
   left: -12px;
   right: -12px;
-  bottom: -7.5px;
+  bottom: -1.5px;
   border-radius: 32px;
+  z-index: -1;
+  background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
