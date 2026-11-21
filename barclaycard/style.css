@@ -112,6 +112,19 @@ section,
   margin-top: 1px;
 }
 
+/* On desktops the controls sit at the far right of their column, their
+   hover shape reaching past it as it reaches past the left on the home page */
+@media (width >= 800px) {
+  .intro .display-container {
+    align-items: flex-end;
+  }
+
+  .intro .display-button {
+    margin-left: 0;
+    margin-right: -12px;
+  }
+}
+
 /* Page controls, as on the home page */
 .display-container {
   display: flex;
