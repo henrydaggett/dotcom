@@ -137,6 +137,17 @@ a {
   color: currentColor;
 }
 
+/* Wrapping: paragraphs keep full lines but avoid ending on a lone word;
+   headings even out their lines. Browsers without support wrap as usual */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
 /* Grid overlay: baseline lines plus one child per column. It covers the
    nearest positioned ancestor, normally the page's body */
 .grid-display {
