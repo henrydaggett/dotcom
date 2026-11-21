@@ -92,9 +92,9 @@ ul {
   --module: calc(21 * var(--baseline));
   --margin: calc(3 * var(--baseline));
   --gutter: 24px;
-  /* Hover and focus shapes: the page's paper with its HSL lightness 1
-     point lower. Worked out here, on the element that carries the theme */
-  --hover-fill: hsl(from rgb(var(--paper)) h s calc(l - 1));
+  /* Hover and focus shapes: the page's paper with its HSL lightness 2
+     points lower. Worked out here, on the element that carries the theme */
+  --hover-fill: hsl(from rgb(var(--paper)) h s calc(l - 2));
   --columns: repeat(3, minmax(0, 1fr));
 }
 
