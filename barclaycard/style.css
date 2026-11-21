@@ -41,11 +41,130 @@ body {
 }
 
 /* Each section spans the page; its contents can sit on the page columns */
-section {
+section,
+.intro {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: subgrid;
   min-height: var(--section);
+}
+
+/* Intro: the details, the greeting across the middle two columns and the
+   page controls on the right. The details and controls run on 32px lines,
+   so their baselines share grid lines with the greeting's */
+.intro {
+  align-items: start;
+}
+
+.intro h1 {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+  font-family: "Editorial New", serif;
+  font-size: 80px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 80px;
+  letter-spacing: 0;
+  /* Capitals from the 5th to the 9th grid line */
+  margin-top: 33px;
+}
+
+/* First baselines on the 5th grid line, then every second line */
+.intro-meta {
+  grid-column: 1;
+  grid-row: 1;
+  line-height: 32px;
+  padding-top: 10.5px;
+}
+
+.intro .display-container {
+  grid-column: -2;
+  grid-row: 1;
+  padding-top: 11px;
+}
+
+/* Page controls, as on the home page */
+.display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Buttons carry 3px of padding above the line so their hover shape is
+   centred on the capitals; the margin keeps the text on the baseline */
+.display-container button {
+  margin-top: -3px;
+}
+
+.display-button {
+  font-family: "Editorial New", serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 32px;
+  letter-spacing: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  position: relative;
+  color: currentColor;
+  background-color: unset;
+  border: unset;
+  padding: 3px 12px 0;
+  margin-left: -12px;
+  border-radius: 32px;
+  cursor: pointer;
+}
+
+.display-button:hover,
+.display-button:focus-visible {
+  box-shadow:
+    inset -1px -1px 1px 0 var(--hover-highlight),
+    inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+.display-button:focus-visible {
+  outline: 1px solid rgb(var(--ink));
+}
+
+/* Icons about the height of the capitals. Being empty boxes, their bottom
+   edge sits on the text baseline. The icons are served from the main site */
+.display-button > span {
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.theme-icon {
+  --icon: url(/icons/theme-circle.svg);
+}
+
+.grid-icon {
+  --icon: url(/icons/grid.svg);
+}
+
+.contact-icon {
+  --icon: url(/icons/email.svg);
+}
+
+.grid-active {
+  color: rgb(var(--red));
+}
+
+/* 3 columns: the controls take the last column, so the greeting moves
+   below the details (which may wrap to three lines), its capitals from the
+   14th to the 18th grid line. The section grows to 18 baselines */
+@media (800px <= width < 1100px) {
+  .intro {
+    min-height: calc(18 * var(--baseline));
+  }
+
+  .intro h1 {
+    grid-column: 1 / -1;
+    margin-top: 177px;
+  }
 }
 
 @media (width < 800px) {
@@ -53,7 +172,52 @@ section {
     padding-inline: var(--gutter);
   }
 
+  /* One column: the greeting, the details, then the controls */
+  .intro {
+    align-content: start;
+  }
+
+  .intro h1,
+  .intro-meta,
+  .intro .display-container {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  /* 50px type has 40px capitals, five baselines, here from the 5th grid
+     line to the 10th */
+  .intro h1 {
+    font-size: 50px;
+    line-height: 48px;
+    margin-top: 9.5px;
+  }
+
+  /* The details start 48px below the greeting's last baseline and the
+     controls 40px below the details', as the lists do on the home page */
+  .intro-meta {
+    padding-top: 17px;
+  }
+
+  /* The bottom padding makes the section a whole number of baselines */
+  .intro .display-container {
+    padding-block: 8.5px 21px;
+  }
+
   .grid-display > div:not(:first-child) {
     display: none;
+  }
+}
+
+/* The narrowest phones: "Barclaycard" at 50px is wider than the column.
+   At 40px the capitals are 32px tall, four baselines */
+@media (width < 340px) {
+  .intro h1 {
+    font-size: 40px;
+    line-height: 40px;
+    margin-top: 8.5px;
+  }
+
+  .intro-meta {
+    padding-top: 18px;
   }
 }

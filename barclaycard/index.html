@@ -31,12 +31,57 @@
   <body>
     <div class="grid-display"><div></div><div></div><div></div><div></div></div>
     <main class="page">
-      <section></section>
+      <header class="intro">
+        <h1>Hello, Barclaycard</h1>
+        <div class="intro-meta">
+          <p>A portfolio of work by Henry Daggett</p>
+          <p>For Barclaycard Payments</p>
+          <p>November 2026</p>
+        </div>
+        <div class="display-container">
+          <button
+            id="theme-button"
+            class="display-button"
+            onclick="changeTheme()"
+          >
+            Light / Dark
+            <span class="theme-icon"></span>
+          </button>
+          <button id="grid-button" class="display-button" onclick="toggleGrid()">
+            Show grids
+            <span class="grid-icon grid-active"></span>
+          </button>
+          <button class="display-button">
+            Contact
+            <span class="contact-icon"></span>
+          </button>
+        </div>
+      </header>
       <section></section>
       <section></section>
       <section></section>
     </main>
 
+    <script>
+      function toggleGrid() {
+        const gridDisplay = document.querySelector(".grid-display");
+        const gridIcon = document.querySelector(".grid-icon");
+        gridDisplay.classList.toggle("hidden");
+        gridIcon.classList.toggle("grid-active");
+      }
+      function changeTheme() {
+        const htmlElement = document.documentElement;
+        let theme =
+          htmlElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+        htmlElement.setAttribute("data-theme", theme);
+      }
+      // Keyboard shortcuts: G toggles the grid, T toggles the theme
+      document.addEventListener("keydown", (event) => {
+        if (event.ctrlKey || event.metaKey || event.altKey) return;
+        if (event.key === "g" || event.key === "G") toggleGrid();
+        if (event.key === "t" || event.key === "T") changeTheme();
+      });
+    </script>
     <script defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>
