@@ -208,12 +208,12 @@ section,
     grid-row: auto;
   }
 
-  /* 50px type has 40px capitals, five baselines, here from the 5th grid
-     line to the 10th */
+  /* 50px type has 40px capitals, five baselines, here from the first red
+     guide line (the 3rd grid line) to the 8th */
   .intro h1 {
     font-size: 50px;
     line-height: 48px;
-    margin-block: 9.5px 0;
+    margin-block: -6.5px 0;
   }
 
   /* The details start 48px below the greeting's last baseline and the
@@ -240,7 +240,7 @@ section,
   .intro h1 {
     font-size: 40px;
     line-height: 40px;
-    margin-top: 8.5px;
+    margin-top: -7.5px;
   }
 
   .intro-meta {
