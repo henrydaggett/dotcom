@@ -96,10 +96,11 @@ section,
   align-items: flex-start;
 }
 
-/* Buttons carry 3px of padding above the line so their hover shape is
-   centred on the capitals; the margin keeps the text on the baseline */
+/* Buttons carry 1.5px of padding above and below the line, so their
+   hover shape is centred on the lettering, descenders included; the
+   margins keep the text on the baseline */
 .display-container button {
-  margin-top: -3px;
+  margin-block: -1.5px;
 }
 
 .display-button {
@@ -116,7 +117,7 @@ section,
   color: currentColor;
   background-color: unset;
   border: unset;
-  padding: 3px 12px 0;
+  padding: 1.5px 12px;
   margin-left: -12px;
   border-radius: 32px;
   cursor: pointer;
