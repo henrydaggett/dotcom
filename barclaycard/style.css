@@ -533,6 +533,11 @@ section,
     margin-top: 17px;
   }
 
+  /* Phones keep only the first line of the note */
+  .intro-note > :not(:first-child) {
+    display: none;
+  }
+
   .intro .display-container {
     grid-row: 4;
   }
