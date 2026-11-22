@@ -306,6 +306,24 @@ section,
   margin-bottom: -6.5px;
 }
 
+/* A note in the 1st column beside the cards, its capitals level with the
+   letters' and its baselines on the grid. Only the 4-column layout has
+   room for it */
+.cases-note {
+  display: none;
+}
+
+@media (width >= 1100px) {
+  .cases-note {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    /* First baseline one baseline below the top of the letters' capitals */
+    margin-top: 30.5px;
+  }
+}
+
 /* Footer: the small serif text on display lines, as the page controls are,
    at the foot of the 1st column */
 .page-footer {
