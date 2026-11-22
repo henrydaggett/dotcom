@@ -498,7 +498,6 @@ section,
   }
 
   /* Phones keep 32px display lines, which fit their 8px grid */
-  .intro-meta,
   .display-button,
   .display-text,
   .display-link {
@@ -524,22 +523,8 @@ section,
     grid-row: 2;
   }
 
-  /* The case study note follows the greeting, then the controls */
-  .intro-note {
-    display: block;
-    grid-column: 1;
-    grid-row: 3;
-    line-height: 32px;
-    margin-top: 17px;
-  }
-
-  /* Phones keep only the first line of the note */
-  .intro-note > :not(:first-child) {
-    display: none;
-  }
-
   .intro .display-container {
-    grid-row: 4;
+    grid-row: 3;
   }
 
   /* 50px type has 40px capitals, five baselines, here from the 3rd grid
@@ -547,21 +532,22 @@ section,
   .intro h1 {
     font-size: 50px;
     line-height: 48px;
-    margin-block: 23px 0;
+    margin-block: 27px 0;
   }
 
   /* The details' first baseline sits 40px down, the greeting's capitals
-     32px below their last baseline, the note 48px below the greeting's
-     last baseline and the controls 40px below the note's */
+     32px below their last baseline, and the controls 48px below the
+     greeting's last baseline. The section ends three baselines below the
+     controls */
   .intro-meta {
-    margin-top: -13.5px;
+    margin-top: -9.5px;
     padding-top: 0;
   }
 
   /* The bottom padding makes the section a whole number of baselines */
   .intro .display-container {
     margin-top: 0;
-    padding-block: 8.5px 37px;
+    padding-block: 17.5px 5px;
   }
 
   .grid-display > div:not(:first-child) {
@@ -580,7 +566,19 @@ section,
   }
 
   .case + .case {
-    margin-top: calc(4 * var(--baseline));
+    margin-top: calc(3 * var(--baseline));
+  }
+
+  /* Just the note's first line, above the first card: its baseline three
+     baselines into the section, the card's top on it */
+  .cases-note {
+    display: block;
+    grid-column: 1;
+    margin-block: 6.5px -6.5px;
+  }
+
+  .cases-note > :not(:first-child) {
+    display: none;
   }
 
   .case h2 {
@@ -612,10 +610,10 @@ section,
   .intro h1 {
     font-size: 40px;
     line-height: 40px;
-    margin-top: 22px;
+    margin-top: 26px;
   }
 
-  .intro-note {
-    margin-top: 18px;
+  .intro .display-container {
+    padding-top: 18.5px;
   }
 }
