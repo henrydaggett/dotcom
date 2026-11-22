@@ -36,8 +36,6 @@ body {
   align-content: start;
   min-height: calc(100dvh - 48px);
   padding: var(--margin);
-  background-color: rgb(var(--paper));
-  border-radius: 4px;
 }
 
 /* Fit the page to the window: as tall as fits in whole baselines, with the
