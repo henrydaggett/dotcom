@@ -469,8 +469,8 @@ section,
     margin-block: 110.5px 9.5px;
   }
 
-  /* The note spreads across the columns under the greeting, as the footer
-     does: the last item at the far right */
+  /* The note spreads across the columns under the greeting, one item per
+     column */
   .intro-note {
     display: grid;
     grid-column: 1 / -1;
@@ -479,11 +479,6 @@ section,
     /* Baselines four below the greeting's, and the section a whole number
        of baselines */
     margin-block: 6.5px 5.5px;
-  }
-
-  .intro-note > :last-child {
-    justify-self: end;
-    text-align: right;
   }
 }
 
