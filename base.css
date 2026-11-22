@@ -92,9 +92,6 @@ ul {
   --module: calc(21 * var(--baseline));
   --margin: calc(3 * var(--baseline));
   --gutter: 24px;
-  /* Hover and focus shapes: the page's paper with its HSL lightness 2
-     points lower. Worked out here, on the element that carries the theme */
-  --hover-fill: hsl(from rgb(var(--paper)) h s calc(l - 2));
   --columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -105,6 +102,10 @@ ul {
   --ink: 50, 57, 60;
   --backdrop: 38, 38, 38;
   --paper: 243, 242, 238;
+  /* Hover and focus shapes: translucent, so the grid shows through them,
+     but over the paper they're the paper with its HSL lightness 2 points
+     lower */
+  --hover-fill: rgba(201, 196, 178, 0.1);
   --hover-highlight: rgba(var(--highlight), 0.85);
   --hover-shadow: rgba(var(--backdrop), 0.15);
 }
@@ -116,6 +117,7 @@ ul {
   --ink: 255, 254, 250;
   --backdrop: 12, 12, 12;
   --paper: 38, 38, 38;
+  --hover-fill: rgba(18, 18, 18, 0.25);
   --hover-highlight: rgba(var(--highlight), 0.25);
   --hover-shadow: rgba(var(--backdrop), 0.55);
 }
