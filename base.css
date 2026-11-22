@@ -189,6 +189,19 @@ h2 {
   }
 }
 
+/* iPhone and iPad (WebKit on iOS, Safari and Chrome alike) draw the small
+   serif text a little higher against the baseline than other browsers, so
+   it's nudged down half a pixel there. Only iOS WebKit supports
+   -webkit-touch-callout */
+@supports (-webkit-touch-callout: none) {
+  .display-button,
+  .display-link,
+  .display-text {
+    position: relative;
+    top: 0.5px;
+  }
+}
+
 /* Utilities */
 .hidden {
   display: none;
