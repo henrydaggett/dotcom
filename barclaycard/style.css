@@ -566,7 +566,7 @@ section,
   }
 
   .case + .case {
-    margin-top: calc(3 * var(--baseline));
+    margin-top: var(--baseline);
   }
 
   /* Just the note's first line, above the first card: its baseline three
