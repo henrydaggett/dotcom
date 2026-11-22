@@ -282,16 +282,18 @@ h2.slide-title {
   letter-spacing: -0.04em;
 }
 
-/* Text: its first baseline two baselines under the rule, a blank line
-   between paragraphs. It takes any spare height, keeping the arrows at
+/* Text: its first baseline two baselines under the rule, a gap between
+   paragraphs. It takes any spare height, keeping the arrows at
    the foot */
 .slide-text {
   flex-grow: 1;
   padding-block: 5.5px;
 }
 
+/* Paragraphs a text line apart, less a baseline: 12px on desktops, 16px
+   on phones */
 .slide-text > * + * {
-  margin-top: 24px;
+  margin-top: calc(24px - var(--baseline));
 }
 
 .slide-text a {
