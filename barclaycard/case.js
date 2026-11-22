@@ -33,8 +33,10 @@ function show(index) {
     arrow.setAttribute("aria-disabled", current === last);
   }
 
-  // Start the new slide's text at the top
-  slides[current].querySelector(".slide-text")?.scrollTo(0, 0);
+  // The arrows at the foot of the new slide's panel, which starts at the top
+  const panel = slides[current].querySelector(".slide-panel");
+  panel.append(document.querySelector(".slide-step-foot"));
+  panel.scrollTo(0, 0);
 
   const hash = current === 0 ? "" : `#${current + 1}`;
   if (location.hash !== hash) {

@@ -52,7 +52,6 @@
   justify-self: start;
   display: flex;
   align-items: center;
-  gap: 7px;
   height: calc(3 * var(--baseline));
   /* Puts the count's baseline on the back link's */
   padding-top: 1px;
@@ -77,13 +76,15 @@
 
 /* Dots: one per slide, filled up to the current one. Each button is a
    little wider than its circle so the pointer never falls between them.
-   The padding and margin put the first circle on the column's edge */
+   The group's hover shape is the size of the display buttons': 38px tall
+   and 12px past the first and last circles. The margin puts the first
+   circle on the column's edge */
 .slide-dots {
   display: flex;
   position: relative;
   isolation: isolate;
-  padding-inline: 6px;
-  margin-left: -8px;
+  padding-inline: 10px;
+  margin-left: -12px;
   border-radius: 32px;
 }
 
@@ -91,7 +92,7 @@
   display: grid;
   place-items: center;
   width: 16px;
-  height: 28px;
+  height: 38px;
   padding: 0;
   border: 0;
   background: none;
@@ -130,19 +131,20 @@
   outline-offset: 2px;
 }
 
-/* Arrows and the count. The arrows' hover shapes are their own */
+/* Arrows and the count. Each arrow has its own hover shape, the size of
+   the display buttons': 38px tall and 12px either side of the arrow */
 .slide-step {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 1px;
   line-height: 24px;
 }
 
 .arrow {
   display: grid;
   place-items: center;
-  width: 29px;
-  height: 28px;
+  width: 37px;
+  height: 38px;
   padding: 0;
   border: 0;
   border-radius: 32px;
@@ -205,12 +207,35 @@
 .slide {
   grid-column: 1 / -1;
   grid-row: 2;
-  grid-template-rows: auto minmax(0, 1fr) calc(3 * var(--baseline));
+  grid-template-rows: minmax(0, 1fr);
   min-height: 0;
 }
 
 .slide[hidden] {
   display: none;
+}
+
+/* The panel: the 1st column's title, text and arrows. When they're longer
+   than the page they scroll together, with a thin scrollbar in the gutter.
+   The panel reaches 12px past the column either side, so the hover shapes
+   aren't cut off, and 13.5px below the page's last baseline, so the
+   arrows' count sits on it. With short text the arrows stay at the foot */
+.slide-panel {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+  padding-inline: 12px;
+  margin-inline: -12px;
+  margin-bottom: -13.5px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--ink), 0.25) transparent;
+}
+
+.slide-panel > * {
+  flex-shrink: 0;
 }
 
 /* Titles, with a rule under them. The first slide's is the size of the
@@ -219,8 +244,6 @@
    down. The others have capitals three baselines tall and the rule nine
    baselines down. Alte Haas's capitals are 0.714 of the type size */
 .slide-title {
-  grid-column: 1;
-  grid-row: 1;
   font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
   font-weight: 400;
   line-height: 1;
@@ -245,18 +268,11 @@ h2.slide-title {
 }
 
 /* Text: its first baseline two baselines under the rule, a blank line
-   between paragraphs. When it's longer than the column it scrolls there,
-   with a thin scrollbar in the gutter */
+   between paragraphs. It takes any spare height, keeping the arrows at
+   the foot */
 .slide-text {
-  grid-column: 1;
-  grid-row: 2;
-  min-height: 0;
-  overflow-y: auto;
+  flex-grow: 1;
   padding-block: 5.5px;
-  padding-right: 12px;
-  margin-right: -12px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(var(--ink), 0.25) transparent;
 }
 
 .slide-text > * + * {
@@ -273,9 +289,9 @@ h2.slide-title {
   text-transform: uppercase;
 }
 
-/* Fades where the text runs out of sight: at the foot while there's more
+/* Fades where the panel runs out of sight: at the foot while there's more
    below, and at the top once it has scrolled. They follow the scroll
-   position; text that fits has no scroll timeline, so no fade */
+   position; a panel that fits has no scroll timeline, so no fade */
 @property --fade-top {
   syntax: "<length>";
   inherits: false;
@@ -307,7 +323,7 @@ h2.slide-title {
 }
 
 @supports (animation-timeline: scroll()) {
-  .slide-text {
+  .slide-panel {
     -webkit-mask-image: linear-gradient(
       transparent,
       #000 var(--fade-top),
@@ -359,15 +375,17 @@ h2.slide-title {
   border: 1px solid rgba(var(--ink), 0.15);
 }
 
-/* The arrows again, at the foot of the 1st column, the count's baseline on
-   the page's last baseline */
+/* The arrows again, at the foot of the panel: the count's baseline on the
+   page's last baseline, or four baselines below the text's last when
+   it's long. case.js moves them into the current slide's panel */
 .slide-step-foot {
-  grid-column: 1;
-  grid-row: 2;
-  align-self: end;
-  justify-self: start;
-  margin-left: -8px;
-  margin-bottom: -8.5px;
+  align-self: flex-start;
+  margin-top: 11.5px;
+  margin-left: -12px;
+}
+
+.page > .slide-step-foot {
+  display: none;
 }
 
 /* 3 columns: media no wider than the two beside the text */
@@ -386,7 +404,7 @@ h2.slide-title {
   .page.slideshow {
     height: auto;
     min-height: calc(100dvh - 48px);
-    grid-template-rows: repeat(4, auto) 1fr;
+    grid-template-rows: repeat(3, auto) 1fr;
   }
 
   /* The bar's parts take their own rows in the page */
@@ -408,39 +426,51 @@ h2.slide-title {
     padding-top: 0;
     /* The count's baseline a display line below Back's, and the title's
        capitals four baselines below that */
-    margin-block: 1.5px 7.5px;
+    margin-block: -3.5px 2.5px;
   }
 
   .slide-nav .slide-step {
-    margin-right: -8px;
+    margin-right: -12px;
   }
 
+  /* A slide's title, text, media, then the arrows. The panel's parts take
+     their own rows in the slide */
   .slide {
     grid-row: 3;
     grid-template-rows: none;
   }
 
+  .slide-panel {
+    display: contents;
+  }
+
   .slide-title,
   .slide-text,
-  .slide-media {
+  .slide-media,
+  .slide-step-foot {
     grid-column: 1;
-    grid-row: auto;
+  }
+
+  .slide-title {
+    grid-row: 1;
+  }
+
+  .slide-text {
+    grid-row: 2;
+  }
+
+  .slide-media {
+    grid-row: 3;
   }
 
   .slide h2.slide-title {
     padding-top: 11px;
   }
 
-  /* All the text shows; no scrolling or fades. It ends two baselines
+  /* All the text shows, with no scrolling or fades. It ends two baselines
      below its last baseline, or the rule's, if it's empty */
   .slide-text {
-    overflow: visible;
     padding-bottom: 9.5px;
-    padding-right: 0;
-    margin-right: 0;
-    -webkit-mask-image: none;
-    mask-image: none;
-    animation: none;
   }
 
   /* Media four baselines below the text's last baseline */
@@ -457,23 +487,23 @@ h2.slide-title {
     max-height: none;
   }
 
-  /* The arrows' count four baselines below the media */
+  /* The arrows' count four baselines below the media, or the text */
   .slide-step-foot {
     grid-row: 4;
-    align-self: start;
-    margin-block: 12.5px 0;
+    justify-self: start;
+    margin-top: 7.5px;
   }
 
   /* The controls' first baseline six baselines below the count, and the
      last three above the bottom of the page */
   .case-bar .display-container {
     grid-column: 1;
-    grid-row: 5;
+    grid-row: 4;
     justify-self: start;
     align-self: end;
     flex-direction: column;
     align-items: flex-start;
-    margin-block: 18.5px -19px;
+    margin-block: 13.5px -19px;
   }
 
   .case-bar .display-button,
