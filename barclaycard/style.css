@@ -319,9 +319,14 @@ section,
     grid-column: 1;
     grid-row: 2;
     align-self: start;
-    /* Three 24px lines ending on the letters' baseline, nine baselines
-       below the top of their capitals */
-    margin-top: 78.5px;
+    /* The note fills down to the letters' baseline, twelve baselines below
+       the card's top, plus the 6.5px of line box under its last baseline,
+       so its last line sits on that baseline however many lines it wraps
+       to */
+    height: calc(12 * var(--baseline) + 6.5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }
 
