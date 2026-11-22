@@ -368,7 +368,8 @@ h2.slide-title {
     timeline-scope: --panel;
   }
 
-  /* A down arrow at the foot of the panel, on the page's last baseline,
+  /* A down arrow at the right of the panel's foot, on the page's last
+     baseline,
      while there's more text below and it hasn't been scrolled. It fades
      as scrolling starts; a panel that fits has no timeline, so no arrow.
      It's only a hint, so it ignores the pointer */
@@ -377,7 +378,7 @@ h2.slide-title {
     grid-column: 1;
     grid-row: 1;
     align-self: end;
-    justify-self: start;
+    justify-self: end;
     width: 13px;
     height: 13px;
     margin-bottom: -1px;
