@@ -448,9 +448,14 @@ section,
     grid-column: 3;
     justify-self: end;
     text-align: right;
-    /* When it wraps, its lines are 24px apart; the padding keeps its last
-       baseline level with the other two and its height a whole number of
-       baselines */
+  }
+}
+
+/* On desktops the typesetting credit's lines are 24px apart when it wraps.
+   The padding keeps its first and last baselines a display line from its
+   neighbours', and its height a whole number of baselines */
+@media (width >= 800px) {
+  .page-footer > :nth-child(2) {
     line-height: 24px;
     padding-block: 6px;
   }
