@@ -1,0 +1,502 @@
+/* Case study pages: a slideshow at one address. Loads after style.css.
+   The page is as tall as the window: a top bar, then one slide at a time
+   with its title and text in the 1st column and media beside them */
+
+.page.slideshow {
+  grid-template-rows: calc(3 * var(--baseline)) minmax(0, 1fr);
+  height: calc(100dvh - 48px);
+  /* On short windows the page grows and scrolls instead */
+  min-height: calc(40 * var(--baseline));
+}
+
+@supports (height: round(down, 1px, 1px)) {
+  .page.slideshow {
+    height: var(--page-height);
+  }
+}
+
+/* Top bar: one display line, its baselines on the 5th grid line as the
+   portfolio's Light / Dark is */
+.case-bar {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: start;
+}
+
+/* Back, with its arrow in front instead of the link arrow after */
+.back-link {
+  grid-column: 1;
+  justify-self: start;
+  margin-top: 1px;
+  isolation: isolate;
+}
+
+.back-link::after {
+  display: none;
+}
+
+.back-icon {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-right: 8px;
+  background-color: currentColor;
+  -webkit-mask: url(/barclaycard/icons/arrow-back.svg) no-repeat center / contain;
+  mask: url(/barclaycard/icons/arrow-back.svg) no-repeat center / contain;
+}
+
+/* The dots and arrows start in the 2nd column and may run into the next */
+.slide-nav {
+  grid-column: 2 / -2;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: calc(3 * var(--baseline));
+  /* Puts the count's baseline on the back link's */
+  padding-top: 1px;
+}
+
+/* The page controls side by side at the right of the last column, their
+   hover shapes touching and the last one reaching past the edge */
+.case-bar .display-container {
+  grid-column: -2;
+  justify-self: end;
+  flex-direction: row;
+  margin-top: 1px;
+}
+
+.case-bar .display-button {
+  margin-left: 0;
+}
+
+.case-bar .display-button:last-child {
+  margin-right: -12px;
+}
+
+/* Dots: one per slide, filled up to the current one. Each button is a
+   little wider than its circle so the pointer never falls between them.
+   The padding and margin put the first circle on the column's edge */
+.slide-dots {
+  display: flex;
+  position: relative;
+  isolation: isolate;
+  padding-inline: 6px;
+  margin-left: -8px;
+  border-radius: 32px;
+}
+
+.slide-dots button {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: currentColor;
+  cursor: pointer;
+}
+
+.slide-dots button::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.slide-dots [aria-current]::after,
+.slide-dots button:has(~ [aria-current])::after {
+  background-color: currentColor;
+}
+
+/* Hovering a dot fills it and those before it instead */
+.slide-dots:has(button:hover) button::after {
+  background-color: transparent;
+}
+
+.slide-dots:has(button:hover) button:is(:hover, :has(~ button:hover))::after {
+  background-color: currentColor;
+}
+
+.slide-dots button:focus-visible {
+  outline: unset;
+}
+
+.slide-dots button:focus-visible::after {
+  outline: 1px solid rgb(var(--ink));
+  outline-offset: 2px;
+}
+
+/* Arrows and the count. The arrows' hover shapes are their own */
+.slide-step {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 24px;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 32px;
+  background: none;
+  color: currentColor;
+  cursor: pointer;
+}
+
+.arrow::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.arrow-prev {
+  --icon: url(/barclaycard/icons/arrow-back.svg);
+}
+
+.arrow-next {
+  --icon: url(/barclaycard/icons/arrow-forward.svg);
+}
+
+/* At the first or last slide the arrow stays, but does nothing */
+.arrow[aria-disabled="true"] {
+  cursor: default;
+}
+
+.arrow:focus-visible,
+.slide-dots:focus-visible {
+  outline: unset;
+}
+
+.slide-dots:has(button:hover)::before,
+.slide-dots:has(button:focus-visible)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  z-index: -1;
+}
+
+.slide-dots:has(button:hover)::before,
+.slide-dots:has(button:focus-visible)::before,
+.arrow:not([aria-disabled="true"]):hover,
+.arrow:focus-visible {
+  background-color: var(--hover-fill);
+  box-shadow:
+    inset -1px -1px 1px 0 var(--hover-highlight),
+    inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+.arrow:focus-visible {
+  outline: 1px solid rgb(var(--ink));
+}
+
+/* Slides. One shows at a time; case.js hides the others */
+.slide {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  grid-template-rows: auto minmax(0, 1fr) calc(3 * var(--baseline));
+  min-height: 0;
+}
+
+.slide[hidden] {
+  display: none;
+}
+
+/* Titles, with a rule under them. The first slide's is the size of the
+   portfolio's case study letters: capitals nine baselines tall, starting
+   two baselines down, level with the media, and the rule 16 baselines
+   down. The others have capitals three baselines tall and the rule nine
+   baselines down. Alte Haas's capitals are 0.714 of the type size */
+.slide-title {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  border-bottom: 1px solid rgb(var(--ink));
+  /* Optical alignment of the first letter, set per page */
+  text-indent: var(--indent, 0);
+}
+
+h1.slide-title {
+  height: calc(16 * var(--baseline) + 1px);
+  padding-top: 0.5px;
+  font-size: calc(9 * var(--baseline) / 0.714);
+  letter-spacing: -0.07em;
+  white-space: nowrap;
+}
+
+h2.slide-title {
+  height: calc(9 * var(--baseline) + 1px);
+  padding-top: 16.5px;
+  font-size: calc(3 * var(--baseline) / 0.714);
+  letter-spacing: -0.04em;
+}
+
+/* Text: its first baseline two baselines under the rule, a blank line
+   between paragraphs. When it's longer than the column it scrolls there,
+   with a thin scrollbar in the gutter */
+.slide-text {
+  grid-column: 1;
+  grid-row: 2;
+  min-height: 0;
+  overflow-y: auto;
+  padding-block: 5.5px;
+  padding-right: 12px;
+  margin-right: -12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--ink), 0.25) transparent;
+}
+
+.slide-text > * + * {
+  margin-top: 24px;
+}
+
+.slide-text a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.label {
+  text-transform: uppercase;
+}
+
+/* Fades where the text runs out of sight: at the foot while there's more
+   below, and at the top once it has scrolled. They follow the scroll
+   position; text that fits has no scroll timeline, so no fade */
+@property --fade-top {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --fade-bottom {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@keyframes fade-top {
+  from {
+    --fade-top: 0px;
+  }
+  to {
+    --fade-top: 24px;
+  }
+}
+
+@keyframes fade-bottom {
+  from {
+    --fade-bottom: 24px;
+  }
+  to {
+    --fade-bottom: 0px;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .slide-text {
+    -webkit-mask-image: linear-gradient(
+      transparent,
+      #000 var(--fade-top),
+      #000 calc(100% - var(--fade-bottom)),
+      transparent
+    );
+    mask-image: linear-gradient(
+      transparent,
+      #000 var(--fade-top),
+      #000 calc(100% - var(--fade-bottom)),
+      transparent
+    );
+    animation:
+      fade-top linear both,
+      fade-bottom linear both;
+    animation-timeline: scroll(self), scroll(self);
+    animation-range:
+      0 24px,
+      calc(100% - 24px) 100%;
+  }
+}
+
+/* Media: an image, GIF, video or frame from the 2nd column, 1, 2 or 3
+   columns wide, its top level with the title's capitals. It keeps its
+   proportions and stops at the page's last baseline. --media-height sets a
+   height */
+.slide-media {
+  grid-column: 2 / span 3;
+  grid-row: 1 / -1;
+  min-height: 0;
+  height: var(--media-height, auto);
+  margin-top: calc(2 * var(--baseline));
+}
+
+.slide-media.span-2 {
+  grid-column: 2 / span 2;
+}
+
+.slide-media.span-1 {
+  grid-column: 2;
+}
+
+.slide-media > * {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid rgba(var(--ink), 0.15);
+}
+
+/* The arrows again, at the foot of the 1st column, the count's baseline on
+   the page's last baseline */
+.slide-step-foot {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+  justify-self: start;
+  margin-left: -8px;
+  margin-bottom: -8.5px;
+}
+
+/* 3 columns: media no wider than the two beside the text */
+@media (800px <= width < 1100px) {
+  .slide-media.span-3 {
+    grid-column: 2 / -1;
+  }
+}
+
+/* Phones: one column on the 8px grid, and the page scrolls as usual. Back,
+   then the dots and arrows, the slide's title, text and media, the arrows
+   again, then the page controls */
+@media (width < 800px) {
+  /* At least as tall as the window, with any spare height above the
+     controls so they stay at the foot */
+  .page.slideshow {
+    height: auto;
+    min-height: calc(100dvh - 48px);
+    grid-template-rows: repeat(4, auto) 1fr;
+  }
+
+  /* The bar's parts take their own rows in the page */
+  .case-bar {
+    display: contents;
+  }
+
+  .back-link {
+    grid-row: 1;
+    margin-top: -13px;
+  }
+
+  .slide-nav {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: stretch;
+    justify-content: space-between;
+    height: auto;
+    padding-top: 0;
+    /* The count's baseline a display line below Back's, and the title's
+       capitals four baselines below that */
+    margin-block: 1.5px 7.5px;
+  }
+
+  .slide-nav .slide-step {
+    margin-right: -8px;
+  }
+
+  .slide {
+    grid-row: 3;
+    grid-template-rows: none;
+  }
+
+  .slide-title,
+  .slide-text,
+  .slide-media {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .slide h2.slide-title {
+    padding-top: 11px;
+  }
+
+  /* All the text shows; no scrolling or fades. It ends two baselines
+     below its last baseline, or the rule's, if it's empty */
+  .slide-text {
+    overflow: visible;
+    padding-bottom: 9.5px;
+    padding-right: 0;
+    margin-right: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+    animation: none;
+  }
+
+  /* Media four baselines below the text's last baseline */
+  .slide-media {
+    height: auto;
+    margin-top: 16px;
+  }
+
+  .slide-media:empty {
+    display: none;
+  }
+
+  .slide-media > * {
+    max-height: none;
+  }
+
+  /* The arrows' count four baselines below the media */
+  .slide-step-foot {
+    grid-row: 4;
+    align-self: start;
+    margin-block: 12.5px 0;
+  }
+
+  /* The controls' first baseline six baselines below the count, and the
+     last three above the bottom of the page */
+  .case-bar .display-container {
+    grid-column: 1;
+    grid-row: 5;
+    justify-self: start;
+    align-self: end;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-block: 18.5px -19px;
+  }
+
+  .case-bar .display-button,
+  .case-bar .display-button:last-child {
+    margin-left: -12px;
+    margin-right: 0;
+  }
+}
+
+/* Where supported, media on phones is padded down to the next baseline so
+   what follows stays on the grid */
+@supports (min-height: calc-size(fit-content, size)) {
+  @media (width < 800px) {
+    .slide-media {
+      min-height: calc-size(fit-content, round(up, size, var(--baseline)));
+    }
+  }
+}
+
+@supports (height: round(down, 1px, 1px)) {
+  @media (width < 800px) {
+    .page.slideshow {
+      min-height: var(--page-height);
+    }
+  }
+}

@@ -17,6 +17,7 @@
     <title>SG Design System - Henry Daggett</title>
     <link rel="stylesheet" href="/base.css" />
     <link rel="stylesheet" href="/barclaycard/style.css" />
+    <link rel="stylesheet" href="/barclaycard/case.css" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -35,15 +36,141 @@
       href="/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="/favicon/site.webmanifest" />
+    <script defer src="/barclaycard/case.js"></script>
   </head>
 
   <body>
-    <div class="grid-display"><div></div><div></div><div></div></div>
-    <main class="page">
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
+    <div class="grid-display"><div></div><div></div><div></div><div></div></div>
+    <main class="page slideshow">
+      <!-- Top bar: back to the portfolio, the slide navigator and the page
+           controls -->
+      <nav class="case-bar" aria-label="Case study">
+        <a href="/barclaycard/" class="display-link back-link"
+          ><span class="back-icon"></span>Back</a
+        >
+        <div class="slide-nav">
+          <!-- case.js adds a dot for each slide -->
+          <div class="slide-dots"></div>
+          <div class="slide-step">
+            <button class="arrow arrow-prev" aria-label="Previous slide"></button>
+            <span class="slide-count">1/8</span>
+            <button class="arrow arrow-next" aria-label="Next slide"></button>
+          </div>
+        </div>
+        <div class="display-container">
+          <button id="grid-button" class="display-button" onclick="toggleGrid()">
+            Show grids
+            <span class="grid-icon grid-active"></span>
+          </button>
+          <button
+            id="theme-button"
+            class="display-button"
+            onclick="changeTheme()"
+          >
+            Light / Dark
+            <span class="theme-icon"></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Slides: a title, text in the 1st column and media beside it,
+           1, 2 or 3 columns wide (span-1, span-2, span-3) -->
+      <section class="slide" aria-label="Context">
+        <!-- The S's side bearing pulled back so it meets the column line -->
+        <h1 class="slide-title" style="--indent: -0.048em">SG</h1>
+        <div class="slide-text">
+          <p class="label">Context</p>
+          <p>
+            Design Systems are a reflection of the companies that they are
+            built for. The SG Design System covers over 500 products, focusing
+            specifically on the SG Markets platform of financial applications.
+            It's used by around 1000 developers and multiple design teams
+            worldwide.
+          </p>
+          <p>
+            Use case-wise, the system needs to cover everything from marketing
+            pages to dense trading apps (see examples). It also covers all of
+            the wildly different technical setups that projects have.
+          </p>
+        </div>
+        <figure class="slide-media span-3">
+          <img
+            src="/barclaycard/sg/sgm-services.gif"
+            width="1920"
+            height="1080"
+            alt="A screen recording of SG Markets, Societe Generale's marketplace of business-to-business services"
+          />
+        </figure>
+      </section>
+
+      <section class="slide" aria-label="Generations" hidden>
+        <h2 class="slide-title">Generations</h2>
+        <div class="slide-text">
+          <p>
+            Over 12 years the system has been through several major
+            generations, each with their challenges. I joined SG to join in
+            the transition from v3 to v4. This was a major redesign and my
+            main role was building UI kits from scratch, first in Adobe XD and
+            then in Figma.
+          </p>
+          <p>
+            To justify the next evolution I leveraged business needs for more
+            complex components and colour issues (read about those here) to
+            have a more major overhaul. We built a whole new v5 of the system
+            and began the 2 year migration plan, with new advanced web
+            components and design patterns.
+          </p>
+          <p>
+            Today we're working on the 6th generation — a more complete
+            rebuild with AI at the core. Read more about that in 0/1
+            <a href="/barclaycard/01">here</a>.
+          </p>
+        </div>
+        <figure class="slide-media span-2"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide 3" hidden>
+        <h2 class="slide-title">Slide 3</h2>
+        <div class="slide-text"></div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide 4" hidden>
+        <h2 class="slide-title">Slide 4</h2>
+        <div class="slide-text"></div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide 5" hidden>
+        <h2 class="slide-title">Slide 5</h2>
+        <div class="slide-text"></div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide 6" hidden>
+        <h2 class="slide-title">Slide 6</h2>
+        <div class="slide-text"></div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide 7" hidden>
+        <h2 class="slide-title">Slide 7</h2>
+        <div class="slide-text"></div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide 8" hidden>
+        <h2 class="slide-title">Slide 8</h2>
+        <div class="slide-text"></div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <!-- The arrows again, at the foot of the text column -->
+      <div class="slide-step slide-step-foot">
+        <button class="arrow arrow-prev" aria-label="Previous slide"></button>
+        <span class="slide-count">1/8</span>
+        <button class="arrow arrow-next" aria-label="Next slide"></button>
+      </div>
     </main>
 
     <script defer src="/_vercel/insights/script.js"></script>
