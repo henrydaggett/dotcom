@@ -404,7 +404,7 @@ section,
 
 /* With 3 columns the cards take all three and the footer goes below them,
    spread across the columns as on the home page: the copyright, the source
-   link, then "Thank you!" at the far right */
+   link, then the typesetting credit at the far right */
 @media (800px <= width < 1100px) {
   .case:nth-of-type(1) {
     grid-column: 1;
@@ -439,14 +439,15 @@ section,
     grid-column: 1;
   }
 
-  .page-footer > :nth-child(2) {
+  .page-footer > :nth-child(1) {
     grid-column: 2;
     justify-self: start;
   }
 
-  .page-footer > :nth-child(1) {
+  .page-footer > :nth-child(2) {
     grid-column: 3;
     justify-self: end;
+    text-align: right;
   }
 }
 
