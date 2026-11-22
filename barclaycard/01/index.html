@@ -4,6 +4,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Restore the theme chosen on an earlier visit, before the page draws
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+      } catch {}
+    </script>
     <meta name="robots" content="noindex" />
     <title>0/1 - Henry Daggett</title>
     <link rel="stylesheet" href="/base.css" />
