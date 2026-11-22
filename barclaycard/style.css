@@ -451,6 +451,11 @@ section,
   }
 }
 
+/* The note under the greeting, used with 3 columns */
+.intro-note {
+  display: none;
+}
+
 /* With 3 columns the details span the first two columns, so their lines
    don't wrap, and the controls take the last one. The greeting moves below
    them, its capitals 48px below the details' last baseline */
@@ -462,6 +467,23 @@ section,
   .intro h1 {
     grid-column: 1 / -1;
     margin-block: 110.5px 9.5px;
+  }
+
+  /* The note spreads across the columns under the greeting, as the footer
+     does: the last item at the far right */
+  .intro-note {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    grid-template-columns: subgrid;
+    /* Baselines four below the greeting's, and the section a whole number
+       of baselines */
+    margin-block: 6.5px 5.5px;
+  }
+
+  .intro-note > :last-child {
+    justify-self: end;
+    text-align: right;
   }
 }
 
@@ -483,7 +505,7 @@ section,
     line-height: 32px;
   }
 
-  /* One column: the greeting, the details, then the controls */
+  /* One column: the details, the greeting, then the controls */
   .intro {
     align-content: start;
   }
@@ -492,7 +514,18 @@ section,
   .intro-meta,
   .intro .display-container {
     grid-column: 1;
-    grid-row: auto;
+  }
+
+  .intro-meta {
+    grid-row: 1;
+  }
+
+  .intro h1 {
+    grid-row: 2;
+  }
+
+  .intro .display-container {
+    grid-row: 3;
   }
 
   /* 50px type has 40px capitals, five baselines, here from the 3rd grid
@@ -500,20 +533,21 @@ section,
   .intro h1 {
     font-size: 50px;
     line-height: 48px;
-    margin-block: -6.5px 0;
+    margin-block: 23px 0;
   }
 
-  /* The details start 48px below the greeting's last baseline and the
-     controls 40px below the details', as the lists do on the home page */
+  /* The details' first baseline sits 40px down, the greeting's capitals
+     32px below their last baseline, and the controls 48px below the
+     greeting's last baseline */
   .intro-meta {
-    margin-top: 0;
-    padding-top: 17px;
+    margin-top: -13.5px;
+    padding-top: 0;
   }
 
   /* The bottom padding makes the section a whole number of baselines */
   .intro .display-container {
     margin-top: 0;
-    padding-block: 8.5px 21px;
+    padding-block: 17.5px 37px;
   }
 
   .grid-display > div:not(:first-child) {
@@ -564,10 +598,10 @@ section,
   .intro h1 {
     font-size: 40px;
     line-height: 40px;
-    margin-top: -7.5px;
+    margin-top: 22px;
   }
 
-  .intro-meta {
-    padding-top: 18px;
+  .intro .display-container {
+    padding-top: 18.5px;
   }
 }
