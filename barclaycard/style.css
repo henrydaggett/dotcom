@@ -554,7 +554,7 @@ section,
     display: none;
   }
 
-  /* One column: the cards stack, four baselines apart, then the footer */
+  /* One column: the cards stack, a baseline apart, then the footer */
   .cases {
     grid-template-rows: none;
   }
