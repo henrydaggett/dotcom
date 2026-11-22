@@ -58,8 +58,10 @@
           </div>
         </div>
         <div class="display-container">
+          <!-- Phones show the shorter labels -->
           <button id="grid-button" class="display-button" onclick="toggleGrid()">
-            Show grids
+            <span class="button-label wide">Show grids</span>
+            <span class="button-label narrow">Grids</span>
             <span class="grid-icon grid-active"></span>
           </button>
           <button
@@ -67,7 +69,8 @@
             class="display-button"
             onclick="changeTheme()"
           >
-            Light / Dark
+            <span class="button-label wide">Light / Dark</span>
+            <span class="button-label narrow">Theme</span>
             <span class="theme-icon"></span>
           </button>
         </div>

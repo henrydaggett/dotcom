@@ -74,6 +74,21 @@
   margin-right: -12px;
 }
 
+/* The controls' labels: the full ones, or the short ones on phones. Being
+   text, not icons, they undo the icon styles style.css gives the buttons'
+   spans */
+.display-button > .button-label {
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  -webkit-mask: none;
+  mask: none;
+}
+
+.button-label.narrow {
+  display: none;
+}
+
 /* Dots: one per slide, filled up to the current one. Each button is a
    little wider than its circle so the pointer never falls between them.
    The group's hover shape is the size of the display buttons': 38px tall
@@ -395,16 +410,24 @@ h2.slide-title {
   }
 }
 
-/* Phones: one column on the 8px grid, and the page scrolls as usual. Back,
-   then the dots and arrows, the slide's title, text and media, the arrows
-   again, then the page controls */
+/* Phones: one column on the 8px grid, and the page scrolls as usual. Back
+   with the page controls on the same line, then the dots and arrows, the
+   slide's title, text and media, and the arrows again */
 @media (width < 800px) {
-  /* At least as tall as the window, with any spare height above the
-     controls so they stay at the foot */
+  /* At least as tall as the window, with any spare height given to the
+     slide, above its arrows, so they stay at the foot */
   .page.slideshow {
     height: auto;
     min-height: calc(100dvh - 48px);
-    grid-template-rows: repeat(3, auto) 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+
+  .button-label.wide {
+    display: none;
+  }
+
+  .button-label.narrow {
+    display: inline;
   }
 
   /* The bar's parts take their own rows in the page */
@@ -437,7 +460,7 @@ h2.slide-title {
      their own rows in the slide */
   .slide {
     grid-row: 3;
-    grid-template-rows: none;
+    grid-template-rows: repeat(3, auto) 1fr;
   }
 
   .slide-panel {
@@ -487,29 +510,21 @@ h2.slide-title {
     max-height: none;
   }
 
-  /* The arrows' count four baselines below the media, or the text */
+  /* The arrows' count at least four baselines below the media, or the
+     text, and three above the bottom of the page */
   .slide-step-foot {
     grid-row: 4;
     justify-self: start;
-    margin-top: 7.5px;
+    align-self: end;
+    margin-block: 7.5px -21.5px;
   }
 
-  /* The controls' first baseline six baselines below the count, and the
-     last three above the bottom of the page */
+  /* The controls at the right of Back's line, sharing its baseline */
   .case-bar .display-container {
     grid-column: 1;
-    grid-row: 4;
-    justify-self: start;
-    align-self: end;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-block: 13.5px -19px;
-  }
-
-  .case-bar .display-button,
-  .case-bar .display-button:last-child {
-    margin-left: -12px;
-    margin-right: 0;
+    grid-row: 1;
+    justify-self: end;
+    margin-top: -13px;
   }
 }
 
