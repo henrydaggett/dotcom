@@ -4,6 +4,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Restore the theme chosen on an earlier visit, before the page draws
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+      } catch {}
+    </script>
     <title>Henry Daggett</title>
     <link rel="stylesheet" href="/base.css" />
     <link rel="stylesheet" href="/style.css" />
@@ -324,6 +333,10 @@
         let theme =
           htmlElement.getAttribute("data-theme") === "light" ? "dark" : "light";
         htmlElement.setAttribute("data-theme", theme);
+        // Remember it for later visits and the other pages
+        try {
+          localStorage.setItem("theme", theme);
+        } catch {}
       }
       // Keyboard shortcuts
       document.addEventListener("keydown", (event) => {
