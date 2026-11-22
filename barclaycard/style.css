@@ -306,8 +306,8 @@ section,
   margin-bottom: -6.5px;
 }
 
-/* A note in the 1st column beside the cards, its capitals level with the
-   letters' and its baselines on the grid. Only the 4-column layout has
+/* A note in the 1st column beside the cards, its last line on the large
+   letters' baseline. Only the 4-column layout has
    room for it */
 .cases-note {
   display: none;
@@ -319,8 +319,9 @@ section,
     grid-column: 1;
     grid-row: 2;
     align-self: start;
-    /* First baseline one baseline below the top of the letters' capitals */
-    margin-top: 30.5px;
+    /* Three 24px lines ending on the letters' baseline, nine baselines
+       below the top of their capitals */
+    margin-top: 78.5px;
   }
 }
 
