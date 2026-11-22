@@ -524,8 +524,17 @@ section,
     grid-row: 2;
   }
 
-  .intro .display-container {
+  /* The case study note follows the greeting, then the controls */
+  .intro-note {
+    display: block;
+    grid-column: 1;
     grid-row: 3;
+    line-height: 32px;
+    margin-top: 17px;
+  }
+
+  .intro .display-container {
+    grid-row: 4;
   }
 
   /* 50px type has 40px capitals, five baselines, here from the 3rd grid
@@ -537,8 +546,8 @@ section,
   }
 
   /* The details' first baseline sits 40px down, the greeting's capitals
-     32px below their last baseline, and the controls 48px below the
-     greeting's last baseline */
+     32px below their last baseline, the note 48px below the greeting's
+     last baseline and the controls 40px below the note's */
   .intro-meta {
     margin-top: -13.5px;
     padding-top: 0;
@@ -547,7 +556,7 @@ section,
   /* The bottom padding makes the section a whole number of baselines */
   .intro .display-container {
     margin-top: 0;
-    padding-block: 17.5px 37px;
+    padding-block: 8.5px 37px;
   }
 
   .grid-display > div:not(:first-child) {
@@ -601,7 +610,7 @@ section,
     margin-top: 22px;
   }
 
-  .intro .display-container {
-    padding-top: 18.5px;
+  .intro-note {
+    margin-top: 18px;
   }
 }
