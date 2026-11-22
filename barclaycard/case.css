@@ -360,6 +360,45 @@ h2.slide-title {
     animation-range:
       0 24px,
       calc(100% - 24px) 100%;
+    /* Named, so the slide's down arrow can follow it too */
+    scroll-timeline-name: --panel;
+  }
+
+  .slide {
+    timeline-scope: --panel;
+  }
+
+  /* A down arrow at the foot of the panel, on the page's last baseline,
+     while there's more text below and it hasn't been scrolled. It fades
+     as scrolling starts; a panel that fits has no timeline, so no arrow.
+     It's only a hint, so it ignores the pointer */
+  .slide::after {
+    content: "";
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    justify-self: start;
+    width: 13px;
+    height: 13px;
+    margin-bottom: -1px;
+    background-color: currentColor;
+    -webkit-mask: url(/barclaycard/icons/arrow-down.svg) no-repeat center /
+      contain;
+    mask: url(/barclaycard/icons/arrow-down.svg) no-repeat center / contain;
+    pointer-events: none;
+    opacity: 0;
+    animation: more-below linear both;
+    animation-timeline: --panel;
+    animation-range: 0 12px;
+  }
+}
+
+@keyframes more-below {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
@@ -504,7 +543,8 @@ h2.slide-title {
     margin-top: 16px;
   }
 
-  .slide-media:empty {
+  .slide-media:empty,
+  .slide::after {
     display: none;
   }
 
