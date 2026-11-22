@@ -151,8 +151,17 @@ h2 {
   text-wrap: balance;
 }
 
+/* The page's paper is the body. It's a layer of its own, so the grid
+   overlay can sit on the paper but behind the content */
+body {
+  background-color: rgb(var(--paper));
+  border-radius: 4px;
+  isolation: isolate;
+}
+
 /* Grid overlay: baseline lines plus one child per column. It covers the
-   nearest positioned ancestor, normally the page's body */
+   nearest positioned ancestor, normally the page's body, behind the
+   content */
 .grid-display {
   display: grid;
   grid-template-columns: var(--columns);
@@ -160,7 +169,7 @@ h2 {
   padding-inline: var(--margin);
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: -1;
   pointer-events: none;
   background-image: repeating-linear-gradient(
     rgba(var(--ink), 0.1) 0 1px,

@@ -191,8 +191,6 @@ h2 {
   column-gap: var(--gutter);
   padding-inline: var(--margin);
   padding-block: var(--margin);
-  background-color: rgb(var(--paper));
-  border-radius: 4px;
 }
 
 /* Blocks are at least one module tall and grow with their content */
