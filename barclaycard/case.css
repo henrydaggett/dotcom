@@ -151,7 +151,7 @@
 .slide-step {
   display: flex;
   align-items: center;
-  gap: 1px;
+  gap: 5px;
   line-height: 24px;
 }
 
@@ -543,5 +543,17 @@ h2.slide-title {
     .page.slideshow {
       min-height: var(--page-height);
     }
+  }
+}
+
+/* The narrowest phones: the dots a pixel closer, so they and the arrows
+   fit the column */
+@media (width < 340px) {
+  .slide-dots {
+    padding-inline: 10.5px;
+  }
+
+  .slide-dots button {
+    width: 15px;
   }
 }
