@@ -271,7 +271,7 @@ section,
   content: "";
   position: absolute;
   inset: calc(2 * var(--baseline)) -12px calc(-1 * var(--baseline));
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 .case-link::before {
