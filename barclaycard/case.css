@@ -431,6 +431,23 @@ h2.slide-title {
   border: 1px solid rgba(var(--ink), 0.15);
 }
 
+/* On desktops media fills its columns, however small the file, unless
+   that would take it past the page's last baseline; then it's as tall as
+   fits. --ratio, the media's width over its height, set beside it, lets
+   the figure work that out */
+@media (width >= 800px) {
+  .slide-media {
+    container-type: size;
+  }
+
+  .slide-media > * {
+    /* The 2px are the border's, top and bottom or either side */
+    width: min(100cqw, (100cqh - 2px) * var(--ratio, 16 / 9) + 2px);
+    max-width: none;
+    max-height: none;
+  }
+}
+
 /* The arrows again, at the foot of the panel: the count's baseline on the
    page's last baseline, or four baselines below the text's last when
    it's long. case.js moves them into the current slide's panel */
