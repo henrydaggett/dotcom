@@ -33,6 +33,10 @@ function show(index) {
     arrow.setAttribute("aria-disabled", current === last);
   }
 
+  // The next case study, on the last slide
+  const nextCase = document.querySelector(".next-case");
+  if (nextCase) nextCase.hidden = current !== last;
+
   // The arrows at the foot of the new slide's panel, which starts at the top
   const panel = slides[current].querySelector(".slide-panel");
   panel.append(document.querySelector(".slide-step-foot"));

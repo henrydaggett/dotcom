@@ -435,9 +435,31 @@ h2.slide-title {
    page's last baseline, or four baselines below the text's last when
    it's long. case.js moves them into the current slide's panel */
 .slide-step-foot {
-  align-self: flex-start;
   margin-top: 11.5px;
   margin-left: -12px;
+}
+
+/* On the last slide, the next case study at the right of the arrows'
+   line, with an arrow after it. Its hover shape reaches past the column
+   into the panel's padding */
+.next-case {
+  margin-left: auto;
+  isolation: isolate;
+  /* Centred in the line, this puts its baseline on the count's */
+  margin-top: 1px;
+  white-space: nowrap;
+}
+
+.next-case[hidden] {
+  display: none;
+}
+
+.next-case::after {
+  width: 13px;
+  height: 13px;
+  margin-left: 12px;
+  -webkit-mask-image: url(/barclaycard/icons/arrow-forward.svg);
+  mask-image: url(/barclaycard/icons/arrow-forward.svg);
 }
 
 .page > .slide-step-foot {
@@ -556,7 +578,6 @@ h2.slide-title {
      text, and three above the bottom of the page */
   .slide-step-foot {
     grid-row: 4;
-    justify-self: start;
     align-self: end;
     margin-block: 7.5px -21.5px;
   }
