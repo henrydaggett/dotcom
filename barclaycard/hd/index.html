@@ -22,6 +22,7 @@
     <title>About me - Henry Daggett</title>
     <link rel="stylesheet" href="/base.css" />
     <link rel="stylesheet" href="/barclaycard/style.css" />
+    <link rel="stylesheet" href="/barclaycard/case.css" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -40,15 +41,91 @@
       href="/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="/favicon/site.webmanifest" />
+    <script defer src="/barclaycard/case.js"></script>
   </head>
 
   <body>
     <div class="grid-display"><div></div><div></div><div></div><div></div></div>
-    <main class="page">
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
+    <main class="page slideshow">
+      <!-- Top bar: back to the portfolio, the slide navigator and the page
+           controls -->
+      <nav class="case-bar" aria-label="Case study">
+        <a href="/barclaycard/" class="display-link back-link"
+          ><span class="back-icon"></span>Back</a
+        >
+        <div class="slide-nav">
+          <!-- case.js adds a dot for each slide -->
+          <div class="slide-dots"></div>
+          <div class="slide-step">
+            <button class="arrow arrow-prev" aria-label="Previous slide"></button>
+            <span class="slide-count">1/4</span>
+            <button class="arrow arrow-next" aria-label="Next slide"></button>
+          </div>
+        </div>
+        <div class="display-container">
+          <!-- Phones show the shorter labels -->
+          <button id="grid-button" class="display-button" onclick="toggleGrid()">
+            <span class="button-label wide">Show grids</span>
+            <span class="button-label narrow">Grids</span>
+            <span class="grid-icon"></span>
+          </button>
+          <button
+            id="theme-button"
+            class="display-button"
+            onclick="changeTheme()"
+          >
+            <span class="button-label wide">Light / Dark</span>
+            <span class="button-label narrow">Theme</span>
+            <span class="theme-icon"></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Slides: a panel in the 1st column with the title and text, which
+           scrolls when it's long, and media beside it, 1, 2 or 3 columns
+           wide (span-1, span-2, span-3) -->
+      <section class="slide" aria-label="Slide one">
+        <div class="slide-panel">
+          <h1 class="slide-title" style="--indent: -0.078em">HD</h1>
+          <div class="slide-text"></div>
+        </div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide two" hidden>
+        <div class="slide-panel">
+          <h2 class="slide-title">Slide two</h2>
+          <div class="slide-text"></div>
+        </div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide three" hidden>
+        <div class="slide-panel">
+          <h2 class="slide-title">Slide three</h2>
+          <div class="slide-text"></div>
+        </div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <section class="slide" aria-label="Slide four" hidden>
+        <div class="slide-panel">
+          <h2 class="slide-title">Slide four</h2>
+          <div class="slide-text"></div>
+        </div>
+        <figure class="slide-media span-3"></figure>
+      </section>
+
+      <!-- The arrows again, and on the last slide the next case study.
+           case.js moves them to the foot of the current slide's panel -->
+      <div class="slide-step slide-step-foot">
+        <button class="arrow arrow-prev" aria-label="Previous slide"></button>
+        <span class="slide-count">1/4</span>
+        <button class="arrow arrow-next" aria-label="Next slide"></button>
+        <a href="/barclaycard/sg" class="display-link next-case" hidden
+          >Next case study</a
+        >
+      </div>
     </main>
 
     <script defer src="/_vercel/insights/script.js"></script>
