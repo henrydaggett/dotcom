@@ -542,9 +542,9 @@ h2.slide-title {
 }
 
 /* The label's baseline two baselines under the rule; the large figure's
-   capitals (--caps tall) three baselines below that, and the next
-   figure's baseline seven below them. Alte Haas's capitals start 0.2176
-   of their height below the top of a line of this size */
+   capitals (--caps tall) two baselines below that, and the next figure's
+   baseline seven below them. Alte Haas's capitals start 0.2176 of their
+   height below the top of a line of this size */
 .kpi-lead {
   --caps: calc(9 * var(--baseline));
   /* Browsers round the font's metrics, which at 72px capitals leaves
@@ -559,10 +559,10 @@ h2.slide-title {
 .kpi-lead .kpi-number {
   font-size: calc(var(--caps) / 0.714);
   letter-spacing: -0.07em;
-  height: calc(6 * var(--baseline) + var(--caps) - 6.5px);
-  padding-top: calc(
-    3 * var(--baseline) - 6.5px - 0.2176 * var(--caps) + var(--nudge)
+  margin-top: calc(
+    2 * var(--baseline) - 6.5px - 0.2176 * var(--caps) + var(--nudge)
   );
+  height: calc(3 * var(--baseline) + 1.2176 * var(--caps) - var(--nudge));
 }
 
 /* A smaller % */
