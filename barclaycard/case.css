@@ -9,14 +9,21 @@
   min-height: calc(40 * var(--baseline));
 }
 
+/* On desktops everything sits a baseline higher than the page margin
+   would put it; the bottom keeps the full margin */
+@media (width >= 800px) {
+  .page.slideshow {
+    padding-top: calc(var(--margin) - var(--baseline));
+  }
+}
+
 @supports (height: round(down, 1px, 1px)) {
   .page.slideshow {
     height: var(--page-height);
   }
 }
 
-/* Top bar: one display line, its baselines on the 5th grid line as the
-   portfolio's Light / Dark is */
+/* Top bar: one display line, its baselines on the 4th grid line */
 .case-bar {
   grid-column: 1 / -1;
   display: grid;
