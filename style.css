@@ -30,6 +30,29 @@ h1 {
   margin-top: -7.5px;
 }
 
+/* "Daggett" is 3.11 times the type size wide. In columns too narrow for
+   it at 75px, the name steps down a little rather than breaking. Each
+   size's margin keeps both baselines where they are at 75px */
+@media (width >= 800px) {
+  .grid > div:first-child {
+    container-type: inline-size;
+  }
+
+  @container (width < 234px) {
+    h1 {
+      font-size: 71px;
+      margin-top: -6.5px;
+    }
+  }
+
+  @container (width < 221px) {
+    h1 {
+      font-size: 67px;
+      margin-top: -5.5px;
+    }
+  }
+}
+
 h2 {
   font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
   font-size: 16px;
