@@ -420,6 +420,17 @@ h2.slide-title {
   }
 }
 
+/* Phones: the fade under the sticky slide navigator appears as the page
+   starts to scroll */
+@keyframes slide-nav-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @supports (animation-timeline: scroll()) {
   @media (width >= 800px) {
     .slide {
@@ -875,6 +886,47 @@ h2.slide-title {
     /* The count's baseline a display line below Back's, and the title's
        capitals four baselines below that */
     margin-block: -3.5px 2.5px;
+    /* Stays at the top of the window as the page scrolls under it. The
+       dots' box is taller than the circles, so they keep about a frame's
+       width of space above them */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  /* A strip of paper behind the dots and arrows, across the page's width,
+     so what scrolls under them is hidden */
+  .slide-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0 calc(-1 * var(--gutter));
+    z-index: -1;
+    background-color: rgb(var(--paper));
+  }
+
+  /* Below the strip, the page fades out over two baselines */
+  .slide-nav::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: calc(-1 * var(--gutter));
+    right: calc(-1 * var(--gutter));
+    height: calc(2 * var(--baseline));
+    background-image: linear-gradient(
+      rgb(var(--paper)),
+      rgba(var(--paper), 0)
+    );
+    pointer-events: none;
+  }
+
+  /* Where supported, the fade only appears once the page has scrolled, so
+     at the top the title isn't faded */
+  @supports (animation-timeline: scroll()) {
+    .slide-nav::after {
+      animation: slide-nav-fade linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 calc(2 * var(--baseline));
+    }
   }
 
   .slide-nav .slide-step {
