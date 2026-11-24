@@ -542,6 +542,8 @@ h2.slide-title {
   font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
   line-height: 1;
   white-space: nowrap;
+  /* Optical alignment of the first digit, set per figure */
+  text-indent: var(--indent, 0);
 }
 
 /* The label's baseline two baselines under the rule; the large figure's
