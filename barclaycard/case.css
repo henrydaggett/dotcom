@@ -494,6 +494,102 @@ h2.slide-title {
   list-style: none;
 }
 
+/* Key figures in the media's place: a column of figures each, wrapping
+   to as many rows as needed, a rule across each row's top, the first
+   level with the title's rule. Each column opens with a label and a large
+   figure the size of the first slide's title, then smaller figures sized
+   like the timeline's years, each with its label below */
+.kpis {
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: calc(2 * var(--baseline));
+  margin-top: calc(9 * var(--baseline));
+  overflow-x: clip;
+}
+
+.kpi-group {
+  position: relative;
+  container-type: inline-size;
+}
+
+/* The rule runs on across the gutter; the figures cut it off after the
+   last column */
+.kpi-group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: calc(-1 * var(--gutter));
+  border-top: 1px solid rgb(var(--ink));
+}
+
+.kpi-number {
+  font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* The label's baseline two baselines under the rule; the large figure's
+   capitals (--caps tall) three baselines below that, and the next
+   figure's baseline seven below them. Alte Haas's capitals start 0.2176
+   of their height below the top of a line of this size */
+.kpi-lead {
+  --caps: calc(9 * var(--baseline));
+  /* Browsers round the font's metrics, which at 72px capitals leaves
+     them 0.17px high */
+  --nudge: 0px;
+}
+
+.kpi-lead .kpi-label {
+  margin-top: calc(2 * var(--baseline) - 17.5px);
+}
+
+.kpi-lead .kpi-number {
+  font-size: calc(var(--caps) / 0.714);
+  letter-spacing: -0.07em;
+  height: calc(6 * var(--baseline) + var(--caps) - 6.5px);
+  padding-top: calc(
+    3 * var(--baseline) - 6.5px - 0.2176 * var(--caps) + var(--nudge)
+  );
+}
+
+/* A smaller % */
+.kpi-unit {
+  font-size: 0.6em;
+}
+
+/* Smaller figures: capitals three baselines tall, a baseline into their
+   block, their labels on the text line below, and eight baselines from
+   one figure to the next */
+.kpi:not(.kpi-lead) {
+  margin-bottom: calc(4 * var(--baseline) - 30.5px);
+}
+
+.kpi:not(.kpi-lead) .kpi-number {
+  font-size: calc(3 * var(--baseline) / 0.714);
+  letter-spacing: -0.04em;
+  height: calc(4 * var(--baseline) + 6.5px);
+  padding-top: calc(0.375 * var(--baseline));
+}
+
+/* On desktops, a column too narrow for the large figures takes them a
+   third smaller */
+@media (width >= 800px) {
+  @container (width < 304px) {
+    .kpi-lead {
+      --caps: calc(6 * var(--baseline));
+      --nudge: 0.17px;
+    }
+  }
+}
+
+/* Phones' large figures have 72px capitals too */
+@media (width < 800px) {
+  .kpi-lead {
+    --nudge: 0.17px;
+  }
+}
+
 /* The arrows again, at the foot of the panel: the count's baseline on the
    page's last baseline, or four baselines below the text's last when
    it's long. case.js moves them into the current slide's panel */
