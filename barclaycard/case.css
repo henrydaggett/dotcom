@@ -508,7 +508,7 @@ h2.slide-title {
 }
 
 /* Key figures in the media's place: a column of figures each, wrapping
-   to as many rows as needed, a rule across each row's top, the first
+   to as many rows as needed, a rule across each column's top, the first
    level with the title's rule. Each column opens with a label and a large
    figure the size of the first slide's title, then smaller figures sized
    like the timeline's years, each with its label below */
@@ -525,14 +525,13 @@ h2.slide-title {
   container-type: inline-size;
 }
 
-/* The rule runs on across the gutter; the figures cut it off after the
-   last column */
+/* Each column has its own rule, stopping at the gutter */
 .kpi-group::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  right: calc(-1 * var(--gutter));
+  right: 0;
   border-top: 1px solid rgb(var(--ink));
 }
 
@@ -605,7 +604,8 @@ h2.slide-title {
 
 /* A dot chart in the media's place: a group per column, each with a
    heading sized like the timeline's years and a circle per person or
-   team, then a legend. A rule runs across the top, level with the title's.
+   team, then a legend. Each has a rule across its top, level with the
+   title's.
    The circles are two baselines wide, a baseline apart, nine to a row
    spread across the column, the first row seven baselines under the rule */
 .dot-chart {
@@ -626,13 +626,14 @@ h2.slide-title {
   container-type: inline-size;
 }
 
+/* Each column has its own rule, stopping at the gutter */
 .dot-group::before,
 .dot-legend::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  right: calc(-1 * var(--gutter));
+  right: 0;
   border-top: 1px solid rgb(var(--ink));
 }
 
