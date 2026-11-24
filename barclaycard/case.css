@@ -207,8 +207,9 @@
   --icon: url(/barclaycard/icons/arrow-forward.svg);
 }
 
-/* At the first or last slide the arrow stays, but does nothing */
+/* At the first or last slide the arrow stays, in grey, but does nothing */
 .arrow[aria-disabled="true"] {
+  color: rgb(var(--grey));
   cursor: default;
 }
 
