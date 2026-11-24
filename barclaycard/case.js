@@ -66,10 +66,13 @@ addEventListener("hashchange", () => show(fromHash()));
 show(fromHash());
 
 function toggleGrid() {
-  const gridDisplay = document.querySelector(".grid-display");
-  const gridIcon = document.querySelector(".grid-icon");
-  gridDisplay.classList.toggle("hidden");
-  gridIcon.classList.toggle("grid-active");
+  const htmlElement = document.documentElement;
+  const grid = htmlElement.getAttribute("data-grid") === "on" ? "off" : "on";
+  htmlElement.setAttribute("data-grid", grid);
+  // Remember it for later visits and the other pages
+  try {
+    localStorage.setItem("grid", grid);
+  } catch {}
 }
 
 function changeTheme() {

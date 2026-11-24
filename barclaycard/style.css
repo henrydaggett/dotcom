@@ -197,9 +197,6 @@ section,
   --icon: url(/icons/grid.svg);
 }
 
-.grid-active {
-  color: rgb(var(--red));
-}
 
 /* On desktops the intro is at least 9 baselines tall, enough for its
    details wrapped to four lines, with at least 2 more between it and the

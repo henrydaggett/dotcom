@@ -1,15 +1,20 @@
 <!doctype html>
 
-<html data-theme="light" lang="en">
+<html data-theme="light" data-grid="off" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-      // Restore the theme chosen on an earlier visit, before the page draws
+      // Restore the theme and grid chosen on an earlier visit, before the page
+      // draws
       try {
         const theme = localStorage.getItem("theme");
         if (theme === "light" || theme === "dark") {
           document.documentElement.setAttribute("data-theme", theme);
+        }
+        const grid = localStorage.getItem("grid");
+        if (grid === "on" || grid === "off") {
+          document.documentElement.setAttribute("data-grid", grid);
         }
       } catch {}
     </script>
@@ -58,7 +63,7 @@
           </button>
           <button id="grid-button" class="display-button" onclick="toggleGrid()">
             Show grids
-            <span class="grid-icon grid-active"></span>
+            <span class="grid-icon"></span>
           </button>
         </div>
         <!-- The case study note, shown here under the greeting with 3
@@ -135,10 +140,13 @@
 
     <script>
       function toggleGrid() {
-        const gridDisplay = document.querySelector(".grid-display");
-        const gridIcon = document.querySelector(".grid-icon");
-        gridDisplay.classList.toggle("hidden");
-        gridIcon.classList.toggle("grid-active");
+        const htmlElement = document.documentElement;
+        const grid = htmlElement.getAttribute("data-grid") === "on" ? "off" : "on";
+        htmlElement.setAttribute("data-grid", grid);
+        // Remember it for later visits and the other pages
+        try {
+          localStorage.setItem("grid", grid);
+        } catch {}
       }
       function changeTheme() {
         const htmlElement = document.documentElement;
