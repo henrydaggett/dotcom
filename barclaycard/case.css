@@ -540,8 +540,11 @@ h2.slide-title {
   text-indent: var(--indent, -0.022em);
 }
 
+/* Each year's events are bullet points, with wrapped lines hanging
+   under the text rather than the bullet */
 .timeline ul {
-  list-style: none;
+  list-style: disc;
+  padding-left: 1em;
 }
 
 /* Key figures in the media's place: a column of figures each, wrapping
