@@ -422,7 +422,7 @@ h2.slide-title {
   grid-column: 2;
 }
 
-.slide-media > * {
+.slide-media > :is(img, video, iframe) {
   display: block;
   width: auto;
   height: auto;
@@ -436,16 +436,64 @@ h2.slide-title {
    fits. --ratio, the media's width over its height, set beside it, lets
    the figure work that out */
 @media (width >= 800px) {
-  .slide-media {
+  figure.slide-media {
     container-type: size;
   }
 
-  .slide-media > * {
+  .slide-media > :is(img, video, iframe) {
     /* The 2px are the border's, top and bottom or either side */
     width: min(100cqw, (100cqh - 2px) * var(--ratio, 16 / 9) + 2px);
     max-width: none;
     max-height: none;
   }
+}
+
+/* A timeline in the media's place: a year per column, wrapping to as
+   many rows as it needs. Each row is 15 baselines tall with a rule across
+   its top, the first level with the title's rule. A year's capitals are
+   three baselines tall, a baseline under the rule, with its events on
+   the text lines below. On short windows it scrolls */
+.timeline {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-auto-rows: minmax(calc(15 * var(--baseline)), auto);
+  align-content: start;
+  margin-top: calc(9 * var(--baseline));
+  list-style: none;
+  overflow: hidden auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--ink), 0.25) transparent;
+}
+
+.timeline > li {
+  position: relative;
+}
+
+/* The rule runs on across the gutter to the next year; the timeline cuts
+   it off after the last column */
+.timeline > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: calc(-1 * var(--gutter));
+  border-top: 1px solid rgb(var(--ink));
+}
+
+.timeline-year {
+  display: block;
+  font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
+  font-size: calc(3 * var(--baseline) / 0.714);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  /* The capitals a baseline down, and the events' first baseline two
+     below the year's */
+  height: calc(4 * var(--baseline) + 6.5px);
+  padding-top: calc(0.375 * var(--baseline));
+}
+
+.timeline ul {
+  list-style: none;
 }
 
 /* The arrows again, at the foot of the panel: the count's baseline on the
@@ -587,7 +635,7 @@ h2.slide-title {
     display: none;
   }
 
-  .slide-media > * {
+  .slide-media > :is(img, video, iframe) {
     max-height: none;
   }
 
