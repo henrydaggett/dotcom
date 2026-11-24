@@ -462,6 +462,7 @@ h2.slide-title {
   width: 100%;
   height: auto;
   border: 1px solid rgba(var(--ink), 0.15);
+  border-radius: 4px;
 }
 
 /* A timeline in the media's place: a year per column, wrapping to as
