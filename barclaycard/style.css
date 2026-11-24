@@ -7,6 +7,14 @@
      middle of the window */
   --page-max-width: 1600px;
   --page-max-height: 900px;
+  /* The dark frame between the window's edge and the page */
+  --frame: 24px;
+}
+
+@media (width < 800px) {
+  :root {
+    --frame: 12px;
+  }
 }
 
 /* 4 columns on wide screens, 3 in between, and base.css's single column
@@ -23,10 +31,10 @@
   }
 }
 
-/* The page sits 24px from the window on every side, or centred once it
-   reaches its largest size */
+/* The page sits a frame's width from the window on every side, or
+   centred once it reaches its largest size */
 html {
-  padding: 24px;
+  padding: var(--frame);
 }
 
 body {
@@ -41,7 +49,7 @@ body {
   grid-template-columns: var(--columns);
   column-gap: var(--gutter);
   align-content: start;
-  min-height: calc(100dvh - 48px);
+  min-height: calc(100dvh - 2 * var(--frame));
   padding: var(--margin);
 }
 
@@ -51,13 +59,15 @@ body {
 @supports (height: round(down, 1px, 1px)) {
   :root {
     --page-height: min(
-      round(down, 100dvh - 48px, var(--baseline)),
+      round(down, 100dvh - 2 * var(--frame), var(--baseline)),
       round(down, var(--page-max-height), var(--baseline))
     );
   }
 
   html {
-    padding-block: calc(24px + (100dvh - 48px - var(--page-height)) / 2);
+    padding-block: calc(
+      var(--frame) + (100dvh - 2 * var(--frame) - var(--page-height)) / 2
+    );
   }
 
   .page {

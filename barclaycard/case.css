@@ -4,7 +4,7 @@
 
 .page.slideshow {
   grid-template-rows: calc(3 * var(--baseline)) minmax(0, 1fr);
-  height: calc(100dvh - 48px);
+  height: calc(100dvh - 2 * var(--frame));
   /* On short windows the page grows and scrolls instead */
   min-height: calc(40 * var(--baseline));
 }
@@ -796,7 +796,7 @@ h2.slide-title {
      slide, above its arrows, so they stay at the foot */
   .page.slideshow {
     height: auto;
-    min-height: calc(100dvh - 48px);
+    min-height: calc(100dvh - 2 * var(--frame));
     grid-template-rows: auto auto 1fr;
   }
 
