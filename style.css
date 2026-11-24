@@ -4,6 +4,14 @@ html {
   padding: var(--margin) var(--gutter);
 }
 
+/* Once the window is too narrow for the page and its side padding, the
+   page fills it, and the top and bottom padding match the sides */
+@media (width < 1248px) {
+  html {
+    padding-block: var(--gutter);
+  }
+}
+
 body {
   position: relative;
   max-width: 1200px;
@@ -382,9 +390,11 @@ h2 {
     margin-top: -9px;
   }
 
+  /* Alte Haas sits its baseline 17.5px into a 24px line, so text is
+     moved by half pixels to land on the 8px grid */
   h2,
   .grid > div > p {
-    margin-top: 4px;
+    margin-top: 3.5px;
   }
 
   .display-text,
@@ -395,11 +405,11 @@ h2 {
 
   .display-text,
   .footer .display-link {
-    margin-bottom: -12px;
+    margin-bottom: -11px;
   }
 
   .grid > .display-container {
-    padding-top: 12px;
+    padding-top: 11px;
   }
 
   .footer {
@@ -407,11 +417,11 @@ h2 {
   }
 
   .group-heading h2 {
-    margin-bottom: 9px;
+    margin-bottom: 9.5px;
   }
 
   .content-link {
-    padding: 12px 4px 11px 0;
+    padding: 11.5px 4px 11.5px 0;
   }
 
   .content-link:hover::before,
@@ -422,7 +432,7 @@ h2 {
 
   @container (width < 640px) {
     .talk {
-      padding-block: 14px 17px;
+      padding-block: 13.5px 17.5px;
     }
   }
 
@@ -445,18 +455,18 @@ h2 {
   }
 
   .display-container {
-    padding-bottom: 4px;
+    padding-bottom: 5px;
   }
 
   .display-container:has(.display-button) {
-    padding-bottom: 20px;
+    padding-bottom: 21px;
   }
 
   /* A section is one rule, its label, then its text. The offsets make
      every block a multiple of the 24px line height, so each line of text
      sits on a baseline with or without calc-size() */
   .label {
-    padding-bottom: 9px;
+    padding-bottom: 9.5px;
   }
 
   .grid > .body {
@@ -469,7 +479,7 @@ h2 {
   }
 
   .body > p {
-    padding-bottom: calc(4 * var(--baseline) + 1px);
+    padding-bottom: calc(4 * var(--baseline) + 1.5px);
   }
 
   .talks li:first-child {
@@ -481,7 +491,7 @@ h2 {
   }
 
   .group-heading .content-link {
-    margin-top: -12px;
+    margin-block: -15px -8px;
   }
 
   .grid-display > div:not(:first-child) {
