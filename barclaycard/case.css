@@ -504,6 +504,9 @@ h2.slide-title {
      below the year's */
   height: calc(4 * var(--baseline) + 6.5px);
   padding-top: calc(0.375 * var(--baseline));
+  /* Optical alignment: the 2's side bearing pulled back so its ink meets
+     the column line. A year starting otherwise can set --indent */
+  text-indent: var(--indent, -0.022em);
 }
 
 .timeline ul {
@@ -655,6 +658,9 @@ h2.slide-title {
   height: calc(4 * var(--baseline) + 6.5px);
   padding-top: calc(4 * var(--baseline) - 1.2083 * var(--caps));
   white-space: nowrap;
+  /* Optical alignment: the D's side bearing pulled back so its ink meets
+     the column line. A heading starting otherwise can set --indent */
+  text-indent: var(--indent, -0.077em);
 }
 
 /* On desktops, a column too narrow for the headings takes them a size
