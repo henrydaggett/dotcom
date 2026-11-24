@@ -75,6 +75,7 @@
 
 .case-bar .display-button {
   margin-left: 0;
+  white-space: nowrap;
 }
 
 .case-bar .display-button:last-child {
@@ -94,6 +95,18 @@
 
 .button-label.narrow {
   display: none;
+}
+
+/* The narrowest 3-column windows need the short labels too, or the
+   controls run into the slide navigator */
+@media (800px <= width < 880px) {
+  .button-label.wide {
+    display: none;
+  }
+
+  .button-label.narrow {
+    display: inline;
+  }
 }
 
 /* Dots: one per slide, filled up to the current one. Each button is a
@@ -588,6 +601,107 @@ h2.slide-title {
   .kpi-lead {
     --nudge: 0.17px;
   }
+}
+
+/* A dot chart in the media's place: a group per column, each with a
+   heading sized like the timeline's years and a circle per person or
+   team, then a legend. A rule runs across the top, level with the title's.
+   The circles are two baselines wide, a baseline apart, nine to a row
+   spread across the column, the first row seven baselines under the rule */
+.dot-chart {
+  --blue: 91, 155, 213;
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: calc(2 * var(--baseline));
+  margin-top: calc(9 * var(--baseline));
+  overflow-x: clip;
+}
+
+.dot-group,
+.dot-legend {
+  position: relative;
+}
+
+.dot-group {
+  container-type: inline-size;
+}
+
+.dot-group::before,
+.dot-legend::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: calc(-1 * var(--gutter));
+  border-top: 1px solid rgb(var(--ink));
+}
+
+/* The heading's capitals (--caps tall) end on the fourth baseline under
+   the rule; Alte Haas's baseline is 1.2083 capitals into a line this
+   size */
+.dot-heading {
+  --caps: calc(3 * var(--baseline));
+  font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
+  font-size: calc(var(--caps) / 0.714);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  height: calc(4 * var(--baseline) + 6.5px);
+  padding-top: calc(4 * var(--baseline) - 1.2083 * var(--caps));
+  white-space: nowrap;
+}
+
+/* On desktops, a column too narrow for the headings takes them a size
+   smaller */
+@media (width >= 800px) {
+  @container (width < 300px) {
+    .dot-heading {
+      --caps: calc(2 * var(--baseline));
+    }
+  }
+}
+
+.dots {
+  display: grid;
+  grid-template-columns: repeat(9, calc(2 * var(--baseline)));
+  justify-content: space-between;
+  row-gap: var(--baseline);
+  margin-top: calc(3 * var(--baseline) - 6.5px);
+}
+
+.dot-chart i {
+  display: block;
+  width: calc(2 * var(--baseline));
+  height: calc(2 * var(--baseline));
+  border: 1px solid rgb(var(--ink));
+  border-radius: 50%;
+}
+
+.dot-chart .council {
+  background-color: rgb(var(--red));
+  border-color: rgb(var(--red));
+}
+
+.dot-chart .contributor {
+  background-color: rgb(var(--blue));
+  border-color: rgb(var(--blue));
+}
+
+/* The legend's first baseline two baselines under the rule, each key a
+   circle sitting on the text's baseline */
+.dot-legend {
+  list-style: none;
+}
+
+.dot-legend li:first-child {
+  margin-top: calc(2 * var(--baseline) - 17.5px);
+}
+
+.dot-legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
 }
 
 /* The arrows again, at the foot of the panel: the count's baseline on the
