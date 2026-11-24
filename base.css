@@ -186,6 +186,16 @@ body {
   border-inline: 1px solid rgb(var(--red));
 }
 
+/* The overlay and its button's icon follow the page's data-grid, "on" or
+   "off". Pages start with it off and restore a visitor's choice */
+[data-grid="off"] .grid-display {
+  display: none;
+}
+
+[data-grid="on"] .grid-icon {
+  color: rgb(var(--red));
+}
+
 /* Small screens: one column on an 8px baseline */
 @media (width < 800px) {
   :root {

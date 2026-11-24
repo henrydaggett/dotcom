@@ -176,10 +176,6 @@ h2 {
   cursor: pointer;
 }
 
-.grid-active {
-  color: rgb(var(--red));
-}
-
 /* Layout */
 
 
