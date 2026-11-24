@@ -3,6 +3,10 @@
 :root {
   /* Placeholder section height until there is content: 21 × 12px */
   --section: calc(21 * var(--baseline));
+  /* On large screens the page stops growing at this size and sits in the
+     middle of the window */
+  --page-max-width: 1600px;
+  --page-max-height: 900px;
 }
 
 /* 4 columns on wide screens, 3 in between, and base.css's single column
@@ -19,13 +23,16 @@
   }
 }
 
-/* The page sits 24px from the window on every side */
+/* The page sits 24px from the window on every side, or centred once it
+   reaches its largest size */
 html {
   padding: 24px;
 }
 
 body {
   position: relative;
+  max-width: var(--page-max-width);
+  margin-inline: auto;
   box-shadow: 0px 0px 48px rgba(0, 0, 0, 0.8);
 }
 
@@ -38,12 +45,15 @@ body {
   padding: var(--margin);
 }
 
-/* Fit the page to the window: as tall as fits in whole baselines, with the
-   spare fraction of a baseline split above and below so it stays centred.
-   Taller content grows the page and it scrolls */
+/* Fit the page to the window: as tall as fits in whole baselines, up to
+   its largest height, with the spare height split above and below so it
+   stays centred. Taller content grows the page and it scrolls */
 @supports (height: round(down, 1px, 1px)) {
   :root {
-    --page-height: round(down, 100dvh - 48px, var(--baseline));
+    --page-height: min(
+      round(down, 100dvh - 48px, var(--baseline)),
+      round(down, var(--page-max-height), var(--baseline))
+    );
   }
 
   html {
