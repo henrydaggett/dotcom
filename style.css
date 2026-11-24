@@ -369,8 +369,9 @@ h2 {
 
 /* Small screens: one column, blocks as tall as their content */
 @media (width < 800px) {
+  /* A 12px frame around the page, as on the portfolio pages */
   html {
-    padding: calc(2 * var(--baseline));
+    padding: 12px;
   }
 
   /* Phones keep the measurements made for their 8px grid: the 80px name,
