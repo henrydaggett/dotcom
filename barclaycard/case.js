@@ -63,6 +63,10 @@ function show(index) {
     .querySelector(".slide-panel")
     .append(document.querySelector(".slide-step-foot"));
   slides[current].scrollTo(0, 0);
+  // On phones the page itself scrolls, so a new slide opens at its top too
+  if (matchMedia("(width < 800px)").matches) {
+    scrollTo({ top: 0, behavior: "instant" });
+  }
 
   const hash = current === 0 ? "" : `#${current + 1}`;
   if (location.hash !== hash) {
