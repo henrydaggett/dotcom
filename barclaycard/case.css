@@ -166,6 +166,59 @@
   outline-offset: 2px;
 }
 
+/* The hovered dot's slide name, in the body type just to the right of
+   the pointer (case.js sets --tip-x). Its baseline is on the first grid
+   line under the navigator. It eases in when the pointer
+   reaches the dots and out when it leaves; between dots only the name
+   changes */
+.slide-tip {
+  /* Desktops (12px grid): the dots' box is 23.5–61.5px down the page, so
+     the baseline goes on the next grid line, 72px. The text's baseline is
+     18px into its line */
+  --tip-top: 30.5px;
+  position: absolute;
+  top: var(--tip-top);
+  left: calc(var(--tip-x, 0px) + 12px);
+  z-index: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  translate: 0 4px;
+  transition:
+    opacity 200ms ease-in,
+    translate 200ms ease-in;
+}
+
+.slide-dots:hover .slide-tip,
+.slide-dots:has(:focus-visible) .slide-tip {
+  opacity: 1;
+  translate: 0;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+
+/* Under 800px the dots end at 85.5px, so the baseline goes on the 104px
+   grid line */
+@media (width < 800px) {
+  .slide-tip {
+    --tip-top: 38.5px;
+  }
+}
+
+/* Touch screens have no pointer to follow */
+@media (hover: none) {
+  .slide-tip {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-tip,
+  .slide-dots:hover .slide-tip {
+    translate: 0;
+  }
+}
+
 /* Arrows and the count. Each arrow has its own round hover shape,
    reaching 12px either side of the arrow. The line keeps the display
    buttons' 38px height */

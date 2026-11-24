@@ -5,14 +5,35 @@ const slides = [...document.querySelectorAll(".slide")];
 const dots = document.querySelector(".slide-dots");
 let current = 0;
 
+// A label that shows the hovered dot's slide name, following the pointer.
+// The dots already carry their names for screen readers
+const tip = document.createElement("span");
+tip.className = "slide-tip";
+tip.setAttribute("aria-hidden", "true");
+
+function placeTip(x) {
+  dots.style.setProperty("--tip-x", `${x - dots.getBoundingClientRect().left}px`);
+}
+
+dots.addEventListener("pointermove", (event) => placeTip(event.clientX));
+
 // A dot for each slide
 for (const [i, slide] of slides.entries()) {
   const dot = document.createElement("button");
   const title = slide.querySelector(".slide-title").textContent.trim();
   dot.setAttribute("aria-label", `Slide ${i + 1}: ${title}`);
   dot.addEventListener("click", () => show(i));
+  dot.addEventListener("pointerenter", () => (tip.textContent = title));
+  // With the keyboard, the label sits by the focused dot instead
+  dot.addEventListener("focus", () => {
+    tip.textContent = title;
+    const box = dot.getBoundingClientRect();
+    placeTip(box.left + box.width / 2);
+  });
   dots.append(dot);
 }
+
+dots.append(tip);
 
 function show(index) {
   current = Math.max(0, Math.min(index, slides.length - 1));
