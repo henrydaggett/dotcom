@@ -229,7 +229,6 @@
 .slide {
   grid-column: 1 / -1;
   grid-row: 2;
-  grid-template-rows: minmax(0, 1fr);
   min-height: 0;
 }
 
@@ -237,23 +236,36 @@
   display: none;
 }
 
-/* The panel: the 1st column's title, text and arrows. When they're longer
-   than the page they scroll together, with a thin scrollbar in the gutter.
-   The panel reaches 12px past the column either side, so the hover shapes
-   aren't cut off, and 13.5px below the page's last baseline, so the
-   arrows' count sits on it. With short text the arrows stay at the foot */
+/* On desktops the slide is the page's one scroller: when its text or
+   media don't fit, they scroll together under the top bar, with a thin
+   scrollbar. It reaches 12px past the columns either side, so hover
+   shapes aren't cut off, and 13.5px below the page's last baseline, so
+   the arrows' count can sit on it. Its one row stretches to fill it when
+   the content is shorter */
+@media (width >= 800px) {
+  /* Scrolled to the end, tall media stops on the page's last baseline */
+  .slide-media {
+    margin-bottom: 13.5px;
+  }
+
+  .slide {
+    grid-template-rows: auto;
+    overflow-y: auto;
+    padding-inline: 12px;
+    margin-inline: -12px;
+    margin-bottom: -13.5px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--ink), 0.25) transparent;
+  }
+}
+
+/* The panel: the 1st column's title, text and arrows. With short text the
+   arrows stay at the foot */
 .slide-panel {
   grid-column: 1;
   grid-row: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  overflow-y: auto;
-  padding-inline: 12px;
-  margin-inline: -12px;
-  margin-bottom: -13.5px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(var(--ink), 0.25) transparent;
 }
 
 .slide-panel > * {
@@ -313,9 +325,9 @@ h2.slide-title {
   text-transform: uppercase;
 }
 
-/* Fades where the panel runs out of sight: at the foot while there's more
+/* Fades where the slide runs out of sight: at the foot while there's more
    below, and at the top once it has scrolled. They follow the scroll
-   position; a panel that fits has no scroll timeline, so no fade */
+   position; a slide that fits has no scroll timeline, so no fade */
 @property --fade-top {
   syntax: "<length>";
   inherits: false;
@@ -347,56 +359,58 @@ h2.slide-title {
 }
 
 @supports (animation-timeline: scroll()) {
-  .slide-panel {
-    -webkit-mask-image: linear-gradient(
-      transparent,
-      #000 var(--fade-top),
-      #000 calc(100% - var(--fade-bottom)),
-      transparent
-    );
-    mask-image: linear-gradient(
-      transparent,
-      #000 var(--fade-top),
-      #000 calc(100% - var(--fade-bottom)),
-      transparent
-    );
-    animation:
-      fade-top linear both,
-      fade-bottom linear both;
-    animation-timeline: scroll(self), scroll(self);
-    animation-range:
-      0 24px,
-      calc(100% - 24px) 100%;
-    /* Named, so the slide's down arrow can follow it too */
-    scroll-timeline-name: --panel;
-  }
+  @media (width >= 800px) {
+    .slide {
+      -webkit-mask-image: linear-gradient(
+        transparent,
+        #000 var(--fade-top),
+        #000 calc(100% - var(--fade-bottom)),
+        transparent
+      );
+      mask-image: linear-gradient(
+        transparent,
+        #000 var(--fade-top),
+        #000 calc(100% - var(--fade-bottom)),
+        transparent
+      );
+      animation:
+        fade-top linear both,
+        fade-bottom linear both;
+      animation-timeline: scroll(self), scroll(self);
+      animation-range:
+        0 24px,
+        calc(100% - 24px) 100%;
+      /* Named, so the page's down arrow can follow it too */
+      scroll-timeline-name: --slide;
+    }
 
-  .slide {
-    timeline-scope: --panel;
-  }
+    .page.slideshow {
+      timeline-scope: --slide;
+    }
 
-  /* A down arrow in the middle of the panel's foot, a baseline below the
-     page's last, while there's more text below and it hasn't been scrolled.
-     It fades as scrolling starts; a panel that fits has no timeline, so
-     no arrow. It's only a hint, so it ignores the pointer */
-  .slide::after {
-    content: "";
-    grid-column: 1;
-    grid-row: 1;
-    align-self: end;
-    justify-self: center;
-    width: 13px;
-    height: 13px;
-    margin-bottom: calc(-1px - var(--baseline));
-    background-color: currentColor;
-    -webkit-mask: url(/barclaycard/icons/arrow-down.svg) no-repeat center /
-      contain;
-    mask: url(/barclaycard/icons/arrow-down.svg) no-repeat center / contain;
-    pointer-events: none;
-    opacity: 0;
-    animation: more-below linear both;
-    animation-timeline: --panel;
-    animation-range: 0 12px;
+    /* A down arrow in the middle of the 1st column's foot, a baseline below
+       the page's last, while there's more below and the slide hasn't been
+       scrolled. It fades as scrolling starts; a slide that fits has no
+       timeline, so no arrow. It's only a hint, so it ignores the pointer */
+    .page.slideshow::after {
+      content: "";
+      grid-column: 1;
+      grid-row: 2;
+      align-self: end;
+      justify-self: center;
+      width: 13px;
+      height: 13px;
+      margin-bottom: calc(-1px - var(--baseline));
+      background-color: currentColor;
+      -webkit-mask: url(/barclaycard/icons/arrow-down.svg) no-repeat center /
+        contain;
+      mask: url(/barclaycard/icons/arrow-down.svg) no-repeat center / contain;
+      pointer-events: none;
+      opacity: 0;
+      animation: more-below linear both;
+      animation-timeline: --slide;
+      animation-range: 0 12px;
+    }
   }
 }
 
@@ -409,15 +423,13 @@ h2.slide-title {
   }
 }
 
-/* Media: an image, GIF, video or frame from the 2nd column, 1, 2 or 3
-   columns wide, its top level with the title's capitals. It keeps its
-   proportions and stops at the page's last baseline. --media-height sets a
-   height */
+/* Media: an image, GIF, video or frame from the 2nd column, filling 1, 2
+   or 3 columns at its own proportions, its top level with the title's
+   capitals. If it's taller than the page, the slide scrolls */
 .slide-media {
   grid-column: 2 / span 3;
   grid-row: 1 / -1;
-  min-height: 0;
-  height: var(--media-height, auto);
+  align-self: start;
   margin-top: calc(2 * var(--baseline));
 }
 
@@ -431,35 +443,16 @@ h2.slide-title {
 
 .slide-media > :is(img, video, iframe) {
   display: block;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
   border: 1px solid rgba(var(--ink), 0.15);
-}
-
-/* On desktops media fills its columns, however small the file, unless
-   that would take it past the page's last baseline; then it's as tall as
-   fits. --ratio, the media's width over its height, set beside it, lets
-   the figure work that out */
-@media (width >= 800px) {
-  figure.slide-media {
-    container-type: size;
-  }
-
-  .slide-media > :is(img, video, iframe) {
-    /* The 2px are the border's, top and bottom or either side */
-    width: min(100cqw, (100cqh - 2px) * var(--ratio, 16 / 9) + 2px);
-    max-width: none;
-    max-height: none;
-  }
 }
 
 /* A timeline in the media's place: a year per column, wrapping to as
    many rows as it needs. Each row is 15 baselines tall with a rule across
    its top, the first level with the title's rule. A year's capitals are
    three baselines tall, a baseline under the rule, with its events on
-   the text lines below. On short windows it scrolls */
+   the text lines below */
 .timeline {
   display: grid;
   grid-template-columns: subgrid;
@@ -467,9 +460,7 @@ h2.slide-title {
   align-content: start;
   margin-top: calc(9 * var(--baseline));
   list-style: none;
-  overflow: hidden auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(var(--ink), 0.25) transparent;
+  overflow-x: clip;
 }
 
 .timeline > li {
@@ -638,13 +629,10 @@ h2.slide-title {
   }
 
   .slide-media:empty,
-  .slide::after {
+  .page.slideshow::after {
     display: none;
   }
 
-  .slide-media > :is(img, video, iframe) {
-    max-height: none;
-  }
 
   /* The arrows' count at least four baselines below the media, or the
      text, and three above the bottom of the page */

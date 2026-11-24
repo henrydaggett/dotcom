@@ -37,10 +37,11 @@ function show(index) {
   const nextCase = document.querySelector(".next-case");
   if (nextCase) nextCase.hidden = current !== last;
 
-  // The arrows at the foot of the new slide's panel, which starts at the top
-  const panel = slides[current].querySelector(".slide-panel");
-  panel.append(document.querySelector(".slide-step-foot"));
-  panel.scrollTo(0, 0);
+  // The arrows at the foot of the new slide's panel, and the slide at its top
+  slides[current]
+    .querySelector(".slide-panel")
+    .append(document.querySelector(".slide-step-foot"));
+  slides[current].scrollTo(0, 0);
 
   const hash = current === 0 ? "" : `#${current + 1}`;
   if (location.hash !== hash) {
