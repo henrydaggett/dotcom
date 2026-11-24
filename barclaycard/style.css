@@ -312,6 +312,16 @@ section,
   border-top: 1px solid rgb(var(--ink));
   padding-top: 5.5px;
   margin-bottom: -6.5px;
+  /* Even lines, so no word or two is left alone on the last one */
+  text-wrap: balance;
+}
+
+/* Here the columns are narrow enough for a description to run past six
+   lines, more than browsers will balance, so it falls back to pretty */
+@media (1100px <= width < 1300px) {
+  .case p {
+    text-wrap: pretty;
+  }
 }
 
 /* A note in the 1st column beside the cards, its last line on the large
