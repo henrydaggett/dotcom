@@ -142,6 +142,8 @@
       function toggleGrid() {
         const htmlElement = document.documentElement;
         const grid = htmlElement.getAttribute("data-grid") === "on" ? "off" : "on";
+        // Toggled by hand, it draws in rather than just appearing
+        htmlElement.setAttribute("data-grid-reveal", "");
         htmlElement.setAttribute("data-grid", grid);
         // Remember it for later visits and the other pages
         try {
