@@ -572,12 +572,26 @@ h2.slide-title {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 72px;
-  height: 72px;
+  width: 48px;
+  height: 48px;
   translate: -50% -50%;
   border-radius: 50%;
   background-color: rgb(38, 38, 38);
   box-shadow: 0 0 0 1px rgba(255, 254, 250, 0.15);
+  transition:
+    background-color var(--hover-out, 200ms) ease,
+    box-shadow var(--hover-out, 200ms) ease;
+}
+
+/* The usual hover shape, in the dark theme's colours: the fill over the
+   circle, its highlight and shadow inset */
+.video-toggle[aria-pressed="true"]:is(:hover, :focus-visible)::before {
+  background-color: rgb(33, 33, 33);
+  box-shadow:
+    0 0 0 1px rgba(255, 254, 250, 0.15),
+    inset -1px -1px 1px 0 rgba(140, 145, 150, 0.25),
+    inset 1px 1px 4px 0 rgba(12, 12, 12, 0.55);
+  transition-duration: var(--hover-in, 120ms);
 }
 
 .video-toggle[aria-pressed="true"]::after {
