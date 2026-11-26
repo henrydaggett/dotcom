@@ -690,15 +690,31 @@ h2.slide-title {
   }
 }
 
+/* A year that runs past the row's 15 baselines keeps three baselines
+   between its last event and the next rule, as a full row has */
 .timeline > li {
+  --row-height: calc(15 * var(--baseline));
   position: relative;
-  min-height: calc(15 * var(--baseline));
+  min-height: var(--row-height);
+  padding-bottom: calc(3 * var(--baseline) - 6.5px);
+}
+
+/* Where supported, a year that grows past its row, with a wrapped label
+   or many events, snaps up to the next baseline */
+@supports (min-height: calc-size(fit-content, size)) {
+  .timeline > li {
+    --row-height: calc-size(
+      fit-content,
+      round(up, max(size, 15 * var(--baseline)), var(--baseline))
+    );
+  }
 }
 
 /* The last row hugs its events, ending on its last baseline. Which years
    make up the last row depends on how many sit across */
 .timeline > li:last-child {
   min-height: 0;
+  padding-bottom: 0;
   margin-bottom: -6.5px;
 }
 
@@ -706,6 +722,7 @@ h2.slide-title {
   .timeline > li:nth-child(2n + 1):nth-last-child(-n + 2),
   .timeline > li:nth-child(2n + 1):nth-last-child(-n + 2) ~ li {
     min-height: 0;
+    padding-bottom: 0;
     margin-bottom: -6.5px;
   }
 }
@@ -713,7 +730,8 @@ h2.slide-title {
 @media (width >= 1100px) {
   .timeline > li:nth-child(2n + 1):nth-last-child(-n + 2),
   .timeline > li:nth-child(2n + 1):nth-last-child(-n + 2) ~ li {
-    min-height: calc(15 * var(--baseline));
+    min-height: var(--row-height);
+    padding-bottom: calc(3 * var(--baseline) - 6.5px);
     margin-bottom: 0;
   }
 
@@ -721,6 +739,7 @@ h2.slide-title {
   .timeline > li:nth-child(3n + 1):nth-last-child(-n + 3),
   .timeline > li:nth-child(3n + 1):nth-last-child(-n + 3) ~ li {
     min-height: 0;
+    padding-bottom: 0;
     margin-bottom: -6.5px;
   }
 }
@@ -745,18 +764,33 @@ h2.slide-title {
 }
 
 .timeline-year {
+  --leading: calc((5 * var(--baseline) - 1em) / 2);
   display: block;
   font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
   font-size: calc(3 * var(--baseline) / 0.714);
-  line-height: 1;
   letter-spacing: -0.04em;
-  /* The capitals a baseline down, and the events' first baseline two
-     below the year's */
-  height: calc(4 * var(--baseline) + 6.5px);
-  padding-top: calc(0.375 * var(--baseline));
+  /* A label too long for its column wraps, each line five baselines.
+     The capitals sit a baseline down, and the events' first baseline two
+     below the year's last */
+  line-height: calc(5 * var(--baseline));
+  margin-top: calc(0.375 * var(--baseline) - var(--leading));
+  margin-bottom: calc(
+    6.5px - var(--baseline) - 0.375 * var(--baseline) + var(--leading)
+  );
   /* Optical alignment: the 2's side bearing pulled back so its ink meets
      the column line. A year starting otherwise can set --indent */
   text-indent: var(--indent, -0.022em);
+}
+
+/* Where supported, the label is trimmed to its capitals' tops and its last
+   baseline, so it lands exactly whatever the font's metrics. The events'
+   first baseline is 24px below, 17.5px into its 24px line */
+@supports (text-box: trim-both cap alphabetic) {
+  .timeline-year {
+    text-box: trim-both cap alphabetic;
+    margin-top: var(--baseline);
+    margin-bottom: 6.5px;
+  }
 }
 
 .timeline ul {
