@@ -564,8 +564,9 @@ h2.slide-title {
   outline: 1px solid rgb(var(--ink));
 }
 
-/* Paused, a play button sits in the middle: a circle in the page colour
-   with an outlined triangle, drawn in 1px lines */
+/* Paused, a play button sits in the middle: a circle with an outlined
+   triangle, drawn in 1px lines. It keeps the dark theme's colours in
+   both themes, so it reads the same over any frame */
 .video-toggle[aria-pressed="true"]::before {
   content: "";
   position: absolute;
@@ -575,8 +576,8 @@ h2.slide-title {
   height: 72px;
   translate: -50% -50%;
   border-radius: 50%;
-  background-color: rgb(var(--paper));
-  box-shadow: 0 0 0 1px rgba(var(--ink), 0.15);
+  background-color: rgb(38, 38, 38);
+  box-shadow: 0 0 0 1px rgba(255, 254, 250, 0.15);
 }
 
 .video-toggle[aria-pressed="true"]::after {
@@ -587,7 +588,7 @@ h2.slide-title {
   width: 24px;
   height: 24px;
   translate: calc(-50% + 1px) -50%;
-  background-color: rgb(var(--ink));
+  background-color: rgb(255, 254, 250);
   -webkit-mask: url(/barclaycard/icons/play-outline.svg) no-repeat center;
   mask: url(/barclaycard/icons/play-outline.svg) no-repeat center;
 }
