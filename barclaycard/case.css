@@ -1238,6 +1238,32 @@ h2.slide-title {
   display: none;
 }
 
+/* The next case study in the header too, to the right of the arrows, its
+   hover shape touching the forward arrow's as the dots' touches the back
+   arrow's. It shows only where there's room for it and its shape before
+   the page controls */
+.slide-nav:has(.next-case-slot) {
+  justify-self: stretch;
+}
+
+.next-case-slot {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  container: next-case / inline-size;
+}
+
+.next-case-slot .next-case {
+  margin-left: 12px;
+}
+
+/* The link is 126px wide, plus 12px of hover shape either side */
+@container next-case (width < 150px) {
+  .next-case-slot .next-case {
+    display: none;
+  }
+}
+
 /* 3 columns: media no wider than the two beside the text */
 @media (800px <= width < 1100px) {
   .slide-media.span-3 {
@@ -1268,6 +1294,11 @@ h2.slide-title {
   /* The bar's parts take their own rows in the page */
   .case-bar {
     display: contents;
+  }
+
+  /* No room for the next case study beside the arrows */
+  .next-case-slot {
+    display: none;
   }
 
   .back-link {

@@ -88,7 +88,7 @@ function show(index) {
   }
 
   // The next case study, on the last slide
-  const nextCase = document.querySelector(".next-case");
+  const nextCase = document.querySelector(".slide-step-foot .next-case");
   if (nextCase) nextCase.hidden = current !== last;
 
   // The arrows at the foot of the new slide's panel, and the slide at its top
