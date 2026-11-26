@@ -151,22 +151,26 @@ h2 {
   --icon: url(icons/email.svg);
 }
 
-.display-link:hover::before,
 .display-link:focus-visible::before,
-.display-button:hover,
 .display-button:focus-visible,
-.content-link:hover::before,
 .content-link:focus-visible::before {
   background-color: var(--hover-fill);
-  -moz-box-shadow:
-    inset -1px -1px 1px 0 var(--hover-highlight),
-    inset 1px 1px 4px 0 var(--hover-shadow);
-  -webkit-box-shadow:
-    inset -1px -1px 1px 0 var(--hover-highlight),
-    inset 1px 1px 4px 0 var(--hover-shadow);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+/* Hover shapes show for a pointer that hovers. A tap on a touch screen
+   would otherwise leave them on until the next tap elsewhere */
+@media (hover: hover) {
+  .display-link:hover::before,
+  .display-button:hover,
+  .content-link:hover::before {
+    background-color: var(--hover-fill);
+    box-shadow:
+      inset -1px -1px 1px 0 var(--hover-highlight),
+      inset 1px 1px 4px 0 var(--hover-shadow);
+  }
 }
 
 .display-link:focus-visible::before,
@@ -185,10 +189,18 @@ h2 {
     box-shadow var(--hover-out) ease;
 }
 
-.display-link:is(:hover, :focus-visible)::before,
-.display-button:is(:hover, :focus-visible),
-.content-link:is(:hover, :focus-visible)::before {
+.display-link:focus-visible::before,
+.display-button:focus-visible,
+.content-link:focus-visible::before {
   transition-duration: var(--hover-in);
+}
+
+@media (hover: hover) {
+  .display-link:hover::before,
+  .display-button:hover,
+  .content-link:hover::before {
+    transition-duration: var(--hover-in);
+  }
 }
 
 .display-link::before {
