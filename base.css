@@ -96,12 +96,17 @@ ul {
   /* Hover and focus shapes fade in quickly, and out a little more slowly */
   --hover-in: 120ms;
   --hover-out: 200ms;
+  /* The grid overlay draws in from the top, and fades out */
+  --grid-in: 700ms;
+  --grid-out: 200ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --hover-in: 0s;
     --hover-out: 0s;
+    --grid-in: 0s;
+    --grid-out: 0s;
   }
 }
 
@@ -197,9 +202,44 @@ body {
 }
 
 /* The overlay and its button's icon follow the page's data-grid, "on" or
-   "off". Pages start with it off and restore a visitor's choice */
+   "off". Pages start with it off and restore a visitor's choice. Hidden,
+   the whole overlay fades out at once */
 [data-grid="off"] .grid-display {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--grid-out) ease,
+    visibility 0s var(--grid-out);
+}
+
+/* Turned on with the button or G (data-grid-reveal), it's uncovered from
+   the top down: the baselines appear one after another and the column
+   lines draw down together */
+@property --grid-reveal {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@keyframes grid-reveal {
+  from {
+    --grid-reveal: 0%;
+  }
+  to {
+    --grid-reveal: 100%;
+  }
+}
+
+[data-grid="on"][data-grid-reveal] .grid-display {
+  -webkit-mask-image: linear-gradient(
+    #000 var(--grid-reveal),
+    transparent var(--grid-reveal)
+  );
+  mask-image: linear-gradient(
+    #000 var(--grid-reveal),
+    transparent var(--grid-reveal)
+  );
+  animation: grid-reveal var(--grid-in) linear;
 }
 
 [data-grid="on"] .grid-icon {
