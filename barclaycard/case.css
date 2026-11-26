@@ -764,15 +764,16 @@ h2.slide-title {
 }
 
 .timeline-year {
-  --leading: calc((5 * var(--baseline) - 1em) / 2);
+  --leading: calc((4 * var(--baseline) - 1em) / 2);
   display: block;
   font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
   font-size: calc(3 * var(--baseline) / 0.714);
   letter-spacing: -0.04em;
-  /* A label too long for its column wraps, each line five baselines.
-     The capitals sit a baseline down, and the events' first baseline two
-     below the year's last */
-  line-height: calc(5 * var(--baseline));
+  /* A label too long for its column wraps onto lines four baselines
+     apart, a baseline between one line's capitals and the next, as on the
+     talk cards. The capitals sit a baseline down, and the events' first
+     baseline two below the year's last */
+  line-height: calc(4 * var(--baseline));
   margin-top: calc(0.375 * var(--baseline) - var(--leading));
   margin-bottom: calc(
     6.5px - var(--baseline) - 0.375 * var(--baseline) + var(--leading)
