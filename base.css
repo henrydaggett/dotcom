@@ -96,8 +96,9 @@ ul {
   /* Hover and focus shapes fade in quickly, and out a little more slowly */
   --hover-in: 120ms;
   --hover-out: 200ms;
-  /* The grid overlay draws in from the top, and fades out */
-  --grid-in: 700ms;
+  /* The grid overlay draws in from the top at a steady speed, in pixels
+     per millisecond, and fades out */
+  --grid-speed: 4;
   --grid-out: 200ms;
 }
 
@@ -105,7 +106,6 @@ ul {
   :root {
     --hover-in: 0s;
     --hover-out: 0s;
-    --grid-in: 0s;
     --grid-out: 0s;
   }
 }
@@ -214,19 +214,21 @@ body {
 
 /* Turned on with the button or G (data-grid-reveal), it's uncovered from
    the top down: the baselines appear one after another and the column
-   lines draw down together */
+   lines draw down together. The edge moves at the same speed on every
+   page, so it runs to 8000px, past the longest, and short pages are
+   drawn sooner */
 @property --grid-reveal {
-  syntax: "<percentage>";
+  syntax: "<length>";
   inherits: false;
-  initial-value: 100%;
+  initial-value: 100000px;
 }
 
 @keyframes grid-reveal {
   from {
-    --grid-reveal: 0%;
+    --grid-reveal: 0px;
   }
   to {
-    --grid-reveal: 100%;
+    --grid-reveal: 8000px;
   }
 }
 
@@ -239,7 +241,13 @@ body {
     #000 var(--grid-reveal),
     transparent var(--grid-reveal)
   );
-  animation: grid-reveal var(--grid-in) linear;
+  animation: grid-reveal calc(8000ms / var(--grid-speed)) linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-grid="on"][data-grid-reveal] .grid-display {
+    animation: none;
+  }
 }
 
 [data-grid="on"] .grid-icon {
