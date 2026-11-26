@@ -441,8 +441,8 @@ h2.slide-title {
   }
 }
 
-/* Phones: the fade under the sticky slide navigator appears as the page
-   starts to scroll */
+/* Phones: the sticky slide navigator's background and the fade under it
+   appear as the page starts to scroll */
 @keyframes slide-nav-fade {
   from {
     opacity: 0;
@@ -1238,9 +1238,10 @@ h2.slide-title {
     pointer-events: none;
   }
 
-  /* Where supported, the fade only appears once the page has scrolled, so
-     at the top the title isn't faded */
+  /* Where supported, the strip and the fade only appear once the page has
+     scrolled, so at the top nothing covers the grid or the title */
   @supports (animation-timeline: scroll()) {
+    .slide-nav::before,
     .slide-nav::after {
       animation: slide-nav-fade linear both;
       animation-timeline: scroll(root);
