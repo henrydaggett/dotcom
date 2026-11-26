@@ -35,14 +35,14 @@ for (const [i, slide] of slides.entries()) {
 
 dots.append(tip);
 
-// Videos loop silently, each with a button to pause it. With reduced
+// Videos loop silently, and clicking one pauses it. With reduced
 // motion asked for, they start paused. Videos on hidden slides rest, and
 // pick up again when their slide shows unless they were paused
 const stillMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 for (const video of document.querySelectorAll(".slide-media video")) {
   const toggle = document.createElement("button");
-  toggle.className = "arrow video-toggle";
+  toggle.className = "video-toggle";
   toggle.setAttribute("aria-label", "Pause video");
   toggle.setAttribute("aria-pressed", "false");
   toggle.addEventListener("click", () => {

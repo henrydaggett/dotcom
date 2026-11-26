@@ -543,32 +543,21 @@ h2.slide-title {
   border-radius: 4px;
 }
 
-/* Videos play silently on a loop, with a button in the corner to pause
-   them. It's a solid circle so it shows over any frame */
+/* Videos play silently on a loop. Clicking one pauses it, or plays it
+   again: an invisible button covers the video, so the keyboard can do
+   the same, with the focus ring drawn round the video */
 .slide-media:has(> video) {
   position: relative;
 }
 
 .video-toggle {
-  --icon: url(/barclaycard/icons/pause.svg);
   position: absolute;
-  right: 12px;
-  bottom: 12px;
-  background-color: rgb(var(--paper));
-  box-shadow: 0 0 0 1px rgba(var(--ink), 0.15);
-}
-
-.video-toggle[aria-pressed="true"] {
-  --icon: url(/barclaycard/icons/play.svg);
-}
-
-.video-toggle.arrow:hover,
-.video-toggle.arrow:focus-visible {
-  background-color: rgb(var(--paper));
-  box-shadow:
-    0 0 0 1px rgba(var(--ink), 0.15),
-    inset -1px -1px 1px 0 var(--hover-highlight),
-    inset 1px 1px 4px 0 var(--hover-shadow);
+  inset: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
 }
 
 .video-toggle:focus-visible {
