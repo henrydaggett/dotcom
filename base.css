@@ -159,6 +159,12 @@ a {
   color: currentColor;
 }
 
+/* Taps show the page's own hover shapes, not the browser's grey box */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Wrapping: paragraphs keep full lines but avoid ending on a lone word;
    headings even out their lines. Browsers without support wrap as usual */
 p {

@@ -151,17 +151,18 @@ h2 {
   --icon: url(icons/email.svg);
 }
 
-.display-link:focus-visible::before,
-.display-button:focus-visible,
-.content-link:focus-visible::before {
+.display-link:is(:focus-visible, :active)::before,
+.display-button:is(:focus-visible, :active),
+.content-link:is(:focus-visible, :active)::before {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
 }
 
-/* Hover shapes show for a pointer that hovers. A tap on a touch screen
-   would otherwise leave them on until the next tap elsewhere */
+/* Hover shapes show for a pointer that hovers. On touch screens they show
+   while pressed and fade out after, as a tap would otherwise leave them on
+   until the next tap elsewhere */
 @media (hover: hover) {
   .display-link:hover::before,
   .display-button:hover,
@@ -200,6 +201,15 @@ h2 {
   .display-button:hover,
   .content-link:hover::before {
     transition-duration: var(--hover-in);
+  }
+}
+
+/* A tap is short, so its shape appears at once */
+@media (hover: none) {
+  .display-link:active::before,
+  .display-button:active,
+  .content-link:active::before {
+    transition-duration: 0s;
   }
 }
 
