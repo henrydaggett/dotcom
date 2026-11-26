@@ -356,11 +356,16 @@ h1.slide-title {
   white-space: nowrap;
 }
 
+/* Smaller titles sit on lines four baselines tall, so a title that wraps
+   keeps every baseline on the grid and pushes its rule down a line. They
+   only break between words; <wbr> marks any other place they may. One
+   line is nine baselines tall, its baseline five down */
 h2.slide-title {
-  height: calc(9 * var(--baseline) + 1px);
-  padding-top: 16.5px;
+  padding-block: 17.5px 42.5px;
   font-size: calc(3 * var(--baseline) / 0.714);
+  line-height: calc(4 * var(--baseline));
   letter-spacing: -0.04em;
+  overflow-wrap: normal;
 }
 
 /* Text: its first baseline two baselines under the rule, a gap between
@@ -988,7 +993,7 @@ h2.slide-title {
   }
 
   .slide h2.slide-title {
-    padding-top: 11px;
+    padding-block: 11.5px 28.5px;
   }
 
   /* All the text shows, with no scrolling or fades. It ends two baselines
