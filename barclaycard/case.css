@@ -522,6 +522,30 @@ h2.slide-title {
   border-radius: 4px;
 }
 
+/* An embedded page has no height of its own, so it fills the slide: from
+   the title's capitals to the page's last baseline on desktops, however
+   long the text beside it, or 60 baselines on phones. On desktops that's
+   the page's height less its top and bottom margins and the four
+   baselines above the capitals */
+@media (width >= 800px) {
+  .slide-media:has(> iframe) {
+    height: calc(
+      max(var(--page-height, 100dvh - 2 * var(--frame)), 40 * var(--baseline)) -
+        2 * var(--margin) - 4 * var(--baseline)
+    );
+  }
+}
+
+.slide-media > iframe {
+  height: 100%;
+}
+
+@media (width < 800px) {
+  .slide-media > iframe {
+    height: calc(60 * var(--baseline));
+  }
+}
+
 /* A timeline in the media's place: a year per column, wrapping to as
    many rows as it needs. Each row is 15 baselines tall with a rule across
    its top, the first level with the title's rule. A year's capitals are
