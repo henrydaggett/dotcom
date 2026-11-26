@@ -146,6 +146,10 @@ function changeTheme() {
   } catch {}
 }
 
+// Safari on iOS only shows :active, the tap state, on pages that listen
+// for touches
+document.addEventListener("touchstart", () => {}, { passive: true });
+
 // Keyboard shortcuts: the arrow keys change slides, G toggles the grid and
 // T the theme
 document.addEventListener("keydown", (event) => {

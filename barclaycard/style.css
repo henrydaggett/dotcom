@@ -177,15 +177,16 @@ section,
   cursor: pointer;
 }
 
-.display-button:focus-visible {
+.display-button:is(:focus-visible, :active) {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
 }
 
-/* Hover shapes show for a pointer that hovers. A tap on a touch screen
-   would otherwise leave them on until the next tap elsewhere */
+/* Hover shapes show for a pointer that hovers. On touch screens they show
+   while pressed and fade out after, as a tap would otherwise leave them on
+   until the next tap elsewhere */
 @media (hover: hover) {
   .display-button:hover {
     background-color: var(--hover-fill);
@@ -220,6 +221,15 @@ section,
   .display-link:hover::before,
   .case-link:hover::before {
     transition-duration: var(--hover-in, 120ms);
+  }
+}
+
+/* A tap is short, so its shape appears at once */
+@media (hover: none) {
+  .display-button:active,
+  .display-link:active::before,
+  .case-link:active::before {
+    transition-duration: 0s;
   }
 }
 
@@ -335,7 +345,7 @@ section,
   outline: unset;
 }
 
-.case-link:focus-visible::before {
+.case-link:is(:focus-visible, :active)::before {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
@@ -460,7 +470,7 @@ section,
   z-index: -1;
 }
 
-.display-link:focus-visible::before {
+.display-link:is(:focus-visible, :active)::before {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),

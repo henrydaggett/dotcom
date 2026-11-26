@@ -160,6 +160,9 @@
           localStorage.setItem("theme", theme);
         } catch {}
       }
+      // Safari on iOS only shows :active, the tap state, on pages that
+      // listen for touches
+      document.addEventListener("touchstart", () => {}, { passive: true });
       // Keyboard shortcuts: G toggles the grid, T toggles the theme
       document.addEventListener("keydown", (event) => {
         if (event.ctrlKey || event.metaKey || event.altKey) return;

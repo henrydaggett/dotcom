@@ -291,8 +291,9 @@
   transition-duration: var(--hover-in, 120ms);
 }
 
-.slide-dots:has(button:focus-visible)::before,
-.arrow:focus-visible {
+.slide-dots:has(button:is(:focus-visible, :active))::before,
+.arrow:focus-visible,
+.arrow:not([aria-disabled="true"]):active {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
@@ -312,6 +313,15 @@
     box-shadow:
       inset -1px -1px 1px 0 var(--hover-highlight),
       inset 1px 1px 4px 0 var(--hover-shadow);
+  }
+}
+
+/* On touch screens the shapes show while pressed, at once, and fade out */
+@media (hover: none) {
+  .slide-dots:has(button:active)::before,
+  .arrow:active,
+  .talk-card:active::before {
+    transition-duration: 0s;
   }
 }
 
@@ -1034,7 +1044,7 @@ h2.slide-title {
   z-index: -1;
 }
 
-.talk-card:focus-visible::before {
+.talk-card:is(:focus-visible, :active)::before {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
