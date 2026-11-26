@@ -958,6 +958,70 @@ h2.slide-title {
   }
 }
 
+/* A gallery in the media's place: a painting across two columns beside
+   a column of link cards, then images a column each, two baselines below.
+   It wraps to fewer columns like the other media */
+.gallery {
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: calc(2 * var(--baseline));
+  align-items: start;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(var(--ink), 0.15);
+  border-radius: 4px;
+}
+
+.gallery-painting {
+  grid-column: span 2;
+}
+
+/* Where supported, the gallery's images are padded down to the next
+   baseline, so the row below starts on the grid */
+@supports (min-height: calc-size(fit-content, size)) {
+  .gallery > figure {
+    min-height: calc-size(fit-content, round(up, size, var(--baseline)));
+  }
+}
+
+/* The link cards here are shorter: eleven baselines, the source four
+   below the title's last baseline and four above the next rule */
+.gallery .gallery-links {
+  margin-top: 0;
+}
+
+.gallery-links .talk-card {
+  min-height: calc(11 * var(--baseline));
+  padding-bottom: calc(4 * var(--baseline) - 13px);
+}
+
+.gallery-links .talk-card::before {
+  inset: 0 -12px calc(3 * var(--baseline));
+}
+
+/* 3 columns: the painting and the cards take a row each */
+@media (800px <= width < 1100px) {
+  .gallery-painting,
+  .gallery .gallery-links {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (width < 800px) {
+  .gallery-painting,
+  .gallery .gallery-links {
+    grid-column: auto;
+  }
+
+  .gallery-links .talk-card {
+    padding-bottom: calc(4 * var(--baseline) - 11px);
+  }
+}
+
 /* The arrows again, at the foot of the panel: the count's baseline on the
    page's last baseline, or four baselines below the text's last when
    it's long. case.js moves them into the current slide's panel */
