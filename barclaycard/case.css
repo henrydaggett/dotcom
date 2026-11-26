@@ -173,10 +173,11 @@
    changes */
 .slide-tip {
   /* Desktops (12px grid): the dots' box is 23.5–61.5px down the page, so
-     the baseline goes on the next grid line, 72px. The text's baseline is
-     18px into its line */
-  --tip-top: 30.5px;
+     the baseline goes on the next grid line, 72px. At 14px the text's
+     baseline is 17px into its 24px line */
+  --tip-top: 31.5px;
   position: absolute;
+  font-size: 14px;
   top: var(--tip-top);
   left: calc(var(--tip-x, 0px) + 12px);
   z-index: 1;
