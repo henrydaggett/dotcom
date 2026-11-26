@@ -35,6 +35,30 @@ for (const [i, slide] of slides.entries()) {
 
 dots.append(tip);
 
+// Videos loop silently, each with a button to pause it. With reduced
+// motion asked for, they start paused. Videos on hidden slides rest, and
+// pick up again when their slide shows unless they were paused
+const stillMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+for (const video of document.querySelectorAll(".slide-media video")) {
+  const toggle = document.createElement("button");
+  toggle.className = "arrow video-toggle";
+  toggle.setAttribute("aria-label", "Pause video");
+  toggle.setAttribute("aria-pressed", "false");
+  toggle.addEventListener("click", () => {
+    const paused = toggle.getAttribute("aria-pressed") !== "true";
+    toggle.setAttribute("aria-pressed", paused);
+    if (paused) video.pause();
+    else video.play();
+  });
+  video.after(toggle);
+  if (stillMotion) {
+    video.removeAttribute("autoplay");
+    video.pause();
+    toggle.setAttribute("aria-pressed", "true");
+  }
+}
+
 function show(index) {
   current = Math.max(0, Math.min(index, slides.length - 1));
   const last = slides.length - 1;
@@ -52,6 +76,15 @@ function show(index) {
   }
   for (const arrow of document.querySelectorAll(".arrow-next")) {
     arrow.setAttribute("aria-disabled", current === last);
+  }
+
+  for (const [i, slide] of slides.entries()) {
+    for (const video of slide.querySelectorAll(".slide-media video")) {
+      const paused =
+        video.nextElementSibling?.getAttribute("aria-pressed") === "true";
+      if (i === current && !paused) video.play().catch(() => {});
+      else video.pause();
+    }
   }
 
   // The next case study, on the last slide
