@@ -1004,6 +1004,16 @@ h2.slide-title {
   }
 }
 
+/* Two images side by side: stacked, they're exactly 24px apart, the
+   lower one's top left off the baseline grid */
+.gallery.figure-pair {
+  row-gap: 24px;
+}
+
+.gallery.figure-pair > figure {
+  min-height: 0;
+}
+
 /* The link cards here are shorter: eleven baselines, the source four
    below the title's last baseline and four above the next rule */
 .gallery .gallery-links {
