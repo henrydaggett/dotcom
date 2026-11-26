@@ -564,6 +564,34 @@ h2.slide-title {
   outline: 1px solid rgb(var(--ink));
 }
 
+/* Paused, a play button sits in the middle: a circle in the page colour
+   with an outlined triangle, drawn in 1px lines */
+.video-toggle[aria-pressed="true"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 72px;
+  height: 72px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background-color: rgb(var(--paper));
+  box-shadow: 0 0 0 1px rgba(var(--ink), 0.15);
+}
+
+.video-toggle[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  translate: calc(-50% + 1px) -50%;
+  background-color: rgb(var(--ink));
+  -webkit-mask: url(/barclaycard/icons/play-outline.svg) no-repeat center;
+  mask: url(/barclaycard/icons/play-outline.svg) no-repeat center;
+}
+
 /* An embedded page has no height of its own, so it fills the slide: from
    the title's capitals to the page's last baseline on desktops, however
    long the text beside it, or 60 baselines on phones. On desktops that's
