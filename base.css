@@ -279,9 +279,9 @@ body {
 /* iPhone and iPad (WebKit on iOS, Safari and Chrome alike) draw the small
    serif text a little higher against the baseline than other browsers, so
    it's nudged down half a pixel there; an iPad in landscape, with 4
-   columns, needs a full pixel. The hover shapes stay where they are
-   elsewhere, so they're still centred on the nudged lettering. Only iOS
-   WebKit supports -webkit-touch-callout */
+   columns, needs a full pixel. The hover shapes don't follow it: they sit
+   a pixel higher than elsewhere, which centres them on the lettering
+   there. Only iOS WebKit supports -webkit-touch-callout */
 @supports (-webkit-touch-callout: none) {
   :root {
     --ios-nudge: 0.5px;
@@ -301,23 +301,17 @@ body {
 
   /* A link's shape is its ::before, moved back up */
   .display-link::before {
-    translate: 0 calc(-1 * var(--ios-nudge));
+    translate: 0 calc(-1px - var(--ios-nudge));
   }
 
-  /* A button is its own shape, so its text moves down inside it instead:
-     the padding below the line moves above it */
+  /* A button is its own shape, so the button moves up a pixel, keeping its
+     height of the line plus 2px, while its text moves down inside it.
+     The margins keep everything after it where it was */
   .display-container .display-button {
-    padding-top: 2px;
+    height: calc(1lh + 2px);
+    margin-block: -2.5px 0.5px;
+    padding-top: calc(2.5px + var(--ios-nudge));
     padding-bottom: 0;
-  }
-
-  /* With a full pixel there isn't enough below the line to move, so the
-     shape grows by half a pixel at the foot and the margin takes it back */
-  @media (width >= 1100px) {
-    .display-container .display-button {
-      padding-top: 2.5px;
-      margin-bottom: -1px;
-    }
   }
 }
 
