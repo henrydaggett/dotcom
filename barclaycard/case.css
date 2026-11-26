@@ -1443,6 +1443,57 @@ h2.slide-title {
   }
 }
 
+/* Some slides lead with their media on phones: the title, the media two
+   baselines below its rule, then the text, its first baseline four
+   baselines below the media. A pair of images splits, the first above
+   the text and the second below */
+@media (width < 800px) {
+  .slide.media-first {
+    container: slide / inline-size;
+    grid-template-rows: repeat(4, auto) 1fr;
+  }
+
+  .media-first > .slide-media,
+  .media-first .figure-pair > :first-child {
+    grid-row: 2;
+    margin-top: 15px;
+  }
+
+  .media-first .slide-text {
+    grid-row: 3;
+    margin-top: 9px;
+  }
+
+  .media-first .figure-pair {
+    display: contents;
+  }
+
+  .media-first .figure-pair > :nth-child(2) {
+    grid-row: 4;
+    margin-top: 16px;
+  }
+
+  .media-first .slide-step-foot {
+    grid-row: 5;
+  }
+}
+
+/* Without calc-size(), as in Safari, an image or video in those slides is
+   still padded down to the next baseline, from its proportions (--ratio,
+   height / width) and the column's width, so the text below stays on
+   the grid. The 2px is its border */
+@supports not (min-height: calc-size(fit-content, size)) {
+  @media (width < 800px) {
+    .media-first [style*="--ratio"] {
+      min-height: round(
+        up,
+        (100cqw - 2px) * var(--ratio) + 2px,
+        var(--baseline)
+      );
+    }
+  }
+}
+
 @supports (height: round(down, 1px, 1px)) {
   @media (width < 800px) {
     .page.slideshow {
