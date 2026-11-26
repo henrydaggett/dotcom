@@ -581,6 +581,14 @@ h2.slide-title {
   overflow-x: clip;
 }
 
+/* Beside the first slide's large title, the rule is level with its rule,
+   16 baselines down */
+@media (width >= 800px) {
+  .slide:has(> .slide-panel > h1) > .timeline {
+    margin-top: calc(16 * var(--baseline));
+  }
+}
+
 .timeline > li {
   position: relative;
   min-height: calc(15 * var(--baseline));
@@ -613,6 +621,14 @@ h2.slide-title {
   .timeline > li:nth-child(3n + 1):nth-last-child(-n + 3) ~ li {
     min-height: 0;
     margin-bottom: -6.5px;
+  }
+}
+
+/* On phones, where the years stack, a year with more events grows by
+   whole baselines, keeping two baselines of space above the next rule */
+@media (width < 800px) {
+  .timeline > li:not(:last-child) {
+    padding-bottom: calc(4 * var(--baseline) - 6.5px);
   }
 }
 
