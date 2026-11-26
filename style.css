@@ -175,8 +175,23 @@ h2 {
   outline: 1px solid rgb(var(--ink));
 }
 
-.display-link:hover::before,
-.display-link:focus-visible::before {
+/* The hover shapes are always there, transparent until hovered, so they
+   can fade in and out */
+.display-link::before,
+.display-button,
+.content-link::before {
+  transition:
+    background-color var(--hover-out) ease,
+    box-shadow var(--hover-out) ease;
+}
+
+.display-link:is(:hover, :focus-visible)::before,
+.display-button:is(:hover, :focus-visible),
+.content-link:is(:hover, :focus-visible)::before {
+  transition-duration: var(--hover-in);
+}
+
+.display-link::before {
   content: "";
   position: absolute;
   top: -1.5px;
@@ -319,8 +334,7 @@ h2 {
   isolation: isolate;
 }
 
-.content-link:hover::before,
-.content-link:focus-visible::before {
+.content-link::before {
   content: "";
   position: absolute;
   top: 4px;
@@ -388,8 +402,7 @@ h2 {
   }
 
   /* A tighter corner suits the taller hover shape */
-  .talk:hover::before,
-  .talk:focus-visible::before {
+  .talk::before {
     border-radius: 12px;
   }
 
@@ -447,8 +460,7 @@ h2 {
     padding: 11.5px 4px 11.5px 0;
   }
 
-  .content-link:hover::before,
-  .content-link:focus-visible::before {
+  .content-link::before {
     top: 4px;
     bottom: 4px;
   }

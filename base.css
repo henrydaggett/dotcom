@@ -93,6 +93,16 @@ ul {
   --margin: calc(3 * var(--baseline));
   --gutter: 24px;
   --columns: repeat(3, minmax(0, 1fr));
+  /* Hover and focus shapes fade in quickly, and out a little more slowly */
+  --hover-in: 120ms;
+  --hover-out: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --hover-in: 0s;
+    --hover-out: 0s;
+  }
 }
 
 [data-theme="light"] {
