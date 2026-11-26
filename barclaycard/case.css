@@ -265,13 +265,28 @@
   outline: unset;
 }
 
-.slide-dots:has(button:hover)::before,
-.slide-dots:has(button:focus-visible)::before {
+.slide-dots::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 32px;
   z-index: -1;
+}
+
+/* Hover shapes fade in, and out a little more slowly, as elsewhere */
+.slide-dots::before,
+.arrow,
+.talk-card::before {
+  transition:
+    background-color var(--hover-out, 200ms) ease,
+    box-shadow var(--hover-out, 200ms) ease;
+}
+
+.slide-dots:has(button:is(:hover, :focus-visible))::before,
+.arrow:not([aria-disabled="true"]):hover,
+.arrow:focus-visible,
+.talk-card:is(:hover, :focus-visible)::before {
+  transition-duration: var(--hover-in, 120ms);
 }
 
 .slide-dots:has(button:hover)::before,

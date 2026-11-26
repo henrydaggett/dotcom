@@ -189,6 +189,22 @@ section,
   outline: 1px solid rgb(var(--ink));
 }
 
+/* Hover shapes are always there, transparent until hovered, so they fade
+   in, and out a little more slowly. The timings live in base.css */
+.display-button,
+.display-link::before,
+.case-link::before {
+  transition:
+    background-color var(--hover-out, 200ms) ease,
+    box-shadow var(--hover-out, 200ms) ease;
+}
+
+.display-button:is(:hover, :focus-visible),
+.display-link:is(:hover, :focus-visible)::before,
+.case-link:is(:hover, :focus-visible)::before {
+  transition-duration: var(--hover-in, 120ms);
+}
+
 /* Icons about the height of the capitals. Being empty boxes, their bottom
    edge sits on the text baseline. The icons are served from the main site */
 .display-button > span {
@@ -407,8 +423,7 @@ section,
   outline: unset;
 }
 
-.display-link:hover::before,
-.display-link:focus-visible::before {
+.display-link::before {
   content: "";
   position: absolute;
   top: -1.5px;
@@ -417,6 +432,10 @@ section,
   bottom: -0.5px;
   border-radius: 32px;
   z-index: -1;
+}
+
+.display-link:hover::before,
+.display-link:focus-visible::before {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
