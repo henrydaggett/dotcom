@@ -1004,14 +1004,10 @@ h2.slide-title {
   }
 }
 
-/* Two images side by side: stacked, they're exactly 24px apart, the
-   lower one's top left off the baseline grid */
+/* Two images side by side: stacked, at least 24px apart on phones too,
+   the lower one starting on the next baseline */
 .gallery.figure-pair {
   row-gap: 24px;
-}
-
-.gallery.figure-pair > figure {
-  min-height: 0;
 }
 
 /* The link cards here are shorter: eleven baselines, the source four
