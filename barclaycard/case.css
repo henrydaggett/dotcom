@@ -833,6 +833,115 @@ h2.slide-title {
   margin-right: 8px;
 }
 
+/* Talks and writing in the media's place: a card per column, wrapping
+   like the timeline, each card one link with a rule along its column,
+   the first level with the title's. The title's capitals are two
+   baselines tall on three-baseline lines, its first baseline three under
+   the rule; the source sits in the display style thirteen baselines under
+   it, and rows are fifteen baselines apart */
+.talk-cards {
+  display: grid;
+  grid-template-columns: subgrid;
+  margin-top: calc(9 * var(--baseline));
+  list-style: none;
+}
+
+.talk-cards > li {
+  position: relative;
+  display: flex;
+}
+
+.talk-cards > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgb(var(--ink));
+}
+
+.talk-card {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(15 * var(--baseline));
+  padding-top: 5.5px;
+  padding-bottom: calc(2 * var(--baseline) - 13px);
+}
+
+/* A long title grows its card by whole lines, the source always at least
+   four baselines below its last */
+.talk-card-title {
+  font-family: "Alte Haas Grotesk", "Helvetica Neue", sans-serif;
+  font-size: calc(2 * var(--baseline) / 0.714);
+  line-height: calc(3 * var(--baseline));
+  letter-spacing: -0.05em;
+  margin-bottom: calc(4 * var(--baseline) - 28.5px);
+}
+
+.talk-card-source {
+  margin-top: auto;
+  font-family: "Editorial New", serif;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 36px;
+}
+
+/* The arrow after the source, as on display links */
+.talk-card-source::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 6px;
+  background-color: currentColor;
+  -webkit-mask: url(/icons/link-arrow.svg) no-repeat center / contain;
+  mask: url(/icons/link-arrow.svg) no-repeat center / contain;
+}
+
+/* The hover shape covers the card under its rule, reaching past the
+   column either side */
+.talk-card::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--baseline) / 2) -12px var(--baseline);
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.talk-card:hover::before,
+.talk-card:focus-visible::before {
+  background-color: var(--hover-fill);
+  box-shadow:
+    inset -1px -1px 1px 0 var(--hover-highlight),
+    inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+.talk-card:focus-visible {
+  outline: unset;
+}
+
+.talk-card:focus-visible::before {
+  outline: 1px solid rgb(var(--ink));
+}
+
+@media (width < 800px) {
+  .talk-card {
+    padding-top: 4px;
+    padding-bottom: calc(2 * var(--baseline) - 11px);
+  }
+
+  .talk-card-title {
+    margin-bottom: 7px;
+  }
+
+  .talk-card-source {
+    line-height: 32px;
+  }
+}
+
 /* The arrows again, at the foot of the panel: the count's baseline on the
    page's last baseline, or four baselines below the text's last when
    it's long. case.js moves them into the current slide's panel */
