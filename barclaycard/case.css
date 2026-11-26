@@ -1003,11 +1003,26 @@ h2.slide-title {
   inset: 0 -12px calc(3 * var(--baseline));
 }
 
-/* 3 columns: the painting and the cards take a row each */
+/* 3 columns: the painting and the cards take a row each. The cards sit
+   closer: each source two baselines above the next rule, and the last two
+   baselines above the images */
 @media (800px <= width < 1100px) {
   .gallery-painting,
   .gallery .gallery-links {
     grid-column: 1 / -1;
+  }
+
+  .gallery .gallery-links {
+    margin-bottom: calc(-2 * var(--baseline));
+  }
+
+  .gallery-links .talk-card {
+    min-height: 0;
+    padding-bottom: calc(2 * var(--baseline) - 13px);
+  }
+
+  .gallery-links .talk-card::before {
+    inset: 0 -12px var(--baseline);
   }
 }
 
