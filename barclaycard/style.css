@@ -177,12 +177,22 @@ section,
   cursor: pointer;
 }
 
-.display-button:hover,
 .display-button:focus-visible {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+/* Hover shapes show for a pointer that hovers. A tap on a touch screen
+   would otherwise leave them on until the next tap elsewhere */
+@media (hover: hover) {
+  .display-button:hover {
+    background-color: var(--hover-fill);
+    box-shadow:
+      inset -1px -1px 1px 0 var(--hover-highlight),
+      inset 1px 1px 4px 0 var(--hover-shadow);
+  }
 }
 
 .display-button:focus-visible {
@@ -199,10 +209,18 @@ section,
     box-shadow var(--hover-out, 200ms) ease;
 }
 
-.display-button:is(:hover, :focus-visible),
-.display-link:is(:hover, :focus-visible)::before,
-.case-link:is(:hover, :focus-visible)::before {
+.display-button:focus-visible,
+.display-link:focus-visible::before,
+.case-link:focus-visible::before {
   transition-duration: var(--hover-in, 120ms);
+}
+
+@media (hover: hover) {
+  .display-button:hover,
+  .display-link:hover::before,
+  .case-link:hover::before {
+    transition-duration: var(--hover-in, 120ms);
+  }
 }
 
 /* Icons about the height of the capitals. Being empty boxes, their bottom
@@ -317,12 +335,20 @@ section,
   outline: unset;
 }
 
-.case-link:hover::before,
 .case-link:focus-visible::before {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+@media (hover: hover) {
+  .case-link:hover::before {
+    background-color: var(--hover-fill);
+    box-shadow:
+      inset -1px -1px 1px 0 var(--hover-highlight),
+      inset 1px 1px 4px 0 var(--hover-shadow);
+  }
 }
 
 .case-link:focus-visible::before {
@@ -434,12 +460,20 @@ section,
   z-index: -1;
 }
 
-.display-link:hover::before,
 .display-link:focus-visible::before {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+@media (hover: hover) {
+  .display-link:hover::before {
+    background-color: var(--hover-fill);
+    box-shadow:
+      inset -1px -1px 1px 0 var(--hover-highlight),
+      inset 1px 1px 4px 0 var(--hover-shadow);
+  }
 }
 
 .display-link:focus-visible::before {

@@ -148,13 +148,16 @@
   background-color: currentColor;
 }
 
-/* Hovering a dot fills it and those before it instead */
-.slide-dots:has(button:hover) button::after {
-  background-color: transparent;
-}
+/* Hovering a dot fills it and those before it instead. Touch screens
+   skip this and the other hover shapes, which a tap would leave on */
+@media (hover: hover) {
+  .slide-dots:has(button:hover) button::after {
+    background-color: transparent;
+  }
 
-.slide-dots:has(button:hover) button:is(:hover, :has(~ button:hover))::after {
-  background-color: currentColor;
+  .slide-dots:has(button:hover) button:is(:hover, :has(~ button:hover))::after {
+    background-color: currentColor;
+  }
 }
 
 .slide-dots button:focus-visible {
@@ -282,21 +285,34 @@
     box-shadow var(--hover-out, 200ms) ease;
 }
 
-.slide-dots:has(button:is(:hover, :focus-visible))::before,
-.arrow:not([aria-disabled="true"]):hover,
+.slide-dots:has(button:focus-visible)::before,
 .arrow:focus-visible,
-.talk-card:is(:hover, :focus-visible)::before {
+.talk-card:focus-visible::before {
   transition-duration: var(--hover-in, 120ms);
 }
 
-.slide-dots:has(button:hover)::before,
 .slide-dots:has(button:focus-visible)::before,
-.arrow:not([aria-disabled="true"]):hover,
 .arrow:focus-visible {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+@media (hover: hover) {
+  .slide-dots:has(button:hover)::before,
+  .arrow:not([aria-disabled="true"]):hover,
+  .talk-card:hover::before {
+    transition-duration: var(--hover-in, 120ms);
+  }
+
+  .slide-dots:has(button:hover)::before,
+  .arrow:not([aria-disabled="true"]):hover {
+    background-color: var(--hover-fill);
+    box-shadow:
+      inset -1px -1px 1px 0 var(--hover-highlight),
+      inset 1px 1px 4px 0 var(--hover-shadow);
+  }
 }
 
 .arrow:focus-visible {
@@ -585,13 +601,24 @@ h2.slide-title {
 
 /* The usual hover shape, in the dark theme's colours: the fill over the
    circle, its highlight and shadow inset */
-.video-toggle[aria-pressed="true"]:is(:hover, :focus-visible)::before {
+.video-toggle[aria-pressed="true"]:focus-visible::before {
   background-color: rgb(33, 33, 33);
   box-shadow:
     0 0 0 1px rgba(255, 254, 250, 0.15),
     inset -1px -1px 1px 0 rgba(140, 145, 150, 0.25),
     inset 1px 1px 4px 0 rgba(12, 12, 12, 0.55);
   transition-duration: var(--hover-in, 120ms);
+}
+
+@media (hover: hover) {
+  .video-toggle[aria-pressed="true"]:hover::before {
+    background-color: rgb(33, 33, 33);
+    box-shadow:
+      0 0 0 1px rgba(255, 254, 250, 0.15),
+      inset -1px -1px 1px 0 rgba(140, 145, 150, 0.25),
+      inset 1px 1px 4px 0 rgba(12, 12, 12, 0.55);
+    transition-duration: var(--hover-in, 120ms);
+  }
 }
 
 .video-toggle[aria-pressed="true"]::after {
@@ -1007,12 +1034,20 @@ h2.slide-title {
   z-index: -1;
 }
 
-.talk-card:hover::before,
 .talk-card:focus-visible::before {
   background-color: var(--hover-fill);
   box-shadow:
     inset -1px -1px 1px 0 var(--hover-highlight),
     inset 1px 1px 4px 0 var(--hover-shadow);
+}
+
+@media (hover: hover) {
+  .talk-card:hover::before {
+    background-color: var(--hover-fill);
+    box-shadow:
+      inset -1px -1px 1px 0 var(--hover-highlight),
+      inset 1px 1px 4px 0 var(--hover-shadow);
+  }
 }
 
 .talk-card:focus-visible {
